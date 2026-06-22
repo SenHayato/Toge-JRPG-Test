@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class AttackState : PlayerState
+
+public class PlayerIdleState : PlayerState
 {
-    public AttackState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
+    public PlayerIdleState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
         : base(playerActive, playerStateMachine) { }
 
     public override void Enter()
@@ -10,3 +11,5 @@ public class AttackState : PlayerState
         base.Enter();
     }
 }
+
+

@@ -5,10 +5,10 @@ public class BossState
     protected BossActive bossActive;
     protected BossStateMachine bossStateMachine;
 
-    public BossState(BossActive bossActives, BossStateMachine stateMachine)
+    public BossState(BossActive bossActives, BossStateMachine bossStateMachine)
     {
         this.bossActive = bossActives;
-        this.bossStateMachine = stateMachine;
+        this.bossStateMachine = bossStateMachine;
     }
 
     public virtual void Enter() { }

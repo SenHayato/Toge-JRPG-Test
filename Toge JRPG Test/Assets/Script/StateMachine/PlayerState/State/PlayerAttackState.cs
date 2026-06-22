@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class HurtState : PlayerState
+public class PlayerAttackState : PlayerState
 {
-    public HurtState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
+    public PlayerAttackState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
         : base(playerActive, playerStateMachine) { }
 
     public override void Enter()

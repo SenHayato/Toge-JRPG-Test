@@ -1,9 +1,8 @@
 using UnityEngine;
 
-
-public class IdleState : PlayerState
+public class PlayerHurtState : PlayerState
 {
-    public IdleState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
+    public PlayerHurtState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
         : base(playerActive, playerStateMachine) { }
 
     public override void Enter()
@@ -11,5 +10,3 @@ public class IdleState : PlayerState
         base.Enter();
     }
 }
-
-

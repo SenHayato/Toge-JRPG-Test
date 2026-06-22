@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DeadState : PlayerState
+public class PlayerDeadState : PlayerState
 {
-    public DeadState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
+    public PlayerDeadState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
         : base(playerActive, playerStateMachine) { }
 
     public override void Enter()

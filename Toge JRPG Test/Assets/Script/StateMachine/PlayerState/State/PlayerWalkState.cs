@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WalkState : PlayerState
+public class PlayerWalkState : PlayerState
 {
-    public WalkState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
+    public PlayerWalkState(PlayerActive playerActive, PlayerStateMachine playerStateMachine)
         : base(playerActive, playerStateMachine) { }
 
     public override void Enter()
