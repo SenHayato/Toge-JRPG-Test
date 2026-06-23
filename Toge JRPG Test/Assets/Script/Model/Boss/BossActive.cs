@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class BossActive : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public BossStateMachine stateMachine;
+
+    public BossAttackState attackState;
+    public BossDeadState deadState;
+    public BossHurtState hurtState;
+    public BossIdleState idleState;
+    public BossWalkState walkState;
+
+    private void Awake()
     {
-        
+        stateMachine = new BossStateMachine();
+
+        idleState = new BossIdleState(this, stateMachine);
+        deadState = new BossDeadState(this, stateMachine);
+        hurtState = new BossHurtState(this, stateMachine);
+        attackState = new BossAttackState(this, stateMachine);
+        walkState = new BossWalkState(this, stateMachine);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        stateMachine.Initialize(idleState);
     }
 }

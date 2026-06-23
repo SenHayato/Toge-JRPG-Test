@@ -351,7 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b25ecc4b85b4f4d8c7c2e99c502888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInState: 0
   moveValue: {x: 0, y: 0}
+  moveSpeed: 6
+  spriteRenderer: {fileID: 103398065}
 --- !u!1 &108660548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1475,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  playerActive: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

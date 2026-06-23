@@ -6,6 +6,9 @@ public class InputActive : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     [SerializeField] InputAction moveAction, interactAction, pauseAction;
 
+    [Header("Reference")]
+    [SerializeField] PlayerActive playerActive;
+
     private void Awake()
     {
         moveAction = playerInput.actions.FindAction("Move");
@@ -13,9 +16,15 @@ public class InputActive : MonoBehaviour
         pauseAction = playerInput.actions.FindAction("Pause");
     }
 
+    private void Start()
+    {
+        playerActive = FindFirstObjectByType<PlayerActive>();
+    }
+
     void MoveHandler()
     {
-        Vector2 moveValue = moveAction.ReadValue<Vector2>();
+        Vector2 moveDirection = moveAction.ReadValue<Vector2>();
+        playerActive.moveValue = moveDirection;
         //Debug.Log("Move Value " + moveValue);
     }
 

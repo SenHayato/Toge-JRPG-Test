@@ -8,7 +8,17 @@ public class PlayerIdleState : PlayerState
 
     public override void Enter()
     {
+        playerActive.playerInState = PlayerInState.Idle;
         base.Enter();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (playerActive.moveValue != Vector2.zero)
+        {
+            playerStateMachine.ChangeState(playerActive.walkState);
+        }
     }
 }
 
