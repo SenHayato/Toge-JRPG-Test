@@ -8,5 +8,18 @@ public class PlayerDeadState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        playerActive.playerAnimator.SetBool("IsDead", true);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        playerActive.Revive();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        playerActive.playerAnimator.SetBool("IsDead", false);
     }
 }

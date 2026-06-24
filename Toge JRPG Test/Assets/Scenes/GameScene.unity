@@ -352,9 +352,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInState: 0
+  isRunning: 0
+  MaxHealth: 100
+  Heatlh: 0
+  Attack: 0
   moveValue: {x: 0, y: 0}
-  moveSpeed: 6
+  moveSpeed: 1.5
   spriteRenderer: {fileID: 103398065}
+  playerAnimator: {fileID: 103398067}
 --- !u!1 &108660548
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cc54c9369cc5c41be9a2f4c21823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inState: 0
+  bossAnimator: {fileID: 110483354}
+  spriteRenderer: {fileID: 110483352}
 --- !u!1 &126812900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1296,37 @@ Transform:
   - {fileID: 126812902}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1193289773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193289774}
+  m_Layer: 0
+  m_Name: TestObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1193289774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193289773}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333251773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1527,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  runAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 781151e3-5157-404a-a438-8fde449f6b86
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playerActive: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1501,3 +1549,4 @@ SceneRoots:
   - {fileID: 103398066}
   - {fileID: 1161697167}
   - {fileID: 1333251774}
+  - {fileID: 1193289774}

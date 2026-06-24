@@ -10,6 +10,7 @@ public class PlayerActive : MonoBehaviour
     [Header("State Monitor")]
     public PlayerInState playerInState;
     public PlayerStateMachine stateMachine;
+    public bool isRunning = false;
 
     public PlayerIdleState idleState;
     public PlayerAttackState attackState;
@@ -17,10 +18,16 @@ public class PlayerActive : MonoBehaviour
     public PlayerDeadState deadState;
     public PlayerWalkState walkState;
 
+    [Header("Player Status")]
+    [SerializeField] int MaxHealth;
+    [SerializeField] int Heatlh;
+    [SerializeField] int Attack;
+
     [Header("Player Component")]
     public Vector2 moveValue;
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     public SpriteRenderer spriteRenderer;
+    public Animator playerAnimator;
 
     private void Awake()
     {
@@ -35,6 +42,9 @@ public class PlayerActive : MonoBehaviour
 
     private void Start()
     {
+        Heatlh = MaxHealth;
+        Heatlh = Mathf.Max(0, Heatlh);
+
         stateMachine.Initialize(idleState);
     }
 
@@ -49,5 +59,48 @@ public class PlayerActive : MonoBehaviour
         Vector2 movePosition = moveValue * moveSpeed * Time.deltaTime;
         transform.position += new Vector3(movePosition.x, 0f, movePosition.y);
     }
+
+    public void Revive()
+    {
+        if (Heatlh > 0)
+        {
+            stateMachine.ChangeState(idleState);
+        }
+    }
+
+    public void Dead()
+    {
+        if (Heatlh <= 0)
+        {
+            playerInState = PlayerInState.Dead;
+            stateMachine.ChangeState(deadState);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Heatlh -= damage;
+        stateMachine.ChangeState(hurtState);
+    }
+
+    public void Hurt()
+    {
+        Invoke(nameof(ChangeToIdle), 0.3f);
+    }
+
+    void ChangeToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+    }
+    #endregion
+
+    #region Testing
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Damage"))
+    //    {
+    //        TakeDamage(50);
+    //    }
+    //}
     #endregion
 }

@@ -8,5 +8,14 @@ public class PlayerHurtState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        playerActive.playerInState = PlayerInState.Hurt;
+        playerActive.Hurt();
+        playerActive.playerAnimator.SetBool("IsHurt", true);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        playerActive.playerAnimator.SetBool("IsHurt", false);
     }
 }

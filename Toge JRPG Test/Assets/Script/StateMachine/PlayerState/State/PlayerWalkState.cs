@@ -8,8 +8,8 @@ public class PlayerWalkState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("masuk walk");
         playerActive.playerInState = PlayerInState.Walk;
+        playerActive.playerAnimator.SetBool("IsMove", true);
     }
 
     public override void Update()
@@ -22,8 +22,15 @@ public class PlayerWalkState : PlayerState
         else
         {
             playerActive.Movement();
+            RunState();
             FlipSprite();
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        playerActive.playerAnimator.SetBool("IsMove", false);
     }
 
     #region Method
@@ -36,6 +43,20 @@ public class PlayerWalkState : PlayerState
         else if (playerActive.moveValue.x < -0.1f)
         {
             playerActive.spriteRenderer.flipX = true;
+        }
+    }
+
+    void RunState()
+    {
+        if (playerActive.isRunning)
+        {
+            playerActive.playerAnimator.SetBool("IsRun", true);
+            playerActive.moveSpeed = Mathf.Max(playerActive.moveSpeed, 4f);
+        }
+        else
+        {
+            playerActive.playerAnimator.SetBool("IsRun", false);
+            playerActive.moveSpeed = Mathf.Min(1.5f, playerActive.moveSpeed);
         }
     }
     #endregion

@@ -17,6 +17,10 @@ public class BossActive : MonoBehaviour
     public BossIdleState idleState;
     public BossWalkState walkState;
 
+    [Header("Boss Compoenent")]
+    public Animator bossAnimator;
+    public SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         stateMachine = new BossStateMachine();

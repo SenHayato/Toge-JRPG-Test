@@ -8,8 +8,9 @@ public class PlayerIdleState : PlayerState
 
     public override void Enter()
     {
-        playerActive.playerInState = PlayerInState.Idle;
         base.Enter();
+        playerActive.playerInState = PlayerInState.Idle;
+        playerActive.playerAnimator.SetBool("IsIdle", true);
     }
 
     public override void Update()
@@ -19,6 +20,11 @@ public class PlayerIdleState : PlayerState
         {
             playerStateMachine.ChangeState(playerActive.walkState);
         }
+    }
+
+    public override void Exit()
+    {
+        playerActive.playerAnimator.SetBool("IsIdle", false);
     }
 }
 
