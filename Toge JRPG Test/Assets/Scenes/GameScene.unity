@@ -1532,7 +1532,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   runAction:
-    m_Name: 
+    m_Name: Run
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 781151e3-5157-404a-a438-8fde449f6b86
