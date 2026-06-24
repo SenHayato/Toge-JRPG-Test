@@ -356,8 +356,8 @@ MonoBehaviour:
   MaxHealth: 100
   Heatlh: 0
   Attack: 0
-  moveValue: {x: 0, y: 0}
   moveSpeed: 1.5
+  moveValue: {x: 0, y: 0}
   spriteRenderer: {fileID: 103398065}
   playerAnimator: {fileID: 103398067}
 --- !u!1 &108660548
@@ -593,6 +593,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inState: 0
+  MaxHealth: 100
+  Health: 0
+  Attack: 0
+  moveSpeed: 0
   bossAnimator: {fileID: 110483354}
   spriteRenderer: {fileID: 110483352}
 --- !u!1 &126812900

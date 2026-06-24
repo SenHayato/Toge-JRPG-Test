@@ -17,6 +17,12 @@ public class BossActive : MonoBehaviour
     public BossIdleState idleState;
     public BossWalkState walkState;
 
+    [Header("Boss Status")]
+    [SerializeField] int MaxHealth;
+    [SerializeField] int Health;
+    [SerializeField] int Attack;
+    [SerializeField] float moveSpeed;
+
     [Header("Boss Compoenent")]
     public Animator bossAnimator;
     public SpriteRenderer spriteRenderer;
@@ -34,6 +40,9 @@ public class BossActive : MonoBehaviour
 
     private void Start()
     {
+        Health = MaxHealth;
+        Health = Mathf.Max(0, MaxHealth);
+
         stateMachine.Initialize(idleState);
     }
 
@@ -41,4 +50,34 @@ public class BossActive : MonoBehaviour
     {
         stateMachine.currentState.Update();
     }
+
+    #region Method
+    public void Dead()
+    {
+        if (Health <= 0)
+        {
+            stateMachine.ChangeState(deadState);
+        }
+        else
+        {
+            stateMachine.ChangeState(idleState);
+        }
+    }
+
+    public void TakeDamage (int damage)
+    {
+        Health -= damage;
+        stateMachine.ChangeState(hurtState);
+    }
+
+    public void Hurt()
+    {
+        Invoke(nameof(ChangeToIdle), 0.4f);
+    }
+
+    void ChangeToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+    }
+    #endregion
 }

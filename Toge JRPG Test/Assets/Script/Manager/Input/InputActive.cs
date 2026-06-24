@@ -30,7 +30,6 @@ public class InputActive : MonoBehaviour
         {
             RunningHandler();
         }
-        //Debug.Log("Move Value " + moveValue);
     }
 
     void Interaction()

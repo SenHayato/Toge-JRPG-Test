@@ -8,5 +8,13 @@ public class BossHurtState : BossState
     public override void Enter()
     {
         base.Enter();
+        bossActive.inState = BossInState.Hurt;
+        bossActive.Hurt();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        bossActive.inState = BossInState.Idle;
     }
 }

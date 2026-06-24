@@ -22,10 +22,10 @@ public class PlayerActive : MonoBehaviour
     [SerializeField] int MaxHealth;
     [SerializeField] int Heatlh;
     [SerializeField] int Attack;
+    public float moveSpeed;
 
     [Header("Player Component")]
     public Vector2 moveValue;
-    public float moveSpeed;
     public SpriteRenderer spriteRenderer;
     public Animator playerAnimator;
 
@@ -85,7 +85,7 @@ public class PlayerActive : MonoBehaviour
 
     public void Hurt()
     {
-        Invoke(nameof(ChangeToIdle), 0.3f);
+        Invoke(nameof(ChangeToIdle), 0.4f);
     }
 
     void ChangeToIdle()

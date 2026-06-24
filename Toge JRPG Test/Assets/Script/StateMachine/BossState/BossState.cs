@@ -12,6 +12,9 @@ public class BossState
     }
 
     public virtual void Enter() { }
-    public virtual void Update() { }
+    public virtual void Update()
+    {
+        bossActive.Dead();
+    }
     public virtual void Exit() { }
 }

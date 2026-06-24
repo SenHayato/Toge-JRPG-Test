@@ -8,5 +8,12 @@ public class BossDeadState : BossState
     public override void Enter()
     {
         base.Enter();
+        bossActive.inState = BossInState.Dead;
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        bossActive.inState = BossInState.Idle;
     }
 }
