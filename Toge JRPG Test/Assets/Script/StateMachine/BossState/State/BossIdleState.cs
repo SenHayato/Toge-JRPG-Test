@@ -8,5 +8,15 @@ public class BossIdleState : BossState
     public override void Enter()
     {
         base.Enter();
+        bossActive.inState = BossInState.Idle;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        //if (bossActive.inState == BossInState.Walk)
+        //{
+        //    bossStateMachine.ChangeState(bossActive.walkState);
+        //}
     }
 }

@@ -1,7 +1,14 @@
 using UnityEngine;
 
+public enum BossInState
+{
+    Idle, Attack, Hurt, Dead, Walk
+}
+
 public class BossActive : MonoBehaviour
 {
+    [Header("Boss State")]
+    public BossInState inState;
     public BossStateMachine stateMachine;
 
     public BossAttackState attackState;
@@ -24,5 +31,10 @@ public class BossActive : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(idleState);
+    }
+
+    private void Update()
+    {
+        stateMachine.currentState.Update();
     }
 }

@@ -8,5 +8,6 @@ public class BossWalkState : BossState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("Boss Walk State");
     }
 }
