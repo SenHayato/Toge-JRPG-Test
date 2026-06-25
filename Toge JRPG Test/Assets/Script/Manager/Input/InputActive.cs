@@ -32,11 +32,12 @@ public class InputActive : MonoBehaviour
         }
     }
 
-    void Interaction()
+    public void Interaction(IInteractable Interactable)
     {
         if (interactAction.triggered)
         {
-            Debug.Log("Interaction");
+            Interactable.Interact();
+            Debug.Log("Interact Pressed");
         }
     }
 
@@ -63,7 +64,6 @@ public class InputActive : MonoBehaviour
     private void Update()
     {
         MoveHandler();
-        Interaction();
         PauseButton();
     }
 }

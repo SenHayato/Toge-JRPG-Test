@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PlayerInState
@@ -19,15 +20,23 @@ public class PlayerActive : MonoBehaviour
     public PlayerWalkState walkState;
 
     [Header("Player Status")]
+    [SerializeField] EntitySO modelData;
+    public string modelName;
     [SerializeField] int MaxHealth;
-    [SerializeField] int Heatlh;
+    [SerializeField] int Health;
     [SerializeField] int Attack;
+    [SerializeField] int Defend;
     public float moveSpeed;
 
     [Header("Player Component")]
     public Vector2 moveValue;
     public SpriteRenderer spriteRenderer;
     public Animator playerAnimator;
+    [SerializeField] CharacterController characterController;
+
+    [Header("Reference")]
+    [SerializeField] GameManager gameManager;
+    [SerializeField] InputActive inputActive;
 
     private void Awake()
     {
@@ -38,14 +47,23 @@ public class PlayerActive : MonoBehaviour
         hurtState = new PlayerHurtState(this, stateMachine);
         deadState = new PlayerDeadState (this, stateMachine);
         walkState = new PlayerWalkState (this, stateMachine);
+
+        MaxHealth = modelData.MaxHealth;
+        modelName = modelData.EntityName;
+        Attack = modelData.DefaultAttack;
+        Defend = modelData.DefaultDefend;
+        moveSpeed = modelData.MoveSpeed;
     }
 
     private void Start()
     {
-        Heatlh = MaxHealth;
-        Heatlh = Mathf.Max(0, Heatlh);
+        Health = MaxHealth;
+        Health = Mathf.Max(0, Health);
 
         stateMachine.Initialize(idleState);
+
+        gameManager = FindFirstObjectByType<GameManager>();
+        inputActive = FindFirstObjectByType<InputActive>();
     }
 
     private void Update()
@@ -53,16 +71,37 @@ public class PlayerActive : MonoBehaviour
         stateMachine.currentState.Update();
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent<IInteractable>(out var interactable))
+        {
+            Debug.Log("Tabrak interact" + other.name);
+            inputActive.Interaction(interactable);
+        }
+    }
+
     #region PlayerLogic
     public void Movement()
     {
         Vector2 movePosition = moveValue * moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(movePosition.x, 0f, movePosition.y);
+        Vector3 moveDirection = new(movePosition.x, 0f, movePosition.y);
+        characterController.Move(moveDirection);
+        //transform.position += new Vector3(movePosition.x, 0f, movePosition.y);
+    }
+
+    float verticalVelocity;
+    [SerializeField] float gravity;
+
+    public void ApplyGravity()
+    {
+        verticalVelocity += gravity * Time.deltaTime;
+
+        characterController.Move(Vector3.down * verticalVelocity * Time.deltaTime);
     }
 
     public void Revive()
     {
-        if (Heatlh > 0)
+        if (Health > 0)
         {
             stateMachine.ChangeState(idleState);
         }
@@ -70,7 +109,7 @@ public class PlayerActive : MonoBehaviour
 
     public void Dead()
     {
-        if (Heatlh <= 0)
+        if (Health <= 0)
         {
             playerInState = PlayerInState.Dead;
             stateMachine.ChangeState(deadState);
@@ -79,7 +118,7 @@ public class PlayerActive : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Heatlh -= damage;
+        Health -= damage;
         stateMachine.ChangeState(hurtState);
     }
 

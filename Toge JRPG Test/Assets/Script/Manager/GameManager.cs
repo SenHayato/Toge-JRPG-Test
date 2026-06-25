@@ -1,16 +1,14 @@
 using UnityEngine;
 
+public enum GameState
+{
+    Exploration, Battle, Dialog, Cutscene
+}
+
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameState gameState;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Battle Manager")]
+    [SerializeField] BattleManager battleManager;
 }

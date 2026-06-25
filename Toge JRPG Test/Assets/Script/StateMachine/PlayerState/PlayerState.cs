@@ -15,6 +15,7 @@ public class PlayerState
     public virtual void Update()
     {
         playerActive.Dead();
+        playerActive.ApplyGravity();
     }
     public virtual void Exit() { }
 }

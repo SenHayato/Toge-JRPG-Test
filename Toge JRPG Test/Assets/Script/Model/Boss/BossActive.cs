@@ -18,9 +18,12 @@ public class BossActive : MonoBehaviour
     public BossWalkState walkState;
 
     [Header("Boss Status")]
+    [SerializeField] EntitySO modelData;
+    public string modelName;
     [SerializeField] int MaxHealth;
     [SerializeField] int Health;
     [SerializeField] int Attack;
+    [SerializeField] int Defend;
     [SerializeField] float moveSpeed;
 
     [Header("Boss Compoenent")]
@@ -36,6 +39,12 @@ public class BossActive : MonoBehaviour
         hurtState = new BossHurtState(this, stateMachine);
         attackState = new BossAttackState(this, stateMachine);
         walkState = new BossWalkState(this, stateMachine);
+
+        MaxHealth = modelData.MaxHealth;
+        modelName = modelData.EntityName;
+        Attack = modelData.DefaultAttack;
+        Defend = modelData.DefaultDefend;
+        moveSpeed = modelData.MoveSpeed;
     }
 
     private void Start()
