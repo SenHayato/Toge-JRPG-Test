@@ -75,7 +75,7 @@ public class PlayerActive : MonoBehaviour
     {
         if (other.TryGetComponent<IInteractable>(out var interactable))
         {
-            Debug.Log("Tabrak interact" + other.name);
+            Debug.Log("Tabrak interact " + other.name);
             inputActive.Interaction(interactable);
         }
     }
