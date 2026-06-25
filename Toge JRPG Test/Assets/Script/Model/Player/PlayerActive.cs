@@ -71,12 +71,21 @@ public class PlayerActive : MonoBehaviour
         stateMachine.currentState.Update();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<IInteractable>(out var interactable))
         {
-            Debug.Log("Tabrak interact " + other.name);
-            inputActive.Interaction(interactable);
+            Debug.Log("Tabrak " + other.name);
+            inputActive.currentInteractable = interactable;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (inputActive.currentInteractable != null)
+        {
+            inputActive.currentInteractable = null;
+            Debug.Log("Keluar " + other.name);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class InputActive : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
-    [SerializeField] InputAction moveAction, interactAction, pauseAction, runAction;
+    public InputAction moveAction, interactAction, pauseAction, runAction;
 
     [Header("Reference")]
     [SerializeField] PlayerActive playerActive;
@@ -32,12 +32,16 @@ public class InputActive : MonoBehaviour
         }
     }
 
-    public void Interaction(IInteractable Interactable)
+    public IInteractable currentInteractable;
+    void Interaction()
     {
         if (interactAction.triggered)
         {
-            Interactable.Interact();
-            Debug.Log("Interact Pressed");
+            if (currentInteractable != null)
+            {
+                currentInteractable.Interact();
+            }
+            Debug.Log("Interact Button");
         }
     }
 
@@ -64,6 +68,7 @@ public class InputActive : MonoBehaviour
     private void Update()
     {
         MoveHandler();
+        Interaction();
         PauseButton();
     }
 }
