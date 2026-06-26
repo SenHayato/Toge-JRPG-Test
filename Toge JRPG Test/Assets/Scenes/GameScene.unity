@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 26310283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.137, y: 1.591, z: -3.894}
+  m_LocalPosition: {x: 0.137, y: 2.383, z: -3.894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -222,7 +222,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.36
+  m_Height: 1.16
   m_Radius: 0.23
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -551,7 +551,7 @@ Transform:
   m_GameObject: {fileID: 126812900}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.344, y: 1.465, z: -2.08}
+  m_LocalPosition: {x: 1.344, y: 1.56, z: -2.08}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1492,7 +1492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &491115106
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   terrainLayers:
   - {fileID: 8574412962073106934, guid: c18288fc173c17f45b6f34b969db319e, type: 2}
   - {fileID: 8574412962073106934, guid: 04638783eab549f42b2703606c5376e6, type: 2}
-  chunkCount: {x: 8, y: 5}
+  chunkCount: {x: 2, y: 2}
   sceneFilters: []
   bladeType: 2
   multipleMeshes: 0
@@ -1570,7 +1570,7 @@ MonoBehaviour:
   shadowMode: 0
   renderLayer:
     m_LayerIndex: 0
-  pointCount: 10
+  pointCount: 6
   multiplyByArea: 1
   pointLODFactor: 1
   randomiseSeed: 0
