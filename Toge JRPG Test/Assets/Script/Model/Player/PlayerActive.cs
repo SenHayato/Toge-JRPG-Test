@@ -68,7 +68,11 @@ public class PlayerActive : MonoBehaviour
 
     private void Update()
     {
-        stateMachine.currentState.Update();
+        if (gameManager.gameState == GameState.Exploration || gameManager.gameState == GameState.Battle)
+        {
+            stateMachine.currentState.Update();
+        }
+        ApplyGravity();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -136,7 +140,7 @@ public class PlayerActive : MonoBehaviour
         Invoke(nameof(ChangeToIdle), 0.4f);
     }
 
-    void ChangeToIdle()
+    public void ChangeToIdle()
     {
         stateMachine.ChangeState(idleState);
     }

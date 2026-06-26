@@ -17,6 +17,7 @@ public class NpcActive : MonoBehaviour,  IInteractable
 
     [Header("Reference")]
     [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerActive playerActive;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class NpcActive : MonoBehaviour,  IInteractable
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        playerActive = FindFirstObjectByType<PlayerActive>();
     }
 
     public void Interact()
@@ -35,7 +37,8 @@ public class NpcActive : MonoBehaviour,  IInteractable
         {
             //inInteraction = true;
             npcFlowchart.ExecuteBlock(blockName);
-            gameManager.gameState = GameState.Dialog;
+            playerActive.ChangeToIdle();
+            gameManager.ChangeToDialogue();
             Debug.Log("Berinteraksi dengan " + modelName);
         }
     }
