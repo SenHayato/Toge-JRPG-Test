@@ -890,6 +890,7 @@ MonoBehaviour:
   npcFlowchart: {fileID: 2064514254}
   blockName: 
   inInteraction: 0
+  gameManager: {fileID: 0}
 --- !u!114 &126812906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2673,7 +2674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 8821889934753424351, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
+  selectedFlowchart: {fileID: 2064514254}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -3118,9 +3119,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1772322146}
-  - component: {fileID: 1772322147}
-  - component: {fileID: 1772322148}
   - component: {fileID: 1772322149}
+  - component: {fileID: 1772322148}
+  - component: {fileID: 1772322147}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3223,6 +3224,8 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   playerActive: {fileID: 0}
+  gameManager: {fileID: 1772322149}
+  dialogInput: {fileID: 207517571}
 --- !u!114 &1772322149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3365,7 +3368,7 @@ MonoBehaviour:
   waitForClick: 1
   stopVoiceover: 1
   waitForVO: 0
-  setSayDialog: {fileID: 0}
+  setSayDialog: {fileID: 207517574}
 --- !u!1001 &475932904010785844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3534,7 +3537,7 @@ MonoBehaviour:
   waitForClick: 1
   stopVoiceover: 1
   waitForVO: 0
-  setSayDialog: {fileID: 0}
+  setSayDialog: {fileID: 207517574}
 --- !u!114 &475932904010785847
 MonoBehaviour:
   m_ObjectHideFlags: 2

@@ -1,16 +1,29 @@
+using Fungus;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputActive : MonoBehaviour
 {
+    public static InputActive instance {  get; private set; }
     [SerializeField] PlayerInput playerInput;
     public InputAction moveAction, interactAction, pauseAction, runAction;
 
     [Header("Reference")]
     [SerializeField] PlayerActive playerActive;
+    [SerializeField] GameManager gameManager;
+    [SerializeField] DialogInput dialogInput;
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(instance);
+        }
+        else
+        {
+            instance = this;
+        }
+
         moveAction = playerInput.actions.FindAction("Move");
         interactAction = playerInput.actions.FindAction("Interaction");
         pauseAction = playerInput.actions.FindAction("Pause");
@@ -37,9 +50,16 @@ public class InputActive : MonoBehaviour
     {
         if (interactAction.triggered)
         {
-            if (currentInteractable != null)
+            if (gameManager.gameState == GameState.Exploration)
             {
-                currentInteractable.Interact();
+                if (currentInteractable != null)
+                {
+                    currentInteractable.Interact();
+                }
+            }
+            else if(gameManager.gameState == GameState.Dialog)
+            {
+                dialogInput.NewInputFlag();
             }
             Debug.Log("Interact Button");
         }
@@ -67,7 +87,10 @@ public class InputActive : MonoBehaviour
 
     private void Update()
     {
-        MoveHandler();
+        if (gameManager.gameState == GameState.Exploration)
+        {
+            MoveHandler();
+        }
         Interaction();
         PauseButton();
     }

@@ -7,8 +7,21 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public GameState gameState;
 
     [Header("Battle Manager")]
     [SerializeField] BattleManager battleManager;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 }

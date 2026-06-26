@@ -187,6 +187,15 @@ namespace Fungus
                 nextLineInputFlag = true;
             }
         }
+        public virtual void NewInputFlag()
+        {
+            if (ignoreClickTimer > 0f)
+            {
+                return;
+            }
+            ignoreClickTimer = nextClickDelay;
+            SetNextLineFlag();
+        }
         /// <summary>
         /// Set the ClickAnywhere click flag.
         /// </summary>
