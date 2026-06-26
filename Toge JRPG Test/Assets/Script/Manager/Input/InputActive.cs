@@ -37,11 +37,18 @@ public class InputActive : MonoBehaviour
 
     void MoveHandler()
     {
-        Vector2 moveDirection = moveAction.ReadValue<Vector2>();
-        playerActive.moveValue = moveDirection;
-        if (moveDirection != Vector2.zero)
+        if (gameManager.gameState != GameState.Exploration)
         {
-            RunningHandler();
+            playerActive.moveValue = Vector2.zero;
+        }
+        else
+        {
+            Vector2 moveDirection = moveAction.ReadValue<Vector2>();
+            playerActive.moveValue = moveDirection;
+            if (moveDirection != Vector2.zero)
+            {
+                RunningHandler();
+            }
         }
     }
 
@@ -87,10 +94,7 @@ public class InputActive : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.gameState == GameState.Exploration)
-        {
-            MoveHandler();
-        }
+        MoveHandler();
         Interaction();
         PauseButton();
     }

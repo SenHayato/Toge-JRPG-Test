@@ -24,4 +24,12 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public void ChangeToExploration()
+    {
+        if (gameState != GameState.Exploration)
+        {
+            gameState = GameState.Exploration;
+        }
+    }
 }
