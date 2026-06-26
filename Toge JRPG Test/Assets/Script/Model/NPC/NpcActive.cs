@@ -18,7 +18,6 @@ public class NpcActive : MonoBehaviour,  IInteractable
     private void Awake()
     {
         modelName = modelData.EntityName;
-        //npcFlowchart = modelDialogue.flowchart;
         blockName = modelDialogue.blockName;
     }
 

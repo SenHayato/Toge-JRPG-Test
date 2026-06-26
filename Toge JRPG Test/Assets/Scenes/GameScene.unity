@@ -826,8 +826,7 @@ Transform:
   m_LocalPosition: {x: 0.26, y: 0.626, z: -1.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2064514255}
+  m_Children: []
   m_Father: {fileID: 1161697167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &126812903
@@ -1373,9 +1372,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1600, y: 1200}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2180,6 +2179,7 @@ Transform:
   m_Children:
   - {fileID: 621441176}
   - {fileID: 126812902}
+  - {fileID: 2064514255}
   - {fileID: 1671231650}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 2064514254}
+  selectedFlowchart: {fileID: 8821889934753424351, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -3372,19 +3372,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 126812902}
+    m_TransformParent: {fileID: 1161697167}
     m_Modifications:
     - target: {fileID: 586988727365150743, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 586988727365150743, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.626
       objectReference: {fileID: 0}
     - target: {fileID: 586988727365150743, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 586988727365150743, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3444,7 +3444,7 @@ PrefabInstance:
       objectReference: {fileID: 475932904010785846}
     - target: {fileID: 8405802542281023290, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: m_Name
-      value: NPCFlowchart
+      value: NormalFlowchart
       objectReference: {fileID: 0}
     - target: {fileID: 8821889934753424351, guid: 729df105e20f0324eb7a967ad3a1aefb, type: 3}
       propertyPath: scrollPos.x
@@ -3537,7 +3537,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &475932904010785847
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

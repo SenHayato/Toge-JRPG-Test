@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7146395195956463219}
   - component: {fileID: 8352745121026040897}
   m_Layer: 0
-  m_Name: NPCFlowchart
+  m_Name: NormalFlowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
