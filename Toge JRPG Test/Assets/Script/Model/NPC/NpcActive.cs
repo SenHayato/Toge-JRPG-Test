@@ -35,10 +35,10 @@ public class NpcActive : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        InteractToggle();
         if (!inInteraction)
         {
-            //inInteraction = true;
-            InteractToggle();
+            inInteraction = true;
             npcFlowchart.ExecuteBlock(blockName);
             playerActive.ChangeToIdle();
             gameManager.ChangeToDialogue();
@@ -46,21 +46,17 @@ public class NpcActive : MonoBehaviour, IInteractable
         }
     }
 
-    public void InteractToggle()
+    public void InteractDone()
     {
         if (inInteraction)
         {
             inInteraction = false;
         }
-        else
-        {
-            inInteraction = true;
-        }
 
-        InteractionPopUPToggler();
+        InteractToggle();
     }
 
-    void InteractionPopUPToggler()
+    public void InteractToggle()
     {
         if (!inInteraction)
         {

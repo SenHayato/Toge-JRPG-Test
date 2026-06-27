@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 26310283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.81, y: 3.53, z: -10.06}
+  m_LocalPosition: {x: -6.8, y: 3.53, z: -11.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7772,6 +7772,7 @@ MonoBehaviour:
   - {fileID: 2752698542548904318}
   - {fileID: 475932904010785855}
   - {fileID: 9004802678574401516}
+  - {fileID: 9004802678574401519}
   suppressAllAutoSelections: 0
 --- !u!114 &4345637267983440695
 MonoBehaviour:
@@ -7801,6 +7802,7 @@ MonoBehaviour:
   - {fileID: 2780556944546660650}
   - {fileID: 475932904010785854}
   - {fileID: 9004802678574401517}
+  - {fileID: 9004802678574401520}
   suppressAllAutoSelections: 0
 --- !u!114 &5641800974854977465
 MonoBehaviour:
@@ -7932,6 +7934,8 @@ GameObject:
   - component: {fileID: 9004802678574401518}
   - component: {fileID: 9004802678574401517}
   - component: {fileID: 9004802678574401516}
+  - component: {fileID: 9004802678574401519}
+  - component: {fileID: 9004802678574401520}
   m_Layer: 0
   m_Name: NormalFlowchart
   m_TagString: Untagged
@@ -7991,7 +7995,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 4345637267983440695}
   selectedCommands:
-  - {fileID: 9004802678574401517}
+  - {fileID: 9004802678574401520}
   variables: []
   description: 
   stepPause: 0
@@ -8005,7 +8009,7 @@ MonoBehaviour:
   luaBindingName: flowchart
 --- !u!114 &9004802678574401516
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8022,7 +8026,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &9004802678574401517
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8039,7 +8043,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &9004802678574401518
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8053,6 +8057,40 @@ MonoBehaviour:
   indentLevel: 0
   targetObject: {fileID: 126812900}
   methodName: InteractToggle
+  delay: 0
+--- !u!114 &9004802678574401519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 16
+  indentLevel: 0
+  targetObject: {fileID: 126812900}
+  methodName: InteractDone
+  delay: 0
+--- !u!114 &9004802678574401520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 17
+  indentLevel: 0
+  targetObject: {fileID: 126812900}
+  methodName: InteractDone
   delay: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
