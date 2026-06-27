@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main.transform;
+        //mainCamera = Camera.main.transform;
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
     }
 
@@ -71,5 +71,10 @@ public class GameManager : MonoBehaviour
     {
         mainCamera.SetParent(playerPosition);
         mainCamera.SetLocalPositionAndRotation(new(0f,-0f,-2.11f), Quaternion.identity);
+    }
+
+    public void CameraUnChild()
+    {
+        mainCamera.SetParent(null);
     }
 }
