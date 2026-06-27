@@ -9,11 +9,16 @@ public class StageTransition : MonoBehaviour
     [SerializeField] TransitionType transitionType;
     [SerializeField] Flowchart flowchart;
     [SerializeField] string blockNameTrigger;
+    [SerializeField] float direction;
 
     [Header("Hover Component")]
     [SerializeField] GameObject canvasPopUp;
     [SerializeField] TextMeshProUGUI tmpPopUp;
     [SerializeField] string popUpText;
+
+    //[Header("Reference")]
+    //[SerializeField] GameManager gameManager;
+    //[SerializeField] PlayerActive playerActive;
     
     void Start()
     {
