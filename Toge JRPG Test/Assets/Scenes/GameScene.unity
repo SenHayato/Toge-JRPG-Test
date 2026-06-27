@@ -4723,7 +4723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1450083779}
+  selectedFlowchart: {fileID: 9004802678574401515}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -5314,7 +5314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1450083779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6098,7 +6098,7 @@ MonoBehaviour:
   isLocal: 1
 --- !u!114 &1450083818
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6119,7 +6119,7 @@ MonoBehaviour:
   rotTweenType: 0
 --- !u!114 &1450083819
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8881,7 +8881,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Betul
   description: 
-  character: {fileID: 0}
+  character: {fileID: 26310285}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -8908,7 +8908,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Hidup Jokewie
   description: 
-  character: {fileID: 0}
+  character: {fileID: 26310285}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -9114,6 +9114,10 @@ GameObject:
   - component: {fileID: 9004802678574401521}
   - component: {fileID: 9004802678574401523}
   - component: {fileID: 9004802678574401524}
+  - component: {fileID: 9004802678574401525}
+  - component: {fileID: 9004802678574401527}
+  - component: {fileID: 9004802678574401529}
+  - component: {fileID: 9004802678574401528}
   m_Layer: 0
   m_Name: NormalFlowchart
   m_TagString: Untagged
@@ -9159,11 +9163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 58.72384, y: -3.9063072}
+  scrollPos: {x: 93.560394, y: 0.36436224}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 402.4
-  zoom: 0.97000015
+  zoom: 0.9400002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -9171,9 +9175,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 9004802678574401521}
+  - {fileID: 4345637267983440695}
   selectedCommands:
-  - {fileID: 9004802678574401524}
+  - {fileID: 2780556944546660650}
   variables: []
   description: Flow NPC Dialog and Normal Stage Transition
   stepPause: 0
@@ -9295,8 +9299,12 @@ MonoBehaviour:
   description: Transition Stage Normal to Boss
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 9004802678574401525}
+  - {fileID: 9004802678574401527}
   - {fileID: 9004802678574401524}
   - {fileID: 9004802678574401523}
+  - {fileID: 9004802678574401529}
+  - {fileID: 9004802678574401528}
   suppressAllAutoSelections: 0
 --- !u!114 &9004802678574401523
 MonoBehaviour:
@@ -9334,7 +9342,7 @@ MonoBehaviour:
   isLocal: 1
 --- !u!114 &9004802678574401524
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9352,6 +9360,90 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
+--- !u!114 &9004802678574401525
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 22
+  indentLevel: 0
+  targetObject: {fileID: 1772322145}
+  methodName: CameraUnChild
+  delay: 0
+--- !u!114 &9004802678574401527
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  targetObject: {fileID: 1772322145}
+  methodName: ChangeToCutscene
+  delay: 0
+--- !u!114 &9004802678574401528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee63e642958494f1ebed8116ae4b1103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 26
+  indentLevel: 0
+  _animator:
+    animatorRef: {fileID: 0}
+    animatorVal: {fileID: 103398067}
+  _parameterName:
+    stringRef: {fileID: 0}
+    stringVal: IsMove
+  value:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  animatorOLD: {fileID: 0}
+  parameterNameOLD: 
+--- !u!114 &9004802678574401529
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231932043580668686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee63e642958494f1ebed8116ae4b1103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  _animator:
+    animatorRef: {fileID: 0}
+    animatorVal: {fileID: 103398067}
+  _parameterName:
+    stringRef: {fileID: 0}
+    stringVal: IsIdle
+  value:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  animatorOLD: {fileID: 0}
+  parameterNameOLD: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

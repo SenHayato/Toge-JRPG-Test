@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         //mainCamera = Camera.main.transform;
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
+
+        CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 
     public void ChangeToExploration()
