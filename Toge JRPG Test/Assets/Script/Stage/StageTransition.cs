@@ -28,12 +28,12 @@ public class StageTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == playerLayer && transitionType == TransitionType.Trigger)
+        if (transitionType == TransitionType.Trigger && ((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             ExecuteTrans();
             Debug.Log("Trigger");
         }
-        else if (other.gameObject.layer == playerLayer && transitionType == TransitionType.Hover)
+        else if (transitionType == TransitionType.Hover && ((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             canvasPopUp.SetActive(true);
             Debug.Log("Hover");
@@ -42,7 +42,7 @@ public class StageTransition : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == playerLayer && transitionType == TransitionType.Hover)
+        if (transitionType == TransitionType.Hover && ((1 << other.gameObject.layer) & playerLayer) != 0)
         {
             canvasPopUp.SetActive(false);
             Debug.Log("Hover Exit");
