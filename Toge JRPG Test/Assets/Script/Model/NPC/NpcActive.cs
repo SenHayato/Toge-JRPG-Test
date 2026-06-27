@@ -1,7 +1,7 @@
 using Fungus;
 using UnityEngine;
 
-public class NpcActive : MonoBehaviour,  IInteractable
+public class NpcActive : MonoBehaviour, IInteractable
 {
     [Header("NPC Stats")]
     [SerializeField] EntitySO modelData;
@@ -11,6 +11,7 @@ public class NpcActive : MonoBehaviour,  IInteractable
     [SerializeField] DialogueSO modelDialogue;
     [SerializeField] Flowchart npcFlowchart;
     [SerializeField] string blockName;
+    [SerializeField] GameObject interactionPopUp;
 
     [Header("Condition")]
     [SerializeField] bool inInteraction;
@@ -23,6 +24,7 @@ public class NpcActive : MonoBehaviour,  IInteractable
     {
         modelName = modelData.EntityName;
         blockName = modelDialogue.blockName;
+        interactionPopUp.SetActive(true);
     }
 
     private void Start()
@@ -36,6 +38,7 @@ public class NpcActive : MonoBehaviour,  IInteractable
         if (!inInteraction)
         {
             //inInteraction = true;
+            InteractToggle();
             npcFlowchart.ExecuteBlock(blockName);
             playerActive.ChangeToIdle();
             gameManager.ChangeToDialogue();
@@ -43,8 +46,34 @@ public class NpcActive : MonoBehaviour,  IInteractable
         }
     }
 
-    void Update()
+    public void InteractToggle()
     {
-        
+        if (inInteraction)
+        {
+            inInteraction = false;
+        }
+        else
+        {
+            inInteraction = true;
+        }
+
+        InteractionPopUPToggler();
     }
+
+    void InteractionPopUPToggler()
+    {
+        if (!inInteraction)
+        {
+            interactionPopUp.SetActive(true);
+        }
+        else
+        {
+            interactionPopUp.SetActive(false);
+        }
+    }
+
+    //void Update()
+    //{
+
+    //}
 }
