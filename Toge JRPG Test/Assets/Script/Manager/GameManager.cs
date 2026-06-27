@@ -69,10 +69,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Bisa digunakan untuk peralihan ke gameplay
     public void CameraChild()
     {
         mainCamera.SetParent(playerPosition);
         mainCamera.SetLocalPositionAndRotation(new(0f,-0f,-2.11f), Quaternion.identity);
+    }
+
+    //Bisa digunakan untuk cutscene
+    public void CameraChildNoReset()
+    {
+        mainCamera.SetParent(playerPosition);
+        //mainCamera.SetLocalPositionAndRotation(new(0f,-0f,-2.11f), Quaternion.identity);
     }
 
     public void CameraUnChild()
