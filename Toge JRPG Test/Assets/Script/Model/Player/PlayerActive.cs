@@ -146,6 +146,16 @@ public class PlayerActive : MonoBehaviour
     }
     #endregion
 
+    public void AnimationWalk()
+    {
+        //playerAnimator.Play("Move.Walk", 0, 0f);
+        playerAnimator.Play("Dead");
+    }
+
+    void ResetParameter()
+    {
+        AnimatorSetting.ResetAllParameters(playerAnimator);
+    }
     #region Testing
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
