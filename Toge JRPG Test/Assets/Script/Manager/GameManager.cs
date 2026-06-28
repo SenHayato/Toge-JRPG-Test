@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Game Component")]
     [SerializeField] Transform mainCamera;
     [SerializeField] Transform playerPosition;
+    public bool testing;
 
     [Header("Battle Manager")]
     [SerializeField] BattleManager battleManager;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
         //mainCamera = Camera.main.transform;
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
 
-        CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
+        //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 
     public void ChangeToExploration()
@@ -66,7 +67,20 @@ public class GameManager : MonoBehaviour
         if (gameState != GameState.Cutscene)
         {
             gameState = GameState.Cutscene;
+            CameraUnChild();
         }
+    }
+
+    public void TestingEnable()
+    {
+        testing = true;
+        Debug.Log("Kebal");
+    }
+
+    public void TestingDisable()
+    {
+        testing = false;
+        Debug.Log("No Kebal");
     }
 
     //Bisa digunakan untuk peralihan ke gameplay
