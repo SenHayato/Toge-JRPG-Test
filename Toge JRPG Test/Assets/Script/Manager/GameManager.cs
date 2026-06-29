@@ -3,11 +3,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState
-{
-    Exploration, Battle, Dialog, Cutscene
-}
-
 public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;

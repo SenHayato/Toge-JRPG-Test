@@ -1,11 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum PlayerInState
-{
-    Idle, Walk, Hurt, Attack, Dead
-}
-
 public class PlayerActive : MonoBehaviour
 {
     [Header("State Monitor")]
@@ -26,6 +21,8 @@ public class PlayerActive : MonoBehaviour
     [SerializeField] int Health;
     [SerializeField] int Attack;
     [SerializeField] int Defend;
+    [SerializeField] int Aggility;
+    [SerializeField] int Mana;
     public float moveSpeed;
 
     [Header("Player Component")]
@@ -42,17 +39,18 @@ public class PlayerActive : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState (this, stateMachine);
-        attackState = new PlayerAttackState (this, stateMachine);
+        idleState = new PlayerIdleState(this, stateMachine);
+        attackState = new PlayerAttackState(this, stateMachine);
         hurtState = new PlayerHurtState(this, stateMachine);
-        deadState = new PlayerDeadState (this, stateMachine);
-        walkState = new PlayerWalkState (this, stateMachine);
+        deadState = new PlayerDeadState(this, stateMachine);
+        walkState = new PlayerWalkState(this, stateMachine);
 
-        MaxHealth = modelData.MaxHealth;
+        MaxHealth = modelData.Health;
         modelName = modelData.EntityName;
-        Attack = modelData.DefaultAttack;
-        Defend = modelData.DefaultDefend;
-        moveSpeed = modelData.MoveSpeed;
+        Attack = modelData.Attack;
+        Defend = modelData.Defend;
+        Aggility = modelData.Aggility;
+        Mana = modelData.Mana;
     }
 
     private void Start()

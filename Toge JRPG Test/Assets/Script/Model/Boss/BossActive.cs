@@ -24,7 +24,8 @@ public class BossActive : MonoBehaviour
     [SerializeField] int Health;
     [SerializeField] int Attack;
     [SerializeField] int Defend;
-    [SerializeField] float moveSpeed;
+    [SerializeField] int Mana;
+    [SerializeField] int Aggility;
 
     [Header("Boss Compoenent")]
     public Animator bossAnimator;
@@ -40,11 +41,12 @@ public class BossActive : MonoBehaviour
         attackState = new BossAttackState(this, stateMachine);
         walkState = new BossWalkState(this, stateMachine);
 
-        MaxHealth = modelData.MaxHealth;
+        MaxHealth = modelData.Health;
         modelName = modelData.EntityName;
-        Attack = modelData.DefaultAttack;
-        Defend = modelData.DefaultDefend;
-        moveSpeed = modelData.MoveSpeed;
+        Attack = modelData.Attack;
+        Defend = modelData.Defend;
+        Aggility = modelData.Aggility;
+        Mana = modelData.Mana;
     }
 
     private void Start()

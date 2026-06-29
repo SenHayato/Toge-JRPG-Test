@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BossSO
   m_EditorClassIdentifier: 
   EntityName: Boss
-  MaxHealth: 100
-  DefaultAttack: 20
-  DefaultDefend: 20
-  MoveSpeed: 1.5
+  Health: 1000
+  Mana: 100
+  Attack: 40
+  Defend: 50
+  Aggility: 60
+  skills: []
