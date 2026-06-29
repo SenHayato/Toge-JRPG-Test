@@ -16,4 +16,25 @@ public class BattleManager : Singleton<BattleManager>
 
     [Header("Battle State")]
     public BattleInProgress battleProgress;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        stateMachine = new BattleStateMachine();
+
+        battleStart = new BattleStartState(this, stateMachine);
+        playerTurn = new PlayerTurnState(this, stateMachine);
+        enemyTurn = new EnemyTurnState(this, stateMachine);
+        actionState = new ActionState(this, stateMachine);
+        checkBattle = new CheckBattleState(this, stateMachine);
+        battleEnd = new BattleEndState(this, stateMachine);
+        defeatState = new DefeatState(this, stateMachine);
+        victoryState = new VictoryState(this, stateMachine);
+    }
+
+    private void Update()
+    {
+        stateMachine.currentState.Update();
+    }
 }
