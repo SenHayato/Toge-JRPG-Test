@@ -325,7 +325,7 @@ MonoBehaviour:
   Defend: 0
   Aggility: 0
   Mana: 0
-  moveSpeed: 0
+  moveSpeed: 1.5
   moveValue: {x: 0, y: 0}
   spriteRenderer: {fileID: 103398065}
   playerAnimator: {fileID: 103398067}
