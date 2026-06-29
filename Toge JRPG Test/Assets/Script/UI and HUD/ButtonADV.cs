@@ -13,12 +13,18 @@ public class ButtonADV : Button
     [SerializeField] Ease animEase;
 
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DOTween.Kill(this);
+        rectTransform = GetComponent<RectTransform>();
+        normalSize = rectTransform.sizeDelta;
+    }
+
     protected override void Start()
     {
         base.Start();
         DOTween.Kill(this);
-        normalSize = rectTransform.sizeDelta;
-        rectTransform = GetComponent<RectTransform>();
     }
 
     protected override void OnDisable()
