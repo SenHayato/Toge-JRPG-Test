@@ -5643,6 +5643,7 @@ GameObject:
   - component: {fileID: 639690765}
   - component: {fileID: 639690764}
   - component: {fileID: 639690763}
+  - component: {fileID: 639690793}
   m_Layer: 0
   m_Name: BossFlowchart
   m_TagString: Untagged
@@ -5675,8 +5676,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 639690762}
-  selectedCommands: []
+  - {fileID: 639690702}
+  selectedCommands:
+  - {fileID: 639690720}
   variables: []
   description: 
   stepPause: 0
@@ -5703,7 +5705,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 464.961
-    y: 60.174965
+    y: 58.720413
     width: 108.92
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -5716,11 +5718,11 @@ MonoBehaviour:
   - {fileID: 639690725}
   - {fileID: 639690724}
   - {fileID: 639690723}
+  - {fileID: 639690721}
+  - {fileID: 639690720}
   - {fileID: 639690722}
   - {fileID: 639690757}
   - {fileID: 639690755}
-  - {fileID: 639690721}
-  - {fileID: 639690720}
   - {fileID: 639690719}
   - {fileID: 639690718}
   - {fileID: 639690717}
@@ -5732,6 +5734,7 @@ MonoBehaviour:
   - {fileID: 639690712}
   - {fileID: 639690711}
   - {fileID: 639690710}
+  - {fileID: 639690793}
   - {fileID: 639690709}
   - {fileID: 639690708}
   - {fileID: 639690707}
@@ -8028,6 +8031,40 @@ MonoBehaviour:
   targetObject: {fileID: 1772322145}
   methodName: ChangeToCutscene
   delay: 0
+--- !u!114 &639690793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639690700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca31fffe1be42a49b96bbb8b7ff5a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 133
+  indentLevel: 0
+  _targetObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 26310283}
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  _toFrom: 0
+  _absAdd: 0
+  easeType: 0
+  loopType: 35
+  repeats: 0
+  stopPreviousTweens: 0
+  waitUntilFinished: 1
+  _toTransform:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 1922449736}
+  _toPosition:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
+  isLocal: 1
 --- !u!1 &654016374
 GameObject:
   m_ObjectHideFlags: 0
@@ -13041,7 +13078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1450083779}
+  selectedFlowchart: {fileID: 639690701}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -14091,7 +14128,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1450083780}
   selectedCommands:
-  - {fileID: 1450083816}
+  - {fileID: 1450083803}
   variables: []
   description: 
   stepPause: 0
