@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [Header("Battle Manager")]
     [SerializeField] BattleManager battleManager;
 
+    [Header("HUD Manager")]
+    [SerializeField] HudManager hudManager;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

@@ -12983,7 +12983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 9004802678574401515}
+  selectedFlowchart: {fileID: 1450083779}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -13996,6 +13996,7 @@ GameObject:
   - component: {fileID: 1450083817}
   - component: {fileID: 1450083818}
   - component: {fileID: 1450083819}
+  - component: {fileID: 1450083820}
   m_Layer: 0
   m_Name: CutsceneFlowchart
   m_TagString: Untagged
@@ -14030,7 +14031,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1450083780}
   selectedCommands:
-  - {fileID: 1450083819}
+  - {fileID: 1450083803}
   variables: []
   description: 
   stepPause: 0
@@ -14056,7 +14057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 75.69127
+    x: 76.49129
     y: 70.28968
     width: 75.979996
     height: 40
@@ -14070,6 +14071,7 @@ MonoBehaviour:
   - {fileID: 1450083816}
   - {fileID: 1450083819}
   - {fileID: 1450083803}
+  - {fileID: 1450083820}
   - {fileID: 1450083786}
   - {fileID: 1450083788}
   - {fileID: 1450083817}
@@ -14822,6 +14824,40 @@ MonoBehaviour:
   targetObject: {fileID: 1772322145}
   methodName: ChangeToCutscene
   delay: 0
+--- !u!114 &1450083820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450083778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca31fffe1be42a49b96bbb8b7ff5a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 36
+  indentLevel: 0
+  _targetObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 26310283}
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  _toFrom: 0
+  _absAdd: 0
+  easeType: 0
+  loopType: 35
+  repeats: 0
+  stopPreviousTweens: 0
+  waitUntilFinished: 0
+  _toTransform:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 1327412380}
+  _toPosition:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
+  isLocal: 1
 --- !u!1 &1490681053
 GameObject:
   m_ObjectHideFlags: 0
@@ -22033,8 +22069,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
-  - {fileID: 333627078}
   - {fileID: 1772322146}
+  - {fileID: 333627078}
   - {fileID: 301905809}
   - {fileID: 410087041}
   - {fileID: 832575519}
