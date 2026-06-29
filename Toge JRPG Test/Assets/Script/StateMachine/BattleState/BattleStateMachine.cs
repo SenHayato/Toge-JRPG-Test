@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class PlayerStateMachine
+public class BattleStateMachine
 {
-    public PlayerState currentState { get; private set; }
+    public BattleState currentState { get; private set; }
 
-    public void Initialize(PlayerState startState)
+    public void Initialize(BattleState startState)
     {
         currentState = startState;
         currentState.Enter();
     }
 
-    public void ChangeState(PlayerState newState)
+    public void ChangeState(BattleState newState)
     {
         currentState.Exit();
         currentState = newState;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossStateMachine
 {
-    public BossState currentState { get; private set; } //state ninja realtime
+    public BossState currentState { get; private set; }
 
     public void Initialize(BossState startState)
     {
