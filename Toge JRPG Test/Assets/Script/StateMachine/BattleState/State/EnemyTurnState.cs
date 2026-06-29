@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class BattleStartState : BattleState
+public class EnemyTurnState : BattleState
 {
-    public BattleStartState(BattleManager battleManager, BattleStateMachine battleStateMachine)
+    public EnemyTurnState(BattleManager battleManager, BattleStateMachine battleStateMachine)
         : base(battleManager, battleStateMachine) { }
 
     public override void Enter()
