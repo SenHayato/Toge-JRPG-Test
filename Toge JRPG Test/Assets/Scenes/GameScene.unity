@@ -5577,7 +5577,6 @@ GameObject:
   - component: {fileID: 639690705}
   - component: {fileID: 639690704}
   - component: {fileID: 639690728}
-  - component: {fileID: 639690726}
   - component: {fileID: 639690729}
   - component: {fileID: 639690730}
   - component: {fileID: 639690732}
@@ -5643,6 +5642,8 @@ GameObject:
   - component: {fileID: 639690764}
   - component: {fileID: 639690763}
   - component: {fileID: 639690793}
+  - component: {fileID: 639690794}
+  - component: {fileID: 639690795}
   m_Layer: 0
   m_Name: BossFlowchart
   m_TagString: Untagged
@@ -5675,9 +5676,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 639690702}
+  - {fileID: 639690728}
   selectedCommands:
-  - {fileID: 639690720}
+  - {fileID: 639690795}
   variables: []
   description: 
   stepPause: 0
@@ -6280,24 +6281,6 @@ MonoBehaviour:
   targetObject: {fileID: 1772322145}
   methodName: ChangeToCutscene
   delay: 0
---- !u!114 &639690726
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639690700}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fab8abf0343545abbfebd9a7b7b34bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 55
-  indentLevel: 0
-  logType: 0
-  logMessage:
-    stringRef: {fileID: 0}
-    stringVal: Masuk New
 --- !u!114 &639690728
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -6323,7 +6306,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 639690726}
+  - {fileID: 639690794}
+  - {fileID: 639690795}
   - {fileID: 639690730}
   - {fileID: 639690732}
   - {fileID: 639690731}
@@ -8032,7 +8016,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &639690793
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8064,6 +8048,41 @@ MonoBehaviour:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
   isLocal: 1
+--- !u!114 &639690794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639690700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fab8abf0343545abbfebd9a7b7b34bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  logType: 0
+  logMessage:
+    stringRef: {fileID: 0}
+    stringVal: Masuk Dialog Boss
+--- !u!114 &639690795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639690700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 135
+  indentLevel: 0
+  targetObject: {fileID: 1772322145}
+  methodName: ChangeToDialogue
+  delay: 0
 --- !u!1 &654016374
 GameObject:
   m_ObjectHideFlags: 0
@@ -13077,7 +13096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1450083779}
+  selectedFlowchart: {fileID: 639690701}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
