@@ -5,9 +5,8 @@ public enum GameState
     Exploration, Battle, Dialog, Cutscene
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance { get; private set; }
     public GameState gameState;
 
     [Header("Game Component")]
@@ -20,18 +19,6 @@ public class GameManager : MonoBehaviour
 
     [Header("HUD Manager")]
     [SerializeField] HudManager hudManager;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(Instance);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
 
     private void Start()
     {

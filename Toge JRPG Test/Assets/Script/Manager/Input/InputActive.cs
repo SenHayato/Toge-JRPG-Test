@@ -2,9 +2,8 @@ using Fungus;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputActive : MonoBehaviour
+public class InputActive : Singleton<InputActive>
 {
-    public static InputActive instance {  get; private set; }
     [SerializeField] PlayerInput playerInput;
     public InputAction moveAction, interactAction, pauseAction, runAction;
 
@@ -13,17 +12,9 @@ public class InputActive : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] DialogInput dialogInput;
 
-    private void Awake()
+    public override void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(instance);
-        }
-        else
-        {
-            instance = this;
-        }
-
+        base.Awake();
         moveAction = playerInput.actions.FindAction("Move");
         interactAction = playerInput.actions.FindAction("Interaction");
         pauseAction = playerInput.actions.FindAction("Pause");

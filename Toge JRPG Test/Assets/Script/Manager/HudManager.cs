@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HudManager : MonoBehaviour
+public class HudManager : Singleton<HudManager>
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
