@@ -3,20 +3,43 @@ using UnityEngine;
 public class HudManager : Singleton<HudManager>
 {
     [Header("Exploration  HUD")]
-    [SerializeField] GameObject ExplorationHud;
+    public GameObject ExplorationHud;
 
     [Header("Battle HUD")]
-    [SerializeField] GameObject BattleHud;
+    public GameObject BattleHud;
 
     [Header("In Battle HUD")]
-    [SerializeField] GameObject BattleMonitor;
-    [SerializeField] GameObject ChoosePlayerUnit;
-    [SerializeField] GameObject ChooseEnemyUnit;
-    [SerializeField] GameObject ChooseAction;
-    [SerializeField] GameObject QteHud;
+    public GameObject BattleMonitor;
+    public GameObject ChoosePlayerUnit;
+    public GameObject ChooseEnemyUnit;
+    public GameObject ChooseAction;
+    public GameObject QteHud;
 
-    private void Start()
+    public void ShowHud(GameObject hudObj)
     {
+        hudObj.SetActive(true);
+    }
 
+    public void HideHud(GameObject hudObj)
+    {
+        hudObj.SetActive(false);
+    }
+
+    public void BattleHudSetUp()
+    {
+        ShowHud(BattleHud);
+        HideHud(ExplorationHud);
+    }
+
+    public void ExplorationHudSetUp()
+    {
+        HideHud(BattleHud);
+        ShowHud(ExplorationHud);
+    }
+
+    public void HideAllHud()
+    {
+        HideHud(BattleHud);
+        HideHud(ExplorationHud);
     }
 }

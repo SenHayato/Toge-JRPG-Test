@@ -35,7 +35,8 @@ public class GameManager : Singleton<GameManager>
         ResetFungusFlow();
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
         PauseManager.Instance.PauseDisable();
-        StartCoroutine(StartFlow());
+        //StartCoroutine(StartFlow());
+        introFlow.ExecuteBlock("Intro");
         //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 
@@ -60,6 +61,7 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Exploration)
         {
             gameState = GameState.Exploration;
+            HudManager.Instance.ExplorationHudSetUp();
         }
     }
 
@@ -68,6 +70,7 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Dialog)
         {
             gameState = GameState.Dialog;
+            HudManager.Instance.HideAllHud();
         }
     }
 
@@ -76,6 +79,7 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Battle)
         {
             gameState = GameState.Battle;
+            HudManager.Instance.BattleHudSetUp();
         }
     }
 
@@ -84,6 +88,7 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Cutscene)
         {
             gameState = GameState.Cutscene;
+            HudManager.Instance.HideAllHud();
             CameraUnChild();
         }
     }
