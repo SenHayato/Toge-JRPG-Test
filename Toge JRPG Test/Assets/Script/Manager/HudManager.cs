@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class HudManager : Singleton<HudManager>
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Exploration  HUD")]
+    [SerializeField] GameObject ExplorationHud;
 
-    // Update is called once per frame
-    void Update()
+    [Header("Battle HUD")]
+    [SerializeField] GameObject BattleHud;
+
+    [Header("In Battle HUD")]
+    [SerializeField] GameObject BattleMonitor;
+    [SerializeField] GameObject ChoosePlayerUnit;
+    [SerializeField] GameObject ChooseEnemyUnit;
+    [SerializeField] GameObject ChooseAction;
+    [SerializeField] GameObject QteHud;
+
+    private void Start()
     {
-        
+
     }
 }

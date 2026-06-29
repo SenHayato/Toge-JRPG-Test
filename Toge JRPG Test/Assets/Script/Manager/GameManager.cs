@@ -1,3 +1,4 @@
+using Fungus;
 using UnityEngine;
 
 public enum GameState
@@ -14,17 +15,21 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Transform playerPosition;
     public bool testing;
 
-    [Header("Battle Manager")]
-    [SerializeField] BattleManager battleManager;
+    [Header("Intro Flowchart")]
+    [SerializeField] Flowchart introFlow;
 
-    [Header("HUD Manager")]
-    [SerializeField] HudManager hudManager;
+    //[Header("Battle Manager")]
+    //[SerializeField] BattleManager battleManager;
+
+    //[Header("HUD Manager")]
+    //[SerializeField] HudManager hudManager;
 
     private void Start()
     {
         //mainCamera = Camera.main.transform;
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
-
+        PauseManager.Instance.PauseDisable();
+        introFlow.ExecuteBlock("Intro");
         //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 
@@ -90,5 +95,11 @@ public class GameManager : Singleton<GameManager>
     public void CameraUnChild()
     {
         mainCamera.SetParent(null);
+    }
+
+    //testing
+    public void TestPlayerPosition()
+    {
+        Debug.Log("Posisi Player di " + playerPosition.position.ToString());
     }
 }

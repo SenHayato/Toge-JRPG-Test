@@ -67,7 +67,14 @@ public class InputActive : Singleton<InputActive>
     {
         if (pauseAction.triggered)
         {
-            Debug.Log("Pause Menu");
+            if(PauseManager.Instance.isPaused)
+            {
+                PauseManager.Instance.PauseDisable();
+            }
+            else
+            {
+                PauseManager.Instance.PauseEnable();
+            }
         }
     }
 
