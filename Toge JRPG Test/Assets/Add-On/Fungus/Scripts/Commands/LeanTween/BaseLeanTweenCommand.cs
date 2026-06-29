@@ -67,6 +67,10 @@ namespace Fungus
 
         public override void OnEnter()
         {
+            LeanTween.reset();
+            //LeanTween.cancelAll();
+            LeanTween.cancel(gameObject);
+
             if (_targetObject.Value == null)
             {
                 Continue();

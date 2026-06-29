@@ -9,14 +9,6 @@ public class PauseManager : Singleton<PauseManager>
     public bool isPaused;
     [SerializeField] string MainMenuScene;
 
-    //flowchart
-    [SerializeField] Flowchart[] Flowcharts;
-
-    private void Start()
-    {
-        Flowcharts = FindObjectsByType<Flowchart>(FindObjectsSortMode.None);
-    }
-
     public void PauseEnable()
     {
         isPaused = true;
@@ -40,21 +32,11 @@ public class PauseManager : Singleton<PauseManager>
 
     public void RestartButton()
     {
-        StopFlowcharts();
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
-    }
-
-    void StopFlowcharts()
-    {
-        foreach(Flowchart chart in Flowcharts)
-        {
-            chart.StopAllBlocks();
-        }
     }
 
     public void BackToMenuButton()
     {
-        StopFlowcharts();
         StartCoroutine(LoadScene(MainMenuScene));
     }
 

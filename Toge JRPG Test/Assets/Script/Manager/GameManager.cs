@@ -1,5 +1,7 @@
 using Fungus;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -18,6 +20,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Intro Flowchart")]
     [SerializeField] Flowchart introFlow;
 
+    //all Flowcharts
+    [SerializeField] Flowchart[] flowcharts;
+
     //[Header("Battle Manager")]
     //[SerializeField] BattleManager battleManager;
 
@@ -27,10 +32,27 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         //mainCamera = Camera.main.transform;
+        ResetFungusFlow();
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
         PauseManager.Instance.PauseDisable();
-        introFlow.ExecuteBlock("Intro");
+        StartCoroutine(StartFlow());
         //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
+    }
+
+    IEnumerator StartFlow()
+    {
+        yield return null;
+        introFlow.ExecuteBlock("Intro");
+    }
+
+    public void ResetFungusFlow()
+    {
+        foreach(Flowchart chart in flowcharts)
+        {
+            chart.StopAllBlocks();
+            chart.StopAllCoroutines();
+            chart.ResetFlowchart(true, true);
+        }
     }
 
     public void ChangeToExploration()
