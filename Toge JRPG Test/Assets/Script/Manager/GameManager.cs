@@ -75,6 +75,7 @@ public class GameManager : Singleton<GameManager>
         {
             gameState = GameState.Battle;
             HudManager.Instance.BattleHudSetUp();
+            BattleManager.Instance.StartBattle();
         }
     }
 

@@ -17,10 +17,13 @@ public class BattleManager : Singleton<BattleManager>
     [Header("Battle State")]
     public BattleInProgress battleProgress;
 
-    public override void Awake()
-    {
-        base.Awake();
+    //public override void Awake()
+    //{
+    //    base.Awake();
+    //}
 
+    private void Start()
+    {
         stateMachine = new BattleStateMachine();
 
         battleStart = new BattleStartState(this, stateMachine);
@@ -33,13 +36,16 @@ public class BattleManager : Singleton<BattleManager>
         victoryState = new VictoryState(this, stateMachine);
     }
 
-    void StartBattle()
+    public void StartBattle()
     {
         stateMachine.Initialize(battleStart);
     }
 
     private void Update()
     {
-        stateMachine.currentState.Update();
+        if (stateMachine.currentState != null)
+        {
+            stateMachine.currentState.Update();
+        }
     }
 }

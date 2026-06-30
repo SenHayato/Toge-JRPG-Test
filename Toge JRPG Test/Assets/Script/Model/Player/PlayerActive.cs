@@ -17,8 +17,8 @@ public class PlayerActive : MonoBehaviour
     [Header("Player Status")]
     [SerializeField] EntitySO modelData;
     public string modelName;
-    [SerializeField] int MaxHealth;
-    [SerializeField] int Health;
+    public int MaxHealth;
+    public int Health;
     [SerializeField] int Attack;
     [SerializeField] int Defend;
     [SerializeField] int Aggility;
