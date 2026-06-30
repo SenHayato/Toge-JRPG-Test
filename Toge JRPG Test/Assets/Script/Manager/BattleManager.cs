@@ -48,4 +48,27 @@ public class BattleManager : Singleton<BattleManager>
             stateMachine.currentState.Update();
         }
     }
+
+    #region Method
+    public void SetUpBattle()
+    {
+        BattleSpawnerManager.Instance.AssignComponent();
+        BattleSpawnerManager.Instance.SpawnUnit();
+    }
+
+    public void BattleStartToPlayerTurn()
+    {
+        Invoke(nameof(StartToPlayer), 0.2f);
+    }
+
+    void StartToPlayer()
+    {
+        ChangeBattleState(playerTurn);
+    }
+
+    public void ChangeBattleState(BattleState battleState)
+    {
+        stateMachine.ChangeState(battleState);
+    }
+    #endregion
 }

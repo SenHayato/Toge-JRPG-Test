@@ -9,6 +9,8 @@ public class BattleStartState : BattleState
     {
         base.Enter();
         battleManager.battleProgress = BattleInProgress.BattleStart;
+        battleManager.SetUpBattle();
+        battleManager.BattleStartToPlayerTurn();
         Debug.Log("Masuk");
     }
 
