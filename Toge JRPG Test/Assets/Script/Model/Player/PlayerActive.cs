@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,6 +36,8 @@ public class PlayerActive : MonoBehaviour, IDamageable
     [SerializeField] GameManager gameManager;
     [SerializeField] InputActive inputActive;
 
+    public event Action<int, int> OnHealthChanged;
+
     private void Awake()
     {
         stateMachine = new PlayerStateMachine();
@@ -51,6 +54,7 @@ public class PlayerActive : MonoBehaviour, IDamageable
         Defend = modelData.Defend;
         Aggility = modelData.Aggility;
         Mana = modelData.Mana;
+
     }
 
     private void Start()
@@ -62,6 +66,8 @@ public class PlayerActive : MonoBehaviour, IDamageable
 
         gameManager = FindFirstObjectByType<GameManager>();
         inputActive = FindFirstObjectByType<InputActive>();
+
+        OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
     private void Update()
@@ -131,11 +137,15 @@ public class PlayerActive : MonoBehaviour, IDamageable
     {
         Health -= damage;
         stateMachine.ChangeState(hurtState);
+
+        OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
     public void Heal(int healValue)
     {
         Health += healValue;
+
+        OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
     public void FillMana(int manaValue)

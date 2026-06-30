@@ -3,25 +3,34 @@ using UnityEngine.UI;
 
 public class ExplorationHud : MonoBehaviour
 {
-    [SerializeField] Slider playerHp;
-    [SerializeField] PlayerActive playerActive;
-    float playerHpValue => playerActive.Health;
-    float maxPlayerHp => playerActive.MaxHealth;
-    void Start()
-    {
-        playerActive = FindFirstObjectByType<PlayerActive>();
+    [SerializeField] Slider playerHpBar;
+    [SerializeField] PlayerActive player;
 
-        Debug.Log(playerHpValue.ToString()+ " " + maxPlayerHp.ToString());
+    private void Start()
+    {
+        player = FindFirstObjectByType<PlayerActive>();
     }
 
-    void SetUpBar()
+    private void OnEnable()
     {
-        
+        if (player != null)
+        {
+            UpdateHealthBar(player.Health, player.MaxHealth);
+            player.OnHealthChanged += UpdateHealthBar;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        if (player != null)
+        {
+            player.OnHealthChanged -= UpdateHealthBar;
+        }
+    }
+
+    void UpdateHealthBar(int currentHp, int maxHp)
+    {
+        playerHpBar.maxValue = maxHp;
+        playerHpBar.value = currentHp;
     }
 }

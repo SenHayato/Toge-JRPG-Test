@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BossActive : MonoBehaviour, IDamageable
@@ -15,8 +16,8 @@ public class BossActive : MonoBehaviour, IDamageable
     [Header("Boss Status")]
     [SerializeField] EntitySO modelData;
     public string modelName;
-    [SerializeField] int MaxHealth;
-    [SerializeField] int Health;
+    public int MaxHealth;
+    public int Health;
     [SerializeField] int Attack;
     [SerializeField] int Defend;
     [SerializeField] int Mana;
@@ -25,6 +26,8 @@ public class BossActive : MonoBehaviour, IDamageable
     [Header("Boss Compoenent")]
     public Animator bossAnimator;
     public SpriteRenderer spriteRenderer;
+
+    public event Action<int, int> OnHealthChanged;
 
     private void Awake()
     {
@@ -70,15 +73,18 @@ public class BossActive : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage (int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;
         stateMachine.ChangeState(hurtState);
+
+        OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
     public void Heal(int healValue)
     {
         Health += healValue;
+        OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
     public void FillMana(int manaValue)
