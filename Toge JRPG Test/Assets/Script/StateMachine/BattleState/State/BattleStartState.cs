@@ -11,12 +11,12 @@ public class BattleStartState : BattleState
         battleManager.battleProgress = BattleInProgress.BattleStart;
         battleManager.SetUpBattle();
         battleManager.BattleStartToPlayerTurn();
-        Debug.Log("Masuk");
+        Debug.Log("Battle Start");
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Keluar");
+        Debug.Log("Battle Start - Exit");
     }
 }

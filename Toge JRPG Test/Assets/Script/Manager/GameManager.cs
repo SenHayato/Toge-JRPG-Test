@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
         playerPosition = FindFirstObjectByType<PlayerActive>().transform;
         PauseManager.Instance.PauseDisable();
         //StartCoroutine(StartFlow());
-        introFlow.ExecuteBlock("Intro");
+        //introFlow.ExecuteBlock("Intro"); //nanti idupin lagi
         //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 

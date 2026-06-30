@@ -57,11 +57,14 @@ public class PlayerActive : MonoBehaviour, IDamageable
 
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Health = MaxHealth;
         Health = Mathf.Max(0, MaxHealth);
+    }
 
+    private void Start()
+    {
         stateMachine.Initialize(idleState);
 
         gameManager = FindFirstObjectByType<GameManager>();

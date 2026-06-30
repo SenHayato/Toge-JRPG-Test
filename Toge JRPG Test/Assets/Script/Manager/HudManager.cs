@@ -25,6 +25,7 @@ public class HudManager : Singleton<HudManager>
         hudObj.SetActive(false);
     }
 
+    #region GlobalMethod
     public void BattleHudSetUp()
     {
         ShowHud(BattleHud);
@@ -42,4 +43,27 @@ public class HudManager : Singleton<HudManager>
         HideHud(BattleHud);
         HideHud(ExplorationHud);
     }
+    #endregion
+
+    #region BattleMethod
+    public void PlayerUnitChoose(bool toggler)
+    {
+        ChoosePlayerUnit.SetActive(toggler);
+    }
+
+    public void ActionChoice(bool toggler)
+    {
+        ChooseAction.SetActive(toggler);
+    }
+
+    public void EnemyUnitChoose(bool toggler)
+    {
+        ChooseEnemyUnit.SetActive(toggler);
+    }
+
+    public void QteToggler(bool toggler)
+    {
+        QteHud.SetActive(toggler);
+    }
+    #endregion
 }

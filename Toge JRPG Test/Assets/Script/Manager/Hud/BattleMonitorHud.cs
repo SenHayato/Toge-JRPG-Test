@@ -11,13 +11,23 @@ public class BattleMonitorHud : MonoBehaviour
     [SerializeField] BossActive bossActive;
     [SerializeField] Slider bossHpBar;
 
-    private void Start()
+    //private void Awake()
+    //{
+        
+    //}
+
+    private void OnEnable()
     {
         playerActive = FindFirstObjectByType<PlayerActive>();
         bossActive = FindFirstObjectByType<BossActive>();
     }
 
-    private void OnEnable()
+    private void Start()
+    {
+        SetUpHealthBar();
+    }
+
+    void SetUpHealthBar()
     {
         if (playerActive != null)
         {
@@ -31,6 +41,7 @@ public class BattleMonitorHud : MonoBehaviour
             bossActive.OnHealthChanged += UpdateBossHealth;
         }
     }
+        
 
     private void OnDisable()
     {
@@ -47,13 +58,15 @@ public class BattleMonitorHud : MonoBehaviour
 
     void UpdatePlayerHealth(int currentHp, int maxHp)
     {
-        playerHpBar.value = currentHp;
+        //Debug.Log("Player " + currentHp);
         playerHpBar.maxValue = maxHp;
+        playerHpBar.value = currentHp;
     }
 
     void UpdateBossHealth(int currentHp, int maxHp)
     {
-        bossHpBar.value = currentHp;
+        //Debug.Log("Boss " + currentHp);
         bossHpBar.maxValue = maxHp;
+        bossHpBar.value = currentHp;
     }
 }

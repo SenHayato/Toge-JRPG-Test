@@ -9,12 +9,12 @@ public class PlayerTurnState : BattleState
     {
         base.Enter();
         battleManager.battleProgress = BattleInProgress.PlayerTurn;
-        Debug.Log("Masuk");
+        Debug.Log("Player Turn");
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Keluar");
+        Debug.Log("Player Turn - Exit");
     }
 }
