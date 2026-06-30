@@ -22,6 +22,7 @@ public class BattleMonitorHud : MonoBehaviour
         bossActive = FindFirstObjectByType<BossActive>();
     }
 
+    #region SetUp
     private void Start()
     {
         SetUpHealthBar();
@@ -40,8 +41,7 @@ public class BattleMonitorHud : MonoBehaviour
             UpdateBossHealth(bossActive.Health, bossActive.MaxHealth);
             bossActive.OnHealthChanged += UpdateBossHealth;
         }
-    }
-        
+    } 
 
     private void OnDisable()
     {
@@ -69,4 +69,5 @@ public class BattleMonitorHud : MonoBehaviour
         bossHpBar.maxValue = maxHp;
         bossHpBar.value = currentHp;
     }
+    #endregion
 }

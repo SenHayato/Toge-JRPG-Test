@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class ChoosePlayerUnit : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ChooseUnitButton()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HudManager.Instance.PlayerUnitChoose(false);
+        HudManager.Instance.ActionChoice(true);
     }
 }
