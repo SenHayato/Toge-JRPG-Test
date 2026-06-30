@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerActive : MonoBehaviour
+public class PlayerActive : MonoBehaviour, IDamageable
 {
     [Header("State Monitor")]
     public PlayerInState playerInState;
@@ -56,7 +56,7 @@ public class PlayerActive : MonoBehaviour
     private void Start()
     {
         Health = MaxHealth;
-        Health = Mathf.Max(0, Health);
+        Health = Mathf.Max(0, MaxHealth);
 
         stateMachine.Initialize(idleState);
 
@@ -131,6 +131,16 @@ public class PlayerActive : MonoBehaviour
     {
         Health -= damage;
         stateMachine.ChangeState(hurtState);
+    }
+
+    public void Heal(int healValue)
+    {
+        Health += healValue;
+    }
+
+    public void FillMana(int manaValue)
+    {
+        Mana += manaValue;
     }
 
     public void Hurt()

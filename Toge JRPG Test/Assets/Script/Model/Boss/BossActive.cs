@@ -1,11 +1,6 @@
 using UnityEngine;
 
-public enum BossInState
-{
-    Idle, Attack, Hurt, Dead, Walk
-}
-
-public class BossActive : MonoBehaviour
+public class BossActive : MonoBehaviour, IDamageable
 {
     [Header("Boss State")]
     public BossInState inState;
@@ -79,6 +74,16 @@ public class BossActive : MonoBehaviour
     {
         Health -= damage;
         stateMachine.ChangeState(hurtState);
+    }
+
+    public void Heal(int healValue)
+    {
+        Health += healValue;
+    }
+
+    public void FillMana(int manaValue)
+    {
+        Mana += manaValue;
     }
 
     public void Hurt()

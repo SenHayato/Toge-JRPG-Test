@@ -11,8 +11,12 @@ public class ExplorationHud : MonoBehaviour
     {
         playerActive = FindFirstObjectByType<PlayerActive>();
 
-        playerHp.value = playerHpValue;
-        playerHp.maxValue = maxPlayerHp;
+        Debug.Log(playerHpValue.ToString()+ " " + maxPlayerHp.ToString());
+    }
+
+    void SetUpBar()
+    {
+        
     }
 
     // Update is called once per frame

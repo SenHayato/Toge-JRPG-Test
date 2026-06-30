@@ -27,3 +27,8 @@ public enum BattleInProgress
 {
     BattleStart, PlayerTurn, EnemyTurn, ActionState, Victory, Defeat, BattleEnd, CheckBattle
 }
+
+public enum BossInState
+{
+    Idle, Attack, Hurt, Dead, Walk
+}
