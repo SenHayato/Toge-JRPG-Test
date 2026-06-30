@@ -2897,6 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f9b76fbdac65e4db52b46857d58e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleProgress: 0
 --- !u!1 &305300029
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,9 +5685,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 639690728}
+  - {fileID: 639690762}
   selectedCommands:
-  - {fileID: 639690795}
+  - {fileID: 639690790}
   variables: []
   description: 
   stepPause: 0
@@ -7977,7 +7978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 105
   indentLevel: 0
-  duration: 0
+  duration: 3
   fadeOut: 1
   targetView: {fileID: 90420329}
   waitUntilFinished: 1
@@ -8058,7 +8059,7 @@ MonoBehaviour:
   isLocal: 1
 --- !u!114 &639690794
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8076,7 +8077,7 @@ MonoBehaviour:
     stringVal: Masuk Dialog Boss
 --- !u!114 &639690795
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -13104,7 +13105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1450083779}
+  selectedFlowchart: {fileID: 639690701}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
