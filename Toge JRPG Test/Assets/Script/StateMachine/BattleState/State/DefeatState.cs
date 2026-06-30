@@ -7,7 +7,7 @@ public class DefeatState : BattleState
 
     public override void Enter()
     {
-        base.Enter();
+        base.Enter();battleManager.battleProgress = BattleInProgress.Defeat;
         Debug.Log("Masuk");
     }
 

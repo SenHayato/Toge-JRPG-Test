@@ -25,5 +25,5 @@ public enum PlayerInState
 
 public enum BattleInProgress
 {
-    BattleStart, PlayerTurn, EnemyTurn, ActionState, Victory, Defeat, BattleEnd
+    BattleStart, PlayerTurn, EnemyTurn, ActionState, Victory, Defeat, BattleEnd, CheckBattle
 }

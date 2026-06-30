@@ -33,6 +33,11 @@ public class BattleManager : Singleton<BattleManager>
         victoryState = new VictoryState(this, stateMachine);
     }
 
+    void StartBattle()
+    {
+        stateMachine.Initialize(battleStart);
+    }
+
     private void Update()
     {
         stateMachine.currentState.Update();

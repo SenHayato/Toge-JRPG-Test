@@ -8,6 +8,7 @@ public class VictoryState : BattleState
     public override void Enter()
     {
         base.Enter();
+        battleManager.battleProgress = BattleInProgress.Victory;
         Debug.Log("Masuk");
     }
 

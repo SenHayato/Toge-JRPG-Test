@@ -8,6 +8,7 @@ public class PlayerTurnState : BattleState
     public override void Enter()
     {
         base.Enter();
+        battleManager.battleProgress = BattleInProgress.PlayerTurn;
         Debug.Log("Masuk");
     }
 

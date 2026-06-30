@@ -35,11 +35,11 @@ public class GameManager : Singleton<GameManager>
         //CameraChild(); //Masih coba untuk test, kalau flow tidak terganggu gak usah dihapus
     }
 
-    IEnumerator StartFlow()
-    {
-        yield return null;
-        introFlow.ExecuteBlock("Intro");
-    }
+    //IEnumerator StartFlow()
+    //{
+    //    yield return null;
+    //    introFlow.ExecuteBlock("Intro");
+    //}
 
     public void ResetFungusFlow()
     {
