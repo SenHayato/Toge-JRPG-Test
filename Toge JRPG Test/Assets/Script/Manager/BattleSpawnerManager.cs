@@ -17,6 +17,7 @@ public class BattleSpawnerManager : Singleton<BattleSpawnerManager>
 
     public void AssignComponent()
     {
+        Debug.Log("Test");
         mainCamera = Camera.main;
         playerActive = FindFirstObjectByType<PlayerActive>();
         bossActive = FindFirstObjectByType<BossActive>();
