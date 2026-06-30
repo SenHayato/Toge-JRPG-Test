@@ -31,8 +31,8 @@ public class BattleSpawnerManager : Singleton<BattleSpawnerManager>
 
     public void SpawnUnit()
     {
-        mainCamera.transform.localPosition = cameraSpawnPosition.localPosition;
-        playerActive.transform.localPosition = playerSpawnPosition.localPosition;
-        bossActive.transform.localPosition = enemySpawnPosition.localPosition;
+        mainCamera.transform.position = cameraSpawnPosition.position;
+        playerActive.transform.position = playerSpawnPosition.position;
+        bossActive.transform.position = enemySpawnPosition.position;
     }
 }
