@@ -8,14 +8,14 @@ public class BattleMonitorHud : Singleton<BattleMonitorHud>
     [SerializeField] Slider playerHpBar;
 
     [Header("Boss Stats")]
-    [SerializeField] BossActive bossActive;
+    [SerializeField] EnemyActive enemyActive;
     [SerializeField] Slider bossHpBar;
 
 
     private void OnEnable()
     {
         playerActive = FindFirstObjectByType<PlayerActive>();
-        bossActive = FindFirstObjectByType<BossActive>();
+        enemyActive = FindFirstObjectByType<EnemyActive>();
     }
 
     #region SetUp
@@ -32,10 +32,10 @@ public class BattleMonitorHud : Singleton<BattleMonitorHud>
             playerActive.OnHealthChanged += UpdatePlayerHealth;
         }
 
-        if (bossActive != null)
+        if (enemyActive != null)
         {
-            UpdateBossHealth(bossActive.Health, bossActive.MaxHealth);
-            bossActive.OnHealthChanged += UpdateBossHealth;
+            UpdateBossHealth(enemyActive.Health, enemyActive.MaxHealth);
+            enemyActive.OnHealthChanged += UpdateBossHealth;
         }
     } 
 
@@ -46,9 +46,9 @@ public class BattleMonitorHud : Singleton<BattleMonitorHud>
             playerActive.OnHealthChanged -= UpdatePlayerHealth;
         }
 
-        if (bossActive != null)
+        if (enemyActive != null)
         {
-            bossActive.OnHealthChanged -= UpdateBossHealth;
+            enemyActive.OnHealthChanged -= UpdateBossHealth;
         }
     }
 

@@ -1078,7 +1078,7 @@ RectTransform:
   m_Father: {fileID: 367704302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4028,7 +4028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cc54c9369cc5c41be9a2f4c21823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inState: 0
   modelData: {fileID: 11400000, guid: 410610db68bec574fbb0ce01298926e8, type: 2}
   modelName: 
   MaxHealth: 100
@@ -4037,8 +4036,9 @@ MonoBehaviour:
   Defend: 0
   Mana: 0
   Aggility: 0
-  bossAnimator: {fileID: 110483354}
+  enemyAnimator: {fileID: 0}
   spriteRenderer: {fileID: 110483352}
+  inState: 0
 --- !u!114 &432935980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5770,7 +5770,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 639690759}
   selectedCommands: []
   variables: []
   description: 
@@ -9337,7 +9338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerActive: {fileID: 0}
   playerHpBar: {fileID: 179119356}
-  bossActive: {fileID: 0}
+  enemyActive: {fileID: 0}
   bossHpBar: {fileID: 875995780}
 --- !u!1 &802516945
 GameObject:
@@ -9582,6 +9583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefabs: {fileID: 8514079124740359672, guid: d3d7d11a6c9e5da428b1a513b8615de0, type: 3}
   buttonSpawner: {fileID: 366904272}
+  selectedSkill: {fileID: 0}
+  selectedUnit: {fileID: 0}
 --- !u!1 &853075057
 GameObject:
   m_ObjectHideFlags: 0
@@ -9726,7 +9729,7 @@ RectTransform:
   m_Father: {fileID: 1066416493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11415,7 +11418,7 @@ RectTransform:
   m_Father: {fileID: 630652661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15828,7 +15831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1528411825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17542,7 +17545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1707782083
 RectTransform:
   m_ObjectHideFlags: 0
