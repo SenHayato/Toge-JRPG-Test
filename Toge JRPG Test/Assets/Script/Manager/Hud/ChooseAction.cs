@@ -39,7 +39,7 @@ public class ChooseAction : Singleton<ChooseAction>
     public SkillsSO selectedSkill;
     public PlayerActive selectedUnit;
 
-    private void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
+    void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
     {
         selectedSkill = skill;
         selectedUnit = playerUnit;
