@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleMonitorHud : MonoBehaviour
+public class BattleMonitorHud : Singleton<BattleMonitorHud>
 {
     [Header("Player Stats")]
     [SerializeField] PlayerActive playerActive;
@@ -11,10 +11,6 @@ public class BattleMonitorHud : MonoBehaviour
     [SerializeField] BossActive bossActive;
     [SerializeField] Slider bossHpBar;
 
-    //private void Awake()
-    //{
-        
-    //}
 
     private void OnEnable()
     {

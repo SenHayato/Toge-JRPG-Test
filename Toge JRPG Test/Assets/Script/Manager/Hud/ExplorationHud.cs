@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExplorationHud : MonoBehaviour
+public class ExplorationHud : Singleton<ExplorationHud>
 {
     [SerializeField] Slider playerHpBar;
     [SerializeField] PlayerActive player;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class QTEManager : MonoBehaviour
+public class QTEManager : Singleton<QTEManager>
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

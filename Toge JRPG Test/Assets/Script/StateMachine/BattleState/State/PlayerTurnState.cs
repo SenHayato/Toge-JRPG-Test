@@ -17,6 +17,7 @@ public class PlayerTurnState : BattleState
     {
         base.Exit();
         HudManager.Instance.PlayerUnitChoose(false);
+        HudManager.Instance.ActionChoice(false);
         Debug.Log("Player Turn - Exit");
     }
 }

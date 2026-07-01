@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChoosePlayerUnit : MonoBehaviour
+public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
 {
     public void ChooseUnitButton()
     {

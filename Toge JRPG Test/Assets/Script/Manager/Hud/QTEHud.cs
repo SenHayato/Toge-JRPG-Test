@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class QTEHud : MonoBehaviour
+public class QTEHud : Singleton<QTEHud>
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

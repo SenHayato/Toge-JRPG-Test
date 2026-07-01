@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class ChooseAction : MonoBehaviour
+public class ChooseAction : Singleton<ChooseAction>
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void BackToUnit()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HudManager.Instance.PlayerUnitChoose(true);
+        HudManager.Instance.ActionChoice(false);
+        BattleManager.Instance.ChangeBattleState(BattleManager.Instance.playerTurn);
     }
 }
