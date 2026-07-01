@@ -13,6 +13,7 @@ public class MoveState : IState
     {
         unit.inState = CharactherInState.Move;
         unit.charAnimator.SetBool("IsMove", true);
+        unit.charAnimator.SetBool("IsIdle", false);
     }
 
     public void Update()

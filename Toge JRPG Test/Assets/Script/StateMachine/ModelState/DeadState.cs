@@ -13,6 +13,7 @@ public class DeadState : IState
     {
         unit.inState = CharactherInState.Dead;
         unit.charAnimator.SetBool("IsDead", true);
+        unit.charAnimator.SetBool("IsIdle", false);
     }
 
     public void Update() { }

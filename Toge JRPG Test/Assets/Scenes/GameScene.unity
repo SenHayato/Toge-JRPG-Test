@@ -325,6 +325,7 @@ MonoBehaviour:
   Mana: 0
   Aggility: 0
   isRunning: 0
+  isGuard: 0
   charAnimator: {fileID: 103398067}
   spriteRenderer: {fileID: 103398065}
   skillManager: {fileID: 11400000, guid: d795b25d827ae094785693d5f5abc348, type: 2}
@@ -1337,6 +1338,7 @@ MonoBehaviour:
   Mana: 0
   Aggility: 0
   isRunning: 0
+  isGuard: 0
   charAnimator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   skillManager: {fileID: 0}
@@ -3919,6 +3921,7 @@ MonoBehaviour:
   Mana: 0
   Aggility: 0
   isRunning: 0
+  isGuard: 0
   charAnimator: {fileID: 110483354}
   spriteRenderer: {fileID: 110483352}
   skillManager: {fileID: 11400000, guid: 89adb4eb7f4a32544b18a8006767ab74, type: 2}

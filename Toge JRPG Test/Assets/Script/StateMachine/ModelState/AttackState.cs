@@ -14,6 +14,7 @@ public class AttackState : IState
         unit.inState = CharactherInState.Attack;
         unit.charAnimator.SetInteger("AttackNum", attackNum);
         unit.charAnimator.SetBool("IsAttack", true);
+        unit.charAnimator.SetBool("IsIdle", false);
     }
 
     public void Update() { }

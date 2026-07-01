@@ -13,6 +13,7 @@ public class HurtState : IState
     {
         unit.inState = CharactherInState.Hurt;
         unit.charAnimator.SetBool("IsHurt", true);
+        unit.charAnimator.SetBool("IsIdle", false);
     }
 
     public void Update() { }
