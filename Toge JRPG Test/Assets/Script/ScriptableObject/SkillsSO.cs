@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillsSO", menuName = "Scriptable Objects/SkillsSO")]
 public class SkillsSO : ScriptableObject
 {
-    public string Name;
+    public string SkillName;
     public int ManaCost;
     public int Power;
     public SkillTargetType TargetType;

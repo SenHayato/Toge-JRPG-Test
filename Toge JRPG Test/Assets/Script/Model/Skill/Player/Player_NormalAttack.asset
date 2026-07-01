@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ca00fc9badd3a40ae61e9068df2a75, type: 3}
   m_Name: Player_NormalAttack
   m_EditorClassIdentifier: 
-  Name: Normal Attack
+  SkillName: ' Normal Attack'
   ManaCost: 0
   Power: 0
   TargetType: 0

@@ -5,7 +5,7 @@ public class EnumList
 
 public enum SkillTargetType
 {
-    Single, Multiple, Area
+    SingleEnemy, MultipleEnemy, Area, SingleAlly, Self, MultipleAlly
 }
 
 public enum QTEType

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81cd103fbd215c49871e5d261ac68ec, type: 3}
-  m_Name: PlayerSkill
+  m_Script: {fileID: 11500000, guid: 92ca00fc9badd3a40ae61e9068df2a75, type: 3}
+  m_Name: Player_HeavyAttack
   m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 11400000, guid: 116ac056683cfcc47afe47e5bd538f8f, type: 2}
-  - {fileID: 11400000, guid: 5629435d5630f1546827646e7c3d9efb, type: 2}
+  SkillName: Heavy Attack
+  ManaCost: 0
+  Power: 0
+  TargetType: 0
+  Animation: {fileID: 7400000, guid: 0a1f3f1f17eb3d74e93bffba69ae5ee2, type: 2}
+  QteType: 1

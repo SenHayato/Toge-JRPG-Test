@@ -326,7 +326,7 @@ MonoBehaviour:
   Aggility: 0
   Mana: 0
   moveSpeed: 1.5
-  skillManager: {fileID: 0}
+  skillManager: {fileID: 11400000, guid: d795b25d827ae094785693d5f5abc348, type: 2}
   moveValue: {x: 0, y: 0}
   spriteRenderer: {fileID: 103398065}
   playerAnimator: {fileID: 103398067}
@@ -3423,23 +3423,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 366904271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 125
+    m_Left: 80
     m_Right: 0
-    m_Top: 20
-    m_Bottom: 20
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 10
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_StartCorner: 0
+  m_StartAxis: 1
+  m_CellSize: {x: 400, y: 70}
+  m_Spacing: {x: 20, y: 20}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &367704301
 GameObject:
   m_ObjectHideFlags: 0
@@ -9582,8 +9580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822e387a927fad74f8dbcb2c2248f902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefabs: {fileID: 0}
-  buttonSpawner: {fileID: 0}
+  buttonPrefabs: {fileID: 8514079124740359672, guid: d3d7d11a6c9e5da428b1a513b8615de0, type: 3}
+  buttonSpawner: {fileID: 366904272}
 --- !u!1 &853075057
 GameObject:
   m_ObjectHideFlags: 0
@@ -20970,7 +20968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2047377091
 RectTransform:
   m_ObjectHideFlags: 0

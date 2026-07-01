@@ -52,6 +52,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     private void OnDisable()
     {
         ButtonDestroy();
+        buttonSpawned.Clear();
     }
 
     void AssignButton(PlayerActive playerUnit)
