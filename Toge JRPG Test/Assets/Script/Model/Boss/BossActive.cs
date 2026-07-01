@@ -3,54 +3,43 @@ using UnityEngine;
 
 public class BossActive : EnemyActive
 {
-    //[Header("Boss State")]
-    //public BossInState inState;
-    //public BossStateMachine stateMachine;
+    //public override void Awake()
+    //{
+    //    MaxHealth = modelData.Health;
+    //    modelName = modelData.EntityName;
+    //    Attack = modelData.Attack;
+    //    Defend = modelData.Defend;
+    //    Aggility = modelData.Aggility;
+    //    Mana = modelData.Mana;
+    //}
 
-    //public BossAttackState attackState;
-    //public BossDeadState deadState;
-    //public BossHurtState hurtState;
-    //public BossIdleState idleState;
-    //public BossWalkState walkState;
-
-    public override void Awake()
+    public override void Start()
     {
-        //stateMachine = new BossStateMachine();
-
-        //idleState = new BossIdleState(this, stateMachine);
-        //deadState = new BossDeadState(this, stateMachine);
-        //hurtState = new BossHurtState(this, stateMachine);
-        //attackState = new BossAttackState(this, stateMachine);
-        //walkState = new BossWalkState(this, stateMachine);
-
         MaxHealth = modelData.Health;
         modelName = modelData.EntityName;
         Attack = modelData.Attack;
         Defend = modelData.Defend;
         Aggility = modelData.Aggility;
         Mana = modelData.Mana;
+
+        Health = MaxHealth;
+        Health = Mathf.Max(0, MaxHealth);
+
+        //stateMachine.Initialize(idleState);
     }
 
-    //public override void Start()
-    //{
-    //    Health = MaxHealth;
-    //    Health = Mathf.Max(0, MaxHealth);
-
-    //    stateMachine.Initialize(idleState);
-    //}
-
-    //public override void Update()
-    //{
-    //    stateMachine.currentState.Update();
-    //}
+    public override void Update()
+    {
+        //stateMachine.currentState.Update();
+    }
 
     #region Method
 
-    //public override void TakeDamage(int damage)
-    //{
-    //    base.TakeDamage(damage);
-    //    stateMachine.ChangeState(hurtState);
-    //}
+    public override void TakeDamage(int damage)
+    {
+        Health -= damage;
+        base.TakeDamage(damage);
+    }
 
     //public override void Hurt()
     //{

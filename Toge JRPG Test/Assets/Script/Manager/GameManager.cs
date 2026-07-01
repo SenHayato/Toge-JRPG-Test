@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Game Component")]
     [SerializeField] Transform mainCamera;
     [SerializeField] Transform playerPosition;
+    [SerializeField] PlayerActive playerActive;
     public bool testing;
 
     [Header("Intro Flowchart")]
@@ -28,7 +29,8 @@ public class GameManager : Singleton<GameManager>
     {
         //mainCamera = Camera.main.transform;
         ResetFungusFlow();
-        playerPosition = FindFirstObjectByType<PlayerActive>().transform;
+        playerActive = FindFirstObjectByType<PlayerActive>();
+        playerPosition = playerActive.transform;
         PauseManager.Instance.PauseDisable();
         //StartCoroutine(StartFlow());
         //introFlow.ExecuteBlock("Intro"); //nanti idupin lagi

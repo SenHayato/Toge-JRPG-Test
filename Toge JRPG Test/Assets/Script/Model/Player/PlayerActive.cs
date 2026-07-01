@@ -115,6 +115,15 @@ public class PlayerActive : CharacterUnit
     {
         stateMachine.ChangeState(idleState);
     }
+
+    public override void TakeDamage(int damage)
+    {
+        if (!gameManager.testing)
+        {
+            Health -= damage;
+        }
+        base.TakeDamage(damage);
+    }
     #endregion
 
     //public void AnimationWalk()

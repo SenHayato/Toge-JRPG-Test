@@ -21,6 +21,8 @@ public abstract class EnemyActive : CharacterUnit
 
     public override void TakeDamage(int damage)
     {
+        Health -= damage;
+        base.TakeDamage(damage);
         //Ubah state di script turunan masing-masing
     }
 

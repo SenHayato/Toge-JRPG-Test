@@ -51,7 +51,6 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(int damage)
     {
-        Health -= damage;
         Dead();
         OnHealthChanged?.Invoke(Health, MaxHealth);
         //Ubah state di script turunan masing-masing
