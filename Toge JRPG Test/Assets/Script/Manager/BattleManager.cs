@@ -20,6 +20,10 @@ public class BattleManager : Singleton<BattleManager>
     public BattleInProgress battleProgress;
     public SkillsSO selectedSkill;
     public CharacterUnit selectedUnit;
+    public PlayerActive PlayerActive;
+    public EnemyActive[] enemyActives;
+
+    [Header("Target Monitor")]
     public List<PlayerActive> targetAlly = new List<PlayerActive>();
     public List<EnemyActive> targetEnemy = new List<EnemyActive>();
 
@@ -40,6 +44,8 @@ public class BattleManager : Singleton<BattleManager>
         battleEnd = new BattleEndState(this);
         defeatState = new DefeatState(this);
         victoryState = new VictoryState(this);
+
+        PlayerActive = FindFirstObjectByType<PlayerActive>();
     }
 
     public void StartBattle()
@@ -58,6 +64,7 @@ public class BattleManager : Singleton<BattleManager>
     #region Method
     public void SetUpBattle()
     {
+        enemyActives = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         BattleSpawnerManager.Instance.AssignComponent();
         BattleSpawnerManager.Instance.SpawnUnit();
     }
@@ -206,6 +213,19 @@ public class BattleManager : Singleton<BattleManager>
         {
             targetAlly.Clear();
         }
+    }
+
+    public void CheckBattle()
+    {
+        //if (PlayerActive.Health <= 0)
+        //{
+        //    PlayerActive.stateMachine.ChangeState(PlayerActive.deadState);
+        //    stateMachine.ChangeState(defeatState);
+        //}
+        //else
+        //{
+        //    stateMachine.ChangeState(defeatState);
+        //}
     }
     #endregion
 }

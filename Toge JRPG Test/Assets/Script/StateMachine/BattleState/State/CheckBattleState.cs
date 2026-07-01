@@ -12,6 +12,7 @@ public class CheckBattleState : IState
     public void Enter()
     {
         battleManager.battleProgress = BattleInProgress.CheckBattle;
+        battleManager.CheckBattle();
         Debug.Log("Masuk");
     }
 

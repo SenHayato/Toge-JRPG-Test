@@ -47,6 +47,7 @@ public class ActionState : IState
     {
         battleManager.ClearTargetData();
         //battleManager.MoveToPosition(battleManager.target[0].transform);
+        battleManager.stateMachine.ChangeState(battleManager.checkBattle);
         Debug.Log("Keluar ActionState");
     }
 }
