@@ -70,7 +70,15 @@ public abstract class EnemyActive : CharacterUnit
 
     }
 
-    public override void Hurt() { }
+    public override void Hurt()
+    {
+        Invoke(nameof(ChangeToIdle), 0.4f);
+    }
+
+    public void ChangeToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+    }
 
     public override void Dead() { }
 }
