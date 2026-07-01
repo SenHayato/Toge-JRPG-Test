@@ -8,6 +8,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     [SerializeField] PlayerActive[] playerActives;
     [SerializeField] GameObject buttonPrefabs;
     [SerializeField] Transform buttonSpawner;
+    [SerializeField] GameObject backButton;
     public bool isAllyTarget = false;
 
     private void OnEnable()
@@ -15,6 +16,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
         playerActives = FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 
         ButtonSpawner();
+        backButton.SetActive(isAllyTarget);
     }
 
     List<GameObject> buttonSpawned = new List<GameObject>();
@@ -72,6 +74,14 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     {
         ChooseUnitButton();
         ChooseAction.Instance.SpawnSkillButton(playerUnit);
+    }
+
+    public void BackToUnit()
+    {
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
+        isAllyTarget = false;
+        backButton.SetActive(false);
     }
 
     public void ChooseUnitButton()
