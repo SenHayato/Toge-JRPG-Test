@@ -43,6 +43,14 @@ public class HudManager : Singleton<HudManager>
         HideHud(BattleHud);
         HideHud(ExplorationHud);
     }
+
+    public void OnSkillAction()
+    {
+        ChooseEnemyUnit.SetActive(false);
+        ChooseAction.SetActive(false);
+        ChoosePlayerUnit.SetActive(false);
+        QteHud.SetActive(true);
+    }
     #endregion
 
     #region Battle HUD Method

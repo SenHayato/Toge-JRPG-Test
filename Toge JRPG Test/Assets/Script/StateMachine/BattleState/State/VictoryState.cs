@@ -1,20 +1,24 @@
 using UnityEngine;
 
-public class VictoryState : BattleState
+public class VictoryState : IState
 {
-    public VictoryState(BattleManager battleManager, BattleStateMachine battleStateMachine)
-        : base(battleManager, battleStateMachine) { }
+    private BattleManager battleManager;
 
-    public override void Enter()
+    public VictoryState(BattleManager battleManager)
     {
-        base.Enter();
+        this.battleManager = battleManager;
+    }
+
+    public void Enter()
+    {
         battleManager.battleProgress = BattleInProgress.Victory;
         Debug.Log("Masuk");
     }
 
-    public override void Exit()
+    public void Update() { }
+
+    public void Exit()
     {
-        base.Exit();
         Debug.Log("Keluar");
     }
 }

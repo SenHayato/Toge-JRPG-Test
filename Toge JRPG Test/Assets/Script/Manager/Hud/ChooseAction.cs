@@ -18,6 +18,7 @@ public class ChooseAction : Singleton<ChooseAction>
 
     public void SpawnSkillButton(PlayerActive unit)
     {
+        BattleManager.Instance.ClearTargetData();
         foreach (SkillsSO skill in unit.skillManager.skills)
         {
             SkillsSO capturedSkill = skill;
@@ -47,8 +48,6 @@ public class ChooseAction : Singleton<ChooseAction>
 
     void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
     {
-        BattleManager.Instance.ClearTargetData();
-
         BattleManager.Instance.AssignData(skill);
         BattleManager.Instance.AssignData(playerUnit);
         AssignData();
@@ -77,6 +76,7 @@ public class ChooseAction : Singleton<ChooseAction>
                 MultipleTargetSkill(SkillTargetType.MultipleAlly); // nanti di ActionState
                 break;
         }
+        //Battle state ubah ke action dan jalankan skill
     }
 
     void ShowSingleTargetHud()

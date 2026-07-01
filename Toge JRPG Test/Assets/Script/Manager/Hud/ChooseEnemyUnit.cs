@@ -32,6 +32,7 @@ public class ChooseEnemyUnit : Singleton<ChooseEnemyUnit>
             {
                 Debug.Log("Target Choose " + enemy.modelName);
                 BattleManager.Instance.AssignSingleTarget(enemy);
+                BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);
             });
         }
     }

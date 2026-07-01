@@ -41,6 +41,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
                 {
                     Debug.Log("Buff Ally");
                     BattleManager.Instance.AssignSingleTarget(unit);
+                    BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);
                 }
                 else
                 {

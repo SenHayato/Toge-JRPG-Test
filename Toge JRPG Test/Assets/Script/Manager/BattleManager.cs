@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    public BattleStateMachine stateMachine;
+    public StateMachine stateMachine;
 
     //state
     public BattleStartState battleStart;
@@ -23,8 +22,6 @@ public class BattleManager : Singleton<BattleManager>
     public CharacterUnit selectedUnit;
     public List<PlayerActive> targetAlly = new List<PlayerActive>();
     public List<EnemyActive> targetEnemy = new List<EnemyActive>();
-    //public listPlayerActive[] targetAlly;
-    //public EnemyActive[] targetEnemy;
 
     //public override void Awake()
     //{
@@ -33,28 +30,28 @@ public class BattleManager : Singleton<BattleManager>
 
     private void Start()
     {
-        stateMachine = new BattleStateMachine();
+        stateMachine = new StateMachine(this);
 
-        battleStart = new BattleStartState(this, stateMachine);
-        playerTurn = new PlayerTurnState(this, stateMachine);
-        enemyTurn = new EnemyTurnState(this, stateMachine);
-        actionState = new ActionState(this, stateMachine);
-        checkBattle = new CheckBattleState(this, stateMachine);
-        battleEnd = new BattleEndState(this, stateMachine);
-        defeatState = new DefeatState(this, stateMachine);
-        victoryState = new VictoryState(this, stateMachine);
+        battleStart = new BattleStartState(this);
+        playerTurn = new PlayerTurnState(this);
+        enemyTurn = new EnemyTurnState(this);
+        actionState = new ActionState(this);
+        checkBattle = new CheckBattleState(this);
+        battleEnd = new BattleEndState(this);
+        defeatState = new DefeatState(this);
+        victoryState = new VictoryState(this);
     }
 
     public void StartBattle()
     {
-        stateMachine.Initialize(battleStart);
+        stateMachine.ChangeState(battleStart);
     }
 
     private void Update()
     {
-        if (stateMachine.currentState != null)
+        if (stateMachine.CurrentState != null)
         {
-            stateMachine.currentState.Update();
+            stateMachine.CurrentState.Update();
         }
     }
 
@@ -75,7 +72,7 @@ public class BattleManager : Singleton<BattleManager>
         ChangeBattleState(playerTurn);
     }
 
-    public void ChangeBattleState(BattleState battleState)
+    public void ChangeBattleState(IState battleState)
     {
         stateMachine.ChangeState(battleState);
     }

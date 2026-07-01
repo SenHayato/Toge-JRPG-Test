@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class EnemyTurnState : BattleState
+public class EnemyTurnState : IState
 {
-    public EnemyTurnState(BattleManager battleManager, BattleStateMachine battleStateMachine)
-        : base(battleManager, battleStateMachine) { }
+    private BattleManager battleManager;
 
-    public override void Enter()
+    public EnemyTurnState(BattleManager battleManager)
     {
-        base.Enter();
+        this.battleManager = battleManager;
+    }
+
+    public void Enter()
+    {
         battleManager.battleProgress = BattleInProgress.EnemyTurn;
         Debug.Log("Masuk");
     }
 
-    public override void Exit()
+    public void Update() { }
+    public void Exit()
     {
-        base.Exit();
         Debug.Log("Keluar");
     }
 }

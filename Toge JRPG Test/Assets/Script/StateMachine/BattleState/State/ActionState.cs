@@ -1,22 +1,27 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ActionState : BattleState
+public class ActionState : IState
 {
-    public ActionState(BattleManager battleManager, BattleStateMachine battleStateMachine)
-        : base(battleManager, battleStateMachine) { }
+    private BattleManager battleManager;
 
-    public override void Enter()
+    public ActionState(BattleManager battleManager)
     {
-        base.Enter();
-        battleManager.battleProgress = BattleInProgress.ActionState;
-        Debug.Log("Masuk");
+        this.battleManager = battleManager;
     }
 
-    public override void Exit()
+    public void Enter()
     {
-        base.Exit();
+        battleManager.battleProgress = BattleInProgress.ActionState;
+        HudManager.Instance.OnSkillAction();
+        Debug.Log("Masuk");
+    }
+    public void Update() { }
+
+    public void Exit()
+    {
         battleManager.ClearTargetData(); //reset target
         Debug.Log("Keluar");
     }
+
 }

@@ -1,22 +1,26 @@
 using UnityEngine;
 
-public class PlayerTurnState : BattleState
+public class PlayerTurnState : IState
 {
-    public PlayerTurnState(BattleManager battleManager, BattleStateMachine battleStateMachine)
-        : base(battleManager, battleStateMachine) { }
+    private BattleManager battleManager;
 
-    public override void Enter()
+    public PlayerTurnState(BattleManager battleManager)
     {
-        base.Enter();
+        this.battleManager = battleManager;
+    }
+
+    public void Enter()
+    {
         battleManager.battleProgress = BattleInProgress.PlayerTurn;
         //HudManager.Instance.PlayerUnitChoose(true);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
         Debug.Log("Player Turn");
     }
 
-    public override void Exit()
+    public void Update() { }
+
+    public void Exit()
     {
-        base.Exit();
         DisableBattleUI();
         Debug.Log("Player Turn - Exit");
     }

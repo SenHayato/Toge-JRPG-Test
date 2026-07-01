@@ -1,22 +1,26 @@
 using UnityEngine;
 
-public class BattleStartState : BattleState
+public class BattleStartState : IState
 {
-    public BattleStartState(BattleManager battleManager, BattleStateMachine battleStateMachine)
-        : base(battleManager, battleStateMachine) { }
+    private BattleManager battleManager;
 
-    public override void Enter()
+    public BattleStartState(BattleManager battleManager)
     {
-        base.Enter();
+        this.battleManager = battleManager;
+    }
+
+    public void Enter()
+    {
         battleManager.battleProgress = BattleInProgress.BattleStart;
         battleManager.SetUpBattle();
         battleManager.BattleStartToPlayerTurn();
         Debug.Log("Battle Start");
     }
+    
+    public void Update() { }
 
-    public override void Exit()
+    public void Exit()
     {
-        base.Exit();
         Debug.Log("Battle Start - Exit");
     }
 }
