@@ -31,7 +31,7 @@ public class StateMachine
     }
 
 
-    public void Tick()
+    public void Update()
     {
         CurrentState?.Update();
     }

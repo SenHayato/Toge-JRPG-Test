@@ -23,17 +23,12 @@ public enum GameState
     Exploration, Battle, Dialog, Cutscene
 }
 
-public enum PlayerInState
+public enum CharactherInState
 {
-    Idle, Walk, Hurt, Attack, Dead
+    Idle, Move, Hurt, Attack, Dead
 }
 
 public enum BattleInProgress
 {
     BattleStart, PlayerTurn, EnemyTurn, ActionState, Victory, Defeat, BattleEnd, CheckBattle
-}
-
-public enum BossInState
-{
-    Idle, Attack, Hurt, Dead, Walk
 }

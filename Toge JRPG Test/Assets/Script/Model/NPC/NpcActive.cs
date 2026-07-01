@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class NpcActive : CharacterUnit, IInteractable
 {
-    [Header("NPC Stats")]
-    [SerializeField] EntitySO modelData;
-    [SerializeField] string modelName;
-
     [Header("Dialogue")]
     [SerializeField] DialogueSO modelDialogue;
     [SerializeField] Flowchart npcFlowchart;

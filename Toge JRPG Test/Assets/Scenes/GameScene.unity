@@ -315,21 +315,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b25ecc4b85b4f4d8c7c2e99c502888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInState: 0
-  isRunning: 0
+  inState: 0
   modelData: {fileID: 11400000, guid: a4ab9b13df1d09d41897442dc578dce0, type: 2}
   modelName: 
   MaxHealth: 0
   Health: 0
   Attack: 0
   Defend: 0
-  Aggility: 0
   Mana: 0
-  moveSpeed: 1.5
-  skillManager: {fileID: 11400000, guid: d795b25d827ae094785693d5f5abc348, type: 2}
-  moveValue: {x: 0, y: 0}
+  Aggility: 0
+  isRunning: 0
+  charAnimator: {fileID: 103398067}
   spriteRenderer: {fileID: 103398065}
-  playerAnimator: {fileID: 103398067}
+  skillManager: {fileID: 11400000, guid: d795b25d827ae094785693d5f5abc348, type: 2}
+  moveSpeed: 1.5
+  moveValue: {x: 0, y: 0}
   characterController: {fileID: 26310287}
   gameManager: {fileID: 0}
   inputActive: {fileID: 0}
@@ -1327,8 +1327,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066e174d81d8c6049860ea50e955a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inState: 0
   modelData: {fileID: 11400000, guid: b7907694777016d41bb4d9cf587e3d77, type: 2}
   modelName: 
+  MaxHealth: 0
+  Health: 0
+  Attack: 0
+  Defend: 0
+  Mana: 0
+  Aggility: 0
+  isRunning: 0
+  charAnimator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  skillManager: {fileID: 0}
+  moveSpeed: 0
+  moveValue: {x: 0, y: 0}
+  characterController: {fileID: 0}
   modelDialogue: {fileID: 11400000, guid: 6ed739ee1b46d514285ceeb2cbb3007f, type: 2}
   npcFlowchart: {fileID: 9004802678574401515}
   blockName: 
@@ -3895,6 +3909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cc54c9369cc5c41be9a2f4c21823c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inState: 0
   modelData: {fileID: 11400000, guid: 410610db68bec574fbb0ce01298926e8, type: 2}
   modelName: 
   MaxHealth: 100
@@ -3903,10 +3918,13 @@ MonoBehaviour:
   Defend: 0
   Mana: 0
   Aggility: 0
-  enemyAnimator: {fileID: 0}
+  isRunning: 0
+  charAnimator: {fileID: 0}
   spriteRenderer: {fileID: 110483352}
   skillManager: {fileID: 11400000, guid: 89adb4eb7f4a32544b18a8006767ab74, type: 2}
-  inState: 0
+  moveSpeed: 0
+  moveValue: {x: 0, y: 0}
+  characterController: {fileID: 0}
 --- !u!114 &432935980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5046,7 +5064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &593537303
 Transform:
   m_ObjectHideFlags: 0
@@ -13068,7 +13086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1325367229
 Transform:
   m_ObjectHideFlags: 0
@@ -13475,7 +13493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 639690701}
+  selectedFlowchart: {fileID: 1450083779}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -14388,13 +14406,14 @@ GameObject:
   - component: {fileID: 1450083821}
   - component: {fileID: 1450083823}
   - component: {fileID: 1450083824}
+  - component: {fileID: 1450083825}
   m_Layer: 0
   m_Name: IntroFlowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1450083779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14456,7 +14475,7 @@ MonoBehaviour:
   itemId: 0
   blockName: Intro
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 1450083825}
   commandList:
   - {fileID: 1450083820}
   - {fileID: 1450083803}
@@ -15356,6 +15375,21 @@ MonoBehaviour:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
   isLocal: 1
+--- !u!114 &1450083825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450083778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1450083780}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
 --- !u!1 &1490681053
 GameObject:
   m_ObjectHideFlags: 0
