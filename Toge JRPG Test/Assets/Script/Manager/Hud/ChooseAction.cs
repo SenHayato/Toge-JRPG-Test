@@ -6,6 +6,5 @@ public class ChooseAction : Singleton<ChooseAction>
     {
         HudManager.Instance.PlayerUnitChoose(true);
         HudManager.Instance.ActionChoice(false);
-        BattleManager.Instance.ChangeBattleState(BattleManager.Instance.playerTurn);
     }
 }
