@@ -3919,12 +3919,12 @@ MonoBehaviour:
   Mana: 0
   Aggility: 0
   isRunning: 0
-  charAnimator: {fileID: 0}
+  charAnimator: {fileID: 110483354}
   spriteRenderer: {fileID: 110483352}
   skillManager: {fileID: 11400000, guid: 89adb4eb7f4a32544b18a8006767ab74, type: 2}
-  moveSpeed: 0
+  moveSpeed: 1.5
   moveValue: {x: 0, y: 0}
-  characterController: {fileID: 0}
+  characterController: {fileID: 432935978}
 --- !u!114 &432935980
 MonoBehaviour:
   m_ObjectHideFlags: 0

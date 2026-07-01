@@ -7,11 +7,27 @@ public abstract class EnemyActive : CharacterUnit
 {
     public override void Awake()
     {
+        stateMachine = new StateMachine(this);
+
+        idleState = new IdleState(this);
+        attackState = new AttackState(this);
+        hurtState = new HurtState(this);
+        deadState = new DeadState(this);
+        moveState = new MoveState(this);
+
+        MaxHealth = modelData.Health;
+        modelName = modelData.EntityName;
+        Attack = modelData.Attack;
+        Defend = modelData.Defend;
+        Aggility = modelData.Aggility;
+        Mana = modelData.Mana;
+
         base.Awake();
     }
     public override void Start()
     {
         base.Start();
+        stateMachine.ChangeState(idleState);
     }
 
     public override void Update()
