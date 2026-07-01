@@ -45,15 +45,19 @@ public class PlayerActive : CharacterUnit
     public override void Update()
     {
         base.Update();
-        stateMachine.CurrentState.Update();
-        if (gameManager.gameState == GameState.Exploration)
+        if (gameManager.gameState == GameState.Exploration || gameManager.gameState == GameState.Battle)
         {
-            //stateMachine.currentState.Update();
-            if (gameManager.gameState != GameState.Battle)
-            {
-                ApplyGravity();
-            }
+            stateMachine.CurrentState.Update();
+            ApplyGravity();
         }
+        //if (gameManager.gameState == GameState.Exploration)
+        //{
+        //    stateMachine.CurrentState.Update();
+        //    if (gameManager.gameState != GameState.Battle)
+        //    {
+        //        ApplyGravity();
+        //    }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -128,7 +132,14 @@ public class PlayerActive : CharacterUnit
     {
         if (!gameManager.testing)
         {
-            Health -= damage;
+            if (isGuard)
+            {
+                isGuard = false;
+            }
+            else
+            {
+                Health -= damage;
+            }
         }
         base.TakeDamage(damage);
     }

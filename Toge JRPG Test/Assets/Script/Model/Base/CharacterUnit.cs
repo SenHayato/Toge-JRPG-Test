@@ -23,6 +23,7 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
     public int Mana;
     public int Aggility;
     public bool isRunning = false;
+    public bool isGuard = false;
 
     [Header("Compoenent")]
     public Animator charAnimator;
@@ -65,6 +66,11 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
     public virtual void FillMana(int manaValue)
     {
         Mana += manaValue;
+    }
+
+    public virtual void Guard()
+    {
+        isGuard = true;
     }
 
     public virtual void ChangeToAttackState(int attackNum) { }

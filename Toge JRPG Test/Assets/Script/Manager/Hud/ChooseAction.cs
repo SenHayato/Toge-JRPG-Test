@@ -47,6 +47,8 @@ public class ChooseAction : Singleton<ChooseAction>
 
     void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
     {
+        BattleManager.Instance.ClearTargetData();
+
         BattleManager.Instance.AssignData(skill);
         BattleManager.Instance.AssignData(playerUnit);
         AssignData();

@@ -5,7 +5,7 @@ public class EnumList
 
 public enum SkillTargetType
 {
-    SingleEnemy, MultipleEnemy, Area, SingleAlly, Self, MultipleAlly
+    SingleEnemy, MultipleEnemy, Area, SingleAlly, Self, MultipleAlly, Guard
 }
 
 public enum SkillPosition
