@@ -79,19 +79,19 @@ public class BattleManager : Singleton<BattleManager>
         stateMachine.ChangeState(battleState);
     }
 
-    public IEnumerator ActionSkill(CharacterUnit user, Transform moveTarget)
-    {
-        user = selectedUnit;
-        SkillsSO skill = selectedSkill;
-        List<EnemyActive> targets = targetEnemy;
+    //public IEnumerator ActionSkill(CharacterUnit user, Transform moveTarget)
+    //{
+    //    user = selectedUnit;
+    //    SkillsSO skill = selectedSkill;
+    //    List<EnemyActive> targets = targetEnemy;
 
-        user.PlayAnimation(skill.Animation);
-        yield return new WaitForSeconds(skill.Animation.length);
+    //    user
+    //    yield return new WaitForSeconds(skill.Animation.length);
 
-        skill.Execute(user, targets);
+    //    skill.Execute(user, targets);
 
-        battleManager.ChangeState(checkResultState);
-    }
+    //    battleManager.ChangeState(checkResultState);
+    //}
     #endregion
     #region AssignData and Target
 

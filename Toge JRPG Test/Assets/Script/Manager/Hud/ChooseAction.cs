@@ -37,7 +37,7 @@ public class ChooseAction : Singleton<ChooseAction>
     }
 
     [SerializeField] SkillsSO selectedSkill;
-    [SerializeField] PlayerActive selectedUnit;
+    [SerializeField] CharacterUnit selectedUnit;
     
     void AssignData()
     {
@@ -90,7 +90,7 @@ public class ChooseAction : Singleton<ChooseAction>
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
     }
 
-    void ExecuteSelf(PlayerActive units)
+    void ExecuteSelf(CharacterUnit units)
     {
         BattleManager.Instance.ChangeBattleState(BattleManager.Instance.actionState);
     }
