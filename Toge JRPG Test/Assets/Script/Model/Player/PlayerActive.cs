@@ -91,11 +91,19 @@ public class PlayerActive : CharacterUnit
     float verticalVelocity;
     [SerializeField] float gravity;
 
+
     public void ApplyGravity()
     {
         verticalVelocity += gravity * Time.deltaTime;
 
         characterController.Move(Vector3.down * verticalVelocity * Time.deltaTime);
+    }
+
+    public override void ChangeToAttackState(int attackNum)
+    {
+        base.ChangeToAttackState(attackNum);
+        attackState.attackNum = attackNum;
+        stateMachine.ChangeState(attackState);
     }
 
     public void Revive()

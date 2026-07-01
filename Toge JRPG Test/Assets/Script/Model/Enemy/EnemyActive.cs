@@ -7,6 +7,7 @@ public abstract class EnemyActive : CharacterUnit
 {
     public override void Awake()
     {
+        base.Awake();
         stateMachine = new StateMachine(this);
 
         idleState = new IdleState(this);
@@ -14,6 +15,10 @@ public abstract class EnemyActive : CharacterUnit
         hurtState = new HurtState(this);
         deadState = new DeadState(this);
         moveState = new MoveState(this);
+    }
+    public override void Start()
+    {
+        base.Start();
 
         MaxHealth = modelData.Health;
         modelName = modelData.EntityName;
@@ -22,17 +27,22 @@ public abstract class EnemyActive : CharacterUnit
         Aggility = modelData.Aggility;
         Mana = modelData.Mana;
 
-        base.Awake();
-    }
-    public override void Start()
-    {
-        base.Start();
+        Health = MaxHealth;
+        Health = Mathf.Max(0, MaxHealth);
+
         stateMachine.ChangeState(idleState);
     }
 
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void ChangeToAttackState(int attackNum)
+    {
+        base.ChangeToAttackState(attackNum);
+        attackState.attackNum = attackNum;
+        stateMachine.ChangeState(attackState);
     }
 
     public override void TakeDamage(int damage)

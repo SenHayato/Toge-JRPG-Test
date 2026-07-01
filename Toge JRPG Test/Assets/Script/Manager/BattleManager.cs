@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -84,8 +85,13 @@ public class BattleManager : Singleton<BattleManager>
     //    user = selectedUnit;
     //    SkillsSO skill = selectedSkill;
     //    List<EnemyActive> targets = targetEnemy;
+    //    if (skill.UnitPosition == SkillPosition.MoveToTarget)
+    //    {
+    //        user.characterController.Move(moveTarget * 3f * Time.deltaTime);
+    //    }
 
-    //    user
+    //    user.stateMachine.ChangeState(stateMachine);
+
     //    yield return new WaitForSeconds(skill.Animation.length);
 
     //    skill.Execute(user, targets);

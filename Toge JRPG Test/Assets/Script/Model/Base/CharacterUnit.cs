@@ -67,6 +67,8 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
         Mana += manaValue;
     }
 
+    public virtual void ChangeToAttackState(int attackNum) { }
+
     public virtual void Dead() { }
 
     public virtual void Hurt() { }
