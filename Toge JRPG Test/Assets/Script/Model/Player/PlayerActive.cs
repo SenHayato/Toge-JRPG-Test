@@ -25,6 +25,7 @@ public class PlayerActive : MonoBehaviour, IDamageable
     [SerializeField] int Aggility;
     [SerializeField] int Mana;
     public float moveSpeed;
+    public SkillManagerSO skillManager;
 
     [Header("Player Component")]
     public Vector2 moveValue;

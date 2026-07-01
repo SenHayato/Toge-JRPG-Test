@@ -22,7 +22,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     {
         foreach (PlayerActive unit in playerActives)
         {
-            PlayerActive capturedUnit = unit;
+            //PlayerActive capturedUnit = unit;
 
             GameObject btnObj = Instantiate(buttonPrefabs, buttonSpawner);
             buttonSpawned.Add(btnObj);
@@ -34,7 +34,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
             btn.onClick.AddListener(() =>
             {
                 //Debug.Log(unit.modelName);
-                AssignButton();
+                AssignButton(unit);
             });
         }
     }
@@ -54,9 +54,10 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
         ButtonDestroy();
     }
 
-    void AssignButton()
+    void AssignButton(PlayerActive playerUnit)
     {
         ChooseUnitButton();
+        ChooseAction.Instance.SpawnSkillButton(playerUnit);
     }
 
     public void ChooseUnitButton()
