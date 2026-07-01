@@ -62,7 +62,7 @@ public class ChooseAction : Singleton<ChooseAction>
                 break;
 
             case SkillTargetType.SingleAlly:
-                //ShowAllyTarget();
+                ShowAllySingleTarget();
                 break;
 
             case SkillTargetType.Self:
@@ -74,16 +74,22 @@ public class ChooseAction : Singleton<ChooseAction>
                 break;
 
             case SkillTargetType.MultipleAlly:
+                //ExecuteSkill(selectedUnit); // nanti di ActionState
                 break;
         }
     }
 
     void ShowSingleTargetHud()
     {
-        //HudManager.Instance.ActionChoice(false);
-        //HudManager.Instance.EnemyUnitChoose(true);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseEnemyUnit, true);
+    }
+
+    void ShowAllySingleTarget()
+    {
+        ChoosePlayerUnit.Instance.isAllyTarget = true;
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
     }
 
     void ButtonDestroy()

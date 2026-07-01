@@ -8,6 +8,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     [SerializeField] PlayerActive[] playerActives;
     [SerializeField] GameObject buttonPrefabs;
     [SerializeField] Transform buttonSpawner;
+    public bool isAllyTarget = false;
 
     private void OnEnable()
     {
@@ -34,7 +35,14 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
             btn.onClick.AddListener(() =>
             {
                 //Debug.Log(unit.modelName);
-                AssignButton(unit);
+                if (isAllyTarget)
+                {
+                    Debug.Log("Buff Ally");
+                }
+                else
+                {
+                    AssignButton(unit);
+                }
             });
         }
     }
@@ -53,6 +61,10 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
     {
         ButtonDestroy();
         buttonSpawned.Clear();
+        if (isAllyTarget)
+        {
+            isAllyTarget = false;
+        }
     }
 
     //Assign untuk Unit Skill
