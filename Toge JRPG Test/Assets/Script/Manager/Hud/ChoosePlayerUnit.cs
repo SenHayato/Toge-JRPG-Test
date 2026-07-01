@@ -50,7 +50,6 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
         }
     }
 
-
     void ButtonDestroy()
     {
         foreach (GameObject btn in buttonSpawned)

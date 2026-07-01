@@ -9,6 +9,7 @@ public class BossIdleState : BossState
     {
         base.Enter();
         bossActive.inState = BossInState.Idle;
+        bossActive.enemyAnimator.SetBool("IsIdle", true);
     }
 
     public override void Update()
@@ -18,5 +19,11 @@ public class BossIdleState : BossState
         //{
         //    bossStateMachine.ChangeState(bossActive.walkState);
         //}
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        bossActive.enemyAnimator.SetBool("IsIdle", true);
     }
 }

@@ -1,8 +1,7 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerActive : MonoBehaviour, IDamageable
+public class PlayerActive : CharacterUnit, IDamageable
 {
     [Header("State Monitor")]
     public PlayerInState playerInState;
@@ -15,7 +14,7 @@ public class PlayerActive : MonoBehaviour, IDamageable
     public PlayerDeadState deadState;
     public PlayerWalkState walkState;
 
-    [Header("Player Status")]
+    [Header("Unit Status")]
     [SerializeField] EntitySO modelData;
     public string modelName;
     public int MaxHealth;
@@ -39,8 +38,9 @@ public class PlayerActive : MonoBehaviour, IDamageable
 
     public event Action<int, int> OnHealthChanged;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         stateMachine = new PlayerStateMachine();
 
         idleState = new PlayerIdleState(this, stateMachine);
@@ -55,17 +55,18 @@ public class PlayerActive : MonoBehaviour, IDamageable
         Defend = modelData.Defend;
         Aggility = modelData.Aggility;
         Mana = modelData.Mana;
-
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         Health = MaxHealth;
         Health = Mathf.Max(0, MaxHealth);
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         stateMachine.Initialize(idleState);
 
         gameManager = FindFirstObjectByType<GameManager>();
@@ -74,13 +75,17 @@ public class PlayerActive : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
-    private void Update()
+    public override void Update()
     {
-        if (gameManager.gameState == GameState.Exploration || gameManager.gameState == GameState.Battle)
+        base.Update();
+        if (gameManager.gameState == GameState.Exploration)
         {
             stateMachine.currentState.Update();
+            if (gameManager.gameState != GameState.Battle)
+            {
+                ApplyGravity();
+            }
         }
-        ApplyGravity();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -107,7 +112,12 @@ public class PlayerActive : MonoBehaviour, IDamageable
         Vector2 movePosition = moveValue * moveSpeed * Time.deltaTime;
         Vector3 moveDirection = new(movePosition.x, 0f, movePosition.y);
         characterController.Move(moveDirection);
-        //transform.position += new Vector3(movePosition.x, 0f, movePosition.y);
+    }
+
+    public void ChangStateAttack(int attackNum)
+    {
+        attackState.AttackNumber = attackNum;
+        stateMachine.ChangeState(attackState);
     }
 
     float verticalVelocity;

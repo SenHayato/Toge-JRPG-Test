@@ -17,5 +17,9 @@ public class PlayerHurtState : PlayerState
     {
         base.Exit();
         playerActive.playerAnimator.SetBool("IsHurt", false);
+        if (playerActive.playerInState != PlayerInState.Idle)
+        {
+            playerActive.ChangeToIdle();
+        }
     }
 }

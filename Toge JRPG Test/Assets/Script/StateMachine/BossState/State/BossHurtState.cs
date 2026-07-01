@@ -9,12 +9,17 @@ public class BossHurtState : BossState
     {
         base.Enter();
         bossActive.inState = BossInState.Hurt;
+        bossActive.enemyAnimator.SetBool("IsHurt", true);
         bossActive.Hurt();
     }
 
     public override void Exit()
     {
         base.Exit();
-        bossActive.inState = BossInState.Idle;
+        bossActive.enemyAnimator.SetBool("IsHurt", true);
+        if (bossActive.inState != BossInState.Idle)
+        {
+            bossActive.ChangeToIdle();
+        }
     }
 }

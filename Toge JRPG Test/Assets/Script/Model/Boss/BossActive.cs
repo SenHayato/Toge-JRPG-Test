@@ -57,7 +57,7 @@ public class BossActive : EnemyActive
         Invoke(nameof(ChangeToIdle), 0.4f);
     }
 
-    void ChangeToIdle()
+    public void ChangeToIdle()
     {
         stateMachine.ChangeState(idleState);
     }

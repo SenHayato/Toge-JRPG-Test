@@ -3,7 +3,7 @@ using System.Xml;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public abstract class EnemyActive : MonoBehaviour, IDamageable
+public abstract class EnemyActive : CharacterUnit, IDamageable
 {
     [Header("Enemy Status")]
     public EntitySO modelData;
@@ -21,18 +21,18 @@ public abstract class EnemyActive : MonoBehaviour, IDamageable
     public SkillManagerSO skillManager;
 
     public event Action<int, int> OnHealthChanged;
-    public virtual void Awake()
+    public override void Awake()
     {
-
+        base.Awake();
     }
-    public virtual void Start()
+    public override void Start()
     {
-
+        base.Start();
     }
 
-    public virtual void Update()
+    public override void Update()
     {
-
+        base.Update();
     }
 
     public virtual void TakeDamage(int damage)

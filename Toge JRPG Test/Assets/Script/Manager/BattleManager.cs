@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
@@ -77,6 +78,20 @@ public class BattleManager : Singleton<BattleManager>
     {
         stateMachine.ChangeState(battleState);
     }
+
+    //public IEnumerator ActionSkill(IDamageable idamageable, Transform moveTarget)
+    //{
+    //    PlayerActive user = selectedUnit;
+    //    SkillsSO skill = selectedSkill;
+    //    List<EnemyActive> targets = targetEnemy;
+
+    //    user.PlayAnimation(skill.Animation);
+    //    yield return new WaitForSeconds(skill.Animation.length);
+
+    //    skill.Execute(user, targets);
+
+    //    battleManager.ChangeState(checkResultState);
+    //}
     #endregion
     #region AssignData and Target
 

@@ -9,11 +9,16 @@ public class BossDeadState : BossState
     {
         base.Enter();
         bossActive.inState = BossInState.Dead;
+        bossActive.enemyAnimator.SetBool("IsDead", true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        bossActive.inState = BossInState.Idle;
+        bossActive.enemyAnimator.SetBool("IsDead", false);
+        if (bossActive.inState != BossInState.Idle)
+        {
+            bossActive.ChangeToIdle();
+        }
     }
 }
