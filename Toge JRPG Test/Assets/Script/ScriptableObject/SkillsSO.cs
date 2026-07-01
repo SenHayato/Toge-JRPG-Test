@@ -7,6 +7,7 @@ public class SkillsSO : ScriptableObject
     public int ManaCost;
     public int Power;
     public SkillTargetType TargetType;
+    public SkillPosition UnitPosition;
     public AnimationClip Animation;
     public QTEType QteType;
 }

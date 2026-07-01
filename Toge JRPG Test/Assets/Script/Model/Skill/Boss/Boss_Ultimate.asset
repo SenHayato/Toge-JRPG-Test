@@ -16,5 +16,6 @@ MonoBehaviour:
   ManaCost: 0
   Power: 100
   TargetType: 1
+  UnitPosition: 1
   Animation: {fileID: 7400000, guid: 2e23a7e36852d51428e19ac11c9ef825, type: 2}
   QteType: 1

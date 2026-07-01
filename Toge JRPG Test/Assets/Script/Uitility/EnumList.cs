@@ -8,6 +8,11 @@ public enum SkillTargetType
     SingleEnemy, MultipleEnemy, Area, SingleAlly, Self, MultipleAlly
 }
 
+public enum SkillPosition
+{
+    Still, MoveToTarget
+}
+
 public enum QTEType
 {
     Mash, Time
