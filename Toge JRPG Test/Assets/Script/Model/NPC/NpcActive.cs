@@ -1,7 +1,7 @@
 using Fungus;
 using UnityEngine;
 
-public class NpcActive : MonoBehaviour, IInteractable
+public class NpcActive : CharacterUnit, IInteractable
 {
     [Header("NPC Stats")]
     [SerializeField] EntitySO modelData;
@@ -20,14 +20,15 @@ public class NpcActive : MonoBehaviour, IInteractable
     [SerializeField] GameManager gameManager;
     [SerializeField] PlayerActive playerActive;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         modelName = modelData.EntityName;
         blockName = modelDialogue.blockName;
         interactionPopUp.SetActive(true);
     }
 
-    private void Start()
+    public override void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         playerActive = FindFirstObjectByType<PlayerActive>();

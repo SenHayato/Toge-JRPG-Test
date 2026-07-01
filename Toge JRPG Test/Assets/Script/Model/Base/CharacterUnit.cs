@@ -13,4 +13,9 @@ public abstract class CharacterUnit : MonoBehaviour
     public virtual void OnDisable() { }
 
     public virtual void OnEnable() { }
+
+    public virtual void OnChangeState()
+    {
+
+    }
 }

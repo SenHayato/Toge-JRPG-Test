@@ -19,7 +19,7 @@ public class BattleManager : Singleton<BattleManager>
     [Header("Battle State")]
     public BattleInProgress battleProgress;
     public SkillsSO selectedSkill;
-    public PlayerActive selectedUnit;
+    public CharacterUnit selectedUnit;
     public List<PlayerActive> targetAlly = new List<PlayerActive>();
     public List<EnemyActive> targetEnemy = new List<EnemyActive>();
     //public listPlayerActive[] targetAlly;
@@ -79,19 +79,19 @@ public class BattleManager : Singleton<BattleManager>
         stateMachine.ChangeState(battleState);
     }
 
-    //public IEnumerator ActionSkill(IDamageable idamageable, Transform moveTarget)
-    //{
-    //    PlayerActive user = selectedUnit;
-    //    SkillsSO skill = selectedSkill;
-    //    List<EnemyActive> targets = targetEnemy;
+    public IEnumerator ActionSkill(CharacterUnit user, Transform moveTarget)
+    {
+        user = selectedUnit;
+        SkillsSO skill = selectedSkill;
+        List<EnemyActive> targets = targetEnemy;
 
-    //    user.PlayAnimation(skill.Animation);
-    //    yield return new WaitForSeconds(skill.Animation.length);
+        user.PlayAnimation(skill.Animation);
+        yield return new WaitForSeconds(skill.Animation.length);
 
-    //    skill.Execute(user, targets);
+        skill.Execute(user, targets);
 
-    //    battleManager.ChangeState(checkResultState);
-    //}
+        battleManager.ChangeState(checkResultState);
+    }
     #endregion
     #region AssignData and Target
 
