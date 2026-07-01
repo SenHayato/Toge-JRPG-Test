@@ -36,11 +36,9 @@ public class ChooseAction : Singleton<ChooseAction>
         }
     }
 
-    SkillsSO selectedSkill;
-    PlayerActive selectedUnit;
-    PlayerActive[] targetAlly;
-    EnemyActive[] targetEnemy;
-
+    [SerializeField] SkillsSO selectedSkill;
+    [SerializeField] PlayerActive selectedUnit;
+    
     void AssignData()
     {
         selectedSkill = BattleManager.Instance.selectedSkill;
@@ -66,15 +64,15 @@ public class ChooseAction : Singleton<ChooseAction>
                 break;
 
             case SkillTargetType.Self:
-                //ExecuteSkill(selectedUnit); // langsung eksekusi
+                ExecuteSelf(selectedUnit); // langsung eksekusi
                 break;
 
             case SkillTargetType.MultipleEnemy:
-                //ExecuteSkill(selectedUnit); // nanti di ActionState
+                MultipleTargetSkill(); // nanti di ActionState
                 break;
 
             case SkillTargetType.MultipleAlly:
-                //ExecuteSkill(selectedUnit); // nanti di ActionState
+                MultipleTargetSkill(); // nanti di ActionState
                 break;
         }
     }
@@ -90,6 +88,16 @@ public class ChooseAction : Singleton<ChooseAction>
         ChoosePlayerUnit.Instance.isAllyTarget = true;
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
+    }
+
+    void ExecuteSelf(PlayerActive units)
+    {
+        //buff/nerf
+    }
+
+    void MultipleTargetSkill()
+    {
+        //AssignMultipleTarget(PlayerActive[] units)
     }
 
     void ButtonDestroy()

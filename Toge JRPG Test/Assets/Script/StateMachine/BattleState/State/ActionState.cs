@@ -15,6 +15,7 @@ public class ActionState : BattleState
     public override void Exit()
     {
         base.Exit();
+        battleManager.ClearTargetData(); //reset target
         Debug.Log("Keluar");
     }
 }

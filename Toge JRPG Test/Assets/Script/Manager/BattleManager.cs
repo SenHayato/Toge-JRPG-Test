@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
@@ -18,8 +19,10 @@ public class BattleManager : Singleton<BattleManager>
     public BattleInProgress battleProgress;
     public SkillsSO selectedSkill;
     public PlayerActive selectedUnit;
-    public PlayerActive[] targetAlly;
-    public EnemyActive[] targetEnemy;
+    public List<PlayerActive> targetAlly = new List<PlayerActive>();
+    public List<EnemyActive> targetEnemy = new List<EnemyActive>();
+    //public listPlayerActive[] targetAlly;
+    //public EnemyActive[] targetEnemy;
 
     //public override void Awake()
     //{
@@ -75,7 +78,7 @@ public class BattleManager : Singleton<BattleManager>
         stateMachine.ChangeState(battleState);
     }
     #endregion
-    #region AssignData
+    #region AssignData and Target
 
     public void AssignData(SkillsSO skill)
     {
@@ -87,14 +90,45 @@ public class BattleManager : Singleton<BattleManager>
         selectedUnit = unit;
     }
 
-    public void AssignMultipleTarget(PlayerActive[] units)
+    public void AssignMultipleTarget(EnemyActive[] units)
     {
-        targetAlly = units;
+        units = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach(EnemyActive unit in units)
+        {
+            targetEnemy.Add(unit);
+        }
     }
 
-    public void AssingMultipleTarget(EnemyActive[] units)
+    public void AssignMultipleTarget(PlayerActive[] units)
     {
-        targetEnemy = units;
+        units = FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (PlayerActive unit in units)
+        {
+            targetAlly.Add(unit);
+        }
+    }
+
+    public void AssignSingleTarget(PlayerActive unit)
+    {
+        targetAlly.Add(unit);
+    }
+
+    public void AssignSingleTarget(EnemyActive unit)
+    {
+        targetEnemy.Add(unit);
+    }
+
+    public void ClearTargetData()
+    {
+        if (targetEnemy != null)
+        {
+            targetEnemy.Clear();
+        }
+
+        if (targetAlly != null)
+        {
+            targetAlly.Clear();
+        }
     }
     #endregion
 }

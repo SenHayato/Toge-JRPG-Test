@@ -40,6 +40,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
                 if (isAllyTarget)
                 {
                     Debug.Log("Buff Ally");
+                    BattleManager.Instance.AssignSingleTarget(unit);
                 }
                 else
                 {

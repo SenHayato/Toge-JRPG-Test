@@ -9510,6 +9510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefabs: {fileID: 8514079124740359672, guid: d3d7d11a6c9e5da428b1a513b8615de0, type: 3}
   buttonSpawner: {fileID: 366904272}
+  selectedSkill: {fileID: 0}
+  selectedUnit: {fileID: 0}
 --- !u!1 &853075057
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,9 +31,11 @@ public class ChooseEnemyUnit : Singleton<ChooseEnemyUnit>
             targetButton.onClick.AddListener(() =>
             {
                 Debug.Log("Target Choose " + enemy.modelName);
+                BattleManager.Instance.AssignSingleTarget(enemy);
             });
         }
     }
+
 
     void DestroyButton()
     {
