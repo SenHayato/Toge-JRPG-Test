@@ -18,7 +18,7 @@ MonoBehaviour:
   AttackNumber: 1
   target: 0
   skillType: 0
-  TargetType: 0
+  TargetType: 3
   UnitPosition: 1
   Animation: {fileID: 7400000, guid: 3fd283a1b17fd0d49b2109647a52fe02, type: 2}
   QteType: 1
