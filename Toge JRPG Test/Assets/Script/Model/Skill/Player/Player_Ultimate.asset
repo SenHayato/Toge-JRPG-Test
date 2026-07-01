@@ -15,6 +15,6 @@ MonoBehaviour:
   SkillName: Ultimate
   ManaCost: 0
   Power: 0
-  TargetType: 5
+  TargetType: 1
   Animation: {fileID: 7400000, guid: 0dff7a535f7807a478cbb5ea5b15be18, type: 2}
   QteType: 1

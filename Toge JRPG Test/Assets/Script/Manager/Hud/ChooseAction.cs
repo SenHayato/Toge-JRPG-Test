@@ -68,11 +68,11 @@ public class ChooseAction : Singleton<ChooseAction>
                 break;
 
             case SkillTargetType.MultipleEnemy:
-                MultipleTargetSkill(); // nanti di ActionState
+                MultipleTargetSkill(SkillTargetType.MultipleEnemy); // nanti di ActionState
                 break;
 
             case SkillTargetType.MultipleAlly:
-                MultipleTargetSkill(); // nanti di ActionState
+                MultipleTargetSkill(SkillTargetType.MultipleAlly); // nanti di ActionState
                 break;
         }
     }
@@ -92,12 +92,22 @@ public class ChooseAction : Singleton<ChooseAction>
 
     void ExecuteSelf(PlayerActive units)
     {
-        //buff/nerf
+        //langsung eksekusi di unit aktif
     }
 
-    void MultipleTargetSkill()
+    void MultipleTargetSkill(SkillTargetType skillMultipleType)
     {
-        //AssignMultipleTarget(PlayerActive[] units)
+        switch (skillMultipleType)
+        {
+            case SkillTargetType.MultipleEnemy:
+                EnemyActive[] enemy = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                BattleManager.Instance.AssignMultipleTarget(enemy);
+                break;
+            case SkillTargetType.MultipleAlly:
+                PlayerActive[] player = FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                BattleManager.Instance.AssignMultipleTarget(player);
+                break;
+        }
     }
 
     void ButtonDestroy()
