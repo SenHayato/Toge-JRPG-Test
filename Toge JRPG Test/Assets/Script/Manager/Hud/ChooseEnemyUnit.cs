@@ -44,6 +44,12 @@ public class ChooseEnemyUnit : Singleton<ChooseEnemyUnit>
         buttonSpanwed.Clear();
     }
 
+    public void BackButton()
+    {
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseEnemyUnit, false);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
+    }
+
     private void OnDisable()
     {
         DestroyButton();

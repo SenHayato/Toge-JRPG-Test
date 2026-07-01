@@ -36,39 +36,59 @@ public class ChooseAction : Singleton<ChooseAction>
         }
     }
 
-    public SkillsSO selectedSkill;
-    public PlayerActive selectedUnit;
+    SkillsSO selectedSkill;
+    PlayerActive selectedUnit;
+    PlayerActive[] targetAlly;
+    EnemyActive[] targetEnemy;
+
+    void AssignData()
+    {
+        selectedSkill = BattleManager.Instance.selectedSkill;
+        selectedUnit = BattleManager.Instance.selectedUnit;
+    }
 
     void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
     {
-        selectedSkill = skill;
-        selectedUnit = playerUnit;
+        BattleManager.Instance.AssignData(skill);
+        BattleManager.Instance.AssignData(playerUnit);
+        AssignData();
 
         Debug.Log("Skill yang dipilih " + selectedSkill.SkillName);
 
-        //switch (selectedSkill.TargetType)
-        //{
-        //    case SkillTargetType.SingleEnemy:
-        //        ShowEnemyTarget();
-        //        break;
+        switch (selectedSkill.TargetType)
+        {
+            case SkillTargetType.SingleEnemy:
+                ShowSingleTargetHud();
+                break;
 
-        //    case SkillTargetType.SingleAlly:
-        //        ShowAllyTarget();
-        //        break;
+            case SkillTargetType.SingleAlly:
+                //ShowAllyTarget();
+                break;
 
-        //    case SkillTargetType.Self:
-        //        ExecuteSkill(selectedUnit); // langsung eksekusi
-        //        break;
+            case SkillTargetType.Self:
+                //ExecuteSkill(selectedUnit); // langsung eksekusi
+                break;
 
-        //    case SkillTargetType.AllEnemies:
-        //        ExecuteSkill(selectedUnit); // nanti di ActionState
-        //        break;
-        //}
+            case SkillTargetType.MultipleEnemy:
+                //ExecuteSkill(selectedUnit); // nanti di ActionState
+                break;
+
+            case SkillTargetType.MultipleAlly:
+                break;
+        }
+    }
+
+    void ShowSingleTargetHud()
+    {
+        //HudManager.Instance.ActionChoice(false);
+        //HudManager.Instance.EnemyUnitChoose(true);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseEnemyUnit, true);
     }
 
     void ButtonDestroy()
     {
-        foreach(GameObject btn in buttonList)
+        foreach (GameObject btn in buttonList)
         {
             Destroy(btn);
         }
@@ -82,7 +102,9 @@ public class ChooseAction : Singleton<ChooseAction>
 
     public void BackToUnit()
     {
-        HudManager.Instance.PlayerUnitChoose(true);
-        HudManager.Instance.ActionChoice(false);
+        //    HudManager.Instance.PlayerUnitChoose(true);
+        //    HudManager.Instance.ActionChoice(false);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
     }
 }

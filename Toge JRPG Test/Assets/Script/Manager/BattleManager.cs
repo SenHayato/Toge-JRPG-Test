@@ -16,6 +16,10 @@ public class BattleManager : Singleton<BattleManager>
 
     [Header("Battle State")]
     public BattleInProgress battleProgress;
+    public SkillsSO selectedSkill;
+    public PlayerActive selectedUnit;
+    public PlayerActive[] targetAlly;
+    public EnemyActive[] targetEnemy;
 
     //public override void Awake()
     //{
@@ -69,6 +73,28 @@ public class BattleManager : Singleton<BattleManager>
     public void ChangeBattleState(BattleState battleState)
     {
         stateMachine.ChangeState(battleState);
+    }
+    #endregion
+    #region AssignData
+
+    public void AssignData(SkillsSO skill)
+    {
+        selectedSkill = skill;
+    }
+
+    public void AssignData(PlayerActive unit)
+    {
+        selectedUnit = unit;
+    }
+
+    public void AssignMultipleTarget(PlayerActive[] units)
+    {
+        targetAlly = units;
+    }
+
+    public void AssingMultipleTarget(EnemyActive[] units)
+    {
+        targetEnemy = units;
     }
     #endregion
 }

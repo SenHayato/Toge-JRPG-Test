@@ -45,25 +45,10 @@ public class HudManager : Singleton<HudManager>
     }
     #endregion
 
-    #region BattleMethod
-    public void PlayerUnitChoose(bool toggler)
+    #region Battle HUD Method
+    public void ToggleHUD(GameObject hud, bool toggle)
     {
-        ChoosePlayerUnit.SetActive(toggler);
-    }
-
-    public void ActionChoice(bool toggler)
-    {
-        ChooseAction.SetActive(toggler);
-    }
-
-    public void EnemyUnitChoose(bool toggler)
-    {
-        ChooseEnemyUnit.SetActive(toggler);
-    }
-
-    public void QteToggler(bool toggler)
-    {
-        QteHud.SetActive(toggler);
+        hud.SetActive(toggle);
     }
     #endregion
 }

@@ -55,6 +55,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
         buttonSpawned.Clear();
     }
 
+    //Assign untuk Unit Skill
     void AssignButton(PlayerActive playerUnit)
     {
         ChooseUnitButton();
@@ -63,7 +64,9 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
 
     public void ChooseUnitButton()
     {
-        HudManager.Instance.PlayerUnitChoose(false);
-        HudManager.Instance.ActionChoice(true);
+        //HudManager.Instance.PlayerUnitChoose(false);
+        //HudManager.Instance.ActionChoice(true);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, false);
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, true);
     }
 }
