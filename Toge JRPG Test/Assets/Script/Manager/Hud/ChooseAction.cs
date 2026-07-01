@@ -92,7 +92,7 @@ public class ChooseAction : Singleton<ChooseAction>
 
     void ExecuteSelf(PlayerActive units)
     {
-        //langsung eksekusi di unit aktif
+        BattleManager.Instance.ChangeBattleState(BattleManager.Instance.actionState);
     }
 
     void MultipleTargetSkill(SkillTargetType skillMultipleType)

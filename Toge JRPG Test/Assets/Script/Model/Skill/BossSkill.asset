@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81cd103fbd215c49871e5d261ac68ec, type: 3}
   m_Name: BossSkill
   m_EditorClassIdentifier: 
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 0ecb294c2990b0648817de458101cf22, type: 2}
+  - {fileID: 11400000, guid: 6d615d1c5c72bc044978fe92dbe87965, type: 2}
+  - {fileID: 11400000, guid: cc19a5104f31a8f49b7e2a1d9ea6a4e5, type: 2}
+  - {fileID: 11400000, guid: aed685d4dced4a34c93015c2c8848019, type: 2}
+  - {fileID: 11400000, guid: 249ac439dff163541b60d79767d793df, type: 2}

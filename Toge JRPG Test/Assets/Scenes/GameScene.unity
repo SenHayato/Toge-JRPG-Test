@@ -3905,6 +3905,7 @@ MonoBehaviour:
   Aggility: 0
   enemyAnimator: {fileID: 0}
   spriteRenderer: {fileID: 110483352}
+  skillManager: {fileID: 11400000, guid: 89adb4eb7f4a32544b18a8006767ab74, type: 2}
   inState: 0
 --- !u!114 &432935980
 MonoBehaviour:

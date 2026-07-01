@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: Ultimate
   ManaCost: 0
-  Power: 0
+  Power: 100
   TargetType: 1
-  Animation: {fileID: 7400000, guid: 0dff7a535f7807a478cbb5ea5b15be18, type: 2}
+  Animation: {fileID: 7400000, guid: d7641d020f099554ca3175ebdf69bb4d, type: 2}
   QteType: 1

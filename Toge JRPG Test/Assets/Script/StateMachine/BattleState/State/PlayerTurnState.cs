@@ -17,10 +17,15 @@ public class PlayerTurnState : BattleState
     public override void Exit()
     {
         base.Exit();
-        //HudManager.Instance.PlayerUnitChoose(false);
-        //HudManager.Instance.ActionChoice(false);
+        DisableBattleUI();
+        Debug.Log("Player Turn - Exit");
+    }
+
+    void DisableBattleUI()
+    {
+        //matikan semua kecuali battlemonitor
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, false);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
-        Debug.Log("Player Turn - Exit");
+        HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseEnemyUnit, false);
     }
 }

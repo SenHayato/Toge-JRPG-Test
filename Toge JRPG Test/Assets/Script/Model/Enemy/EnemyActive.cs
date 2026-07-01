@@ -18,6 +18,7 @@ public abstract class EnemyActive : MonoBehaviour, IDamageable
     [Header("Enemy Compoenent")]
     public Animator enemyAnimator;
     public SpriteRenderer spriteRenderer;
+    public SkillManagerSO skillManager;
 
     public event Action<int, int> OnHealthChanged;
     public virtual void Awake()

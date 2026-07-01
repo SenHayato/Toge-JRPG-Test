@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ca00fc9badd3a40ae61e9068df2a75, type: 3}
-  m_Name: Player_Heal
+  m_Name: Boss_NormalAttack
   m_EditorClassIdentifier: 
-  SkillName: Heal
+  SkillName: ' Normal Attack'
   ManaCost: 0
-  Power: 50
-  TargetType: 3
-  Animation: {fileID: 7400000, guid: 7d8f14c6bf34d8548afa37007a9bc447, type: 2}
+  Power: 30
+  TargetType: 0
+  Animation: {fileID: 7400000, guid: 3fd283a1b17fd0d49b2109647a52fe02, type: 2}
   QteType: 1
