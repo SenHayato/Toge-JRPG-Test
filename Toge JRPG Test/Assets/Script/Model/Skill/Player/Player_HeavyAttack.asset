@@ -15,6 +15,9 @@ MonoBehaviour:
   SkillName: Heavy Attack
   ManaCost: 0
   Power: 40
+  AttackNumber: 2
+  target: 1
+  skillType: 0
   TargetType: 0
   UnitPosition: 1
   Animation: {fileID: 7400000, guid: 0a1f3f1f17eb3d74e93bffba69ae5ee2, type: 2}

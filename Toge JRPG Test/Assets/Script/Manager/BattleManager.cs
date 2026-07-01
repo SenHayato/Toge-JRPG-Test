@@ -98,6 +98,65 @@ public class BattleManager : Singleton<BattleManager>
     #endregion
     #region AssignData and Target
 
+    [Header("Target to Skill")]
+    public List<CharacterUnit> target = new List<CharacterUnit>();
+    public void SkillExecute()
+    {
+        switch (selectedSkill.target)
+        {
+            case SkillTarget.Enemy:
+                foreach (EnemyActive enemy in targetEnemy)
+                {
+                    target.Add(enemy);
+                }
+                break;
+            case SkillTarget.Ally:
+                foreach (PlayerActive player in targetAlly)
+                {
+                    target.Add(player);
+                }
+                break;
+        }
+    }
+
+    //public void MoveToPosition(Transform target)
+    //{
+    //    if (selectedSkill.UnitPosition == SkillPosition.MoveToTarget)
+    //    {
+    //        Vector3 direction = (target.position - selectedUnit.transform.position).normalized;
+    //        selectedUnit.characterController.Move(direction * selectedUnit.moveSpeed * Time.deltaTime);
+    //    }
+    //}
+
+    public void SkillStart() //panggil di action state setelah animasi
+    {
+        foreach (CharacterUnit unit in target)
+        {
+            switch (selectedSkill.skillType)
+            {
+                case SkillType.Attack:
+                    unit.TakeDamage(selectedSkill.Power);
+                    break;
+                case SkillType.Heal:
+                    unit.Heal(selectedSkill.Power);
+                    break;
+                case SkillType.Mana:
+                    unit.FillMana(selectedSkill.Power);
+                    break;
+            }
+        }
+    }
+
+    //void UnitMove()
+    //{
+    //    if (selectedSkill.UnitPosition == SkillPosition.MoveToTarget)
+    //    {
+    //        Vector3 direction =
+    //            (target[0].transform.position - selectedUnit.transform.position).normalized;selectedUnit.characterController.Move(
+    //            direction * selectedUnit.moveSpeed * Time.deltaTime);
+    //    }
+    //}
+
     public void AssignData(SkillsSO skill)
     {
         selectedSkill = skill;

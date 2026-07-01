@@ -3,8 +3,8 @@ using UnityEngine;
 public class BattleSpawnerManager : Singleton<BattleSpawnerManager>
 {
     [Header("Spawn Position")]
-    [SerializeField] Transform playerSpawnPosition;
-    [SerializeField] Transform enemySpawnPosition;
+    public Transform playerSpawnPosition;
+    public Transform enemySpawnPosition;
     [SerializeField] Transform cameraSpawnPosition;
 
     [Header("Unit Reference")]

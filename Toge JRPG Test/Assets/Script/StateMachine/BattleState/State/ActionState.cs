@@ -13,15 +13,40 @@ public class ActionState : IState
     public void Enter()
     {
         battleManager.battleProgress = BattleInProgress.ActionState;
-        HudManager.Instance.OnSkillAction();
-        Debug.Log("Masuk");
+
+        Debug.Log("Masuk ActionState");
+
+        SkillsSO skill = battleManager.selectedSkill;
+
+        // ubah state
+        battleManager.selectedUnit.ChangeToAttackState(skill.AttackNumber);
+
+        // Jalankan coroutine execution
+        //battleManager.StartCoroutine(ExecuteAction(skill));
     }
+
+    //private IEnumerator ExecuteAction(SkillsSO skill)
+    //{
+    //    // tunggu animasi
+    //    //battleManager.MoveToPosition(battleManager.target[0].transform);
+    //    yield return new WaitForSeconds(skill.Animation.length);
+
+    //    // eksekusi skill
+    //    battleManager.SkillExecutor(skill);
+
+    //    // cek hasil battle
+    //    battleManager.CheckBattleResult();
+
+    //    // lanjut turn
+    //    battleManager.NextTurn();
+    //}
+
     public void Update() { }
 
     public void Exit()
     {
-        battleManager.ClearTargetData(); //reset target
-        Debug.Log("Keluar");
+        battleManager.ClearTargetData();
+        //battleManager.MoveToPosition(battleManager.target[0].transform);
+        Debug.Log("Keluar ActionState");
     }
-
 }

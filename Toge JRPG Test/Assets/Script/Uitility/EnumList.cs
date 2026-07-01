@@ -8,6 +8,16 @@ public enum SkillTargetType
     SingleEnemy, MultipleEnemy, Area, SingleAlly, Self, MultipleAlly, Guard
 }
 
+public enum SkillType
+{
+    Attack, Heal, Mana
+}
+
+public enum SkillTarget
+{
+    Ally, Enemy
+}
+
 public enum SkillPosition
 {
     Still, MoveToTarget

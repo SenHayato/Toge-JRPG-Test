@@ -15,6 +15,9 @@ MonoBehaviour:
   SkillName: ' Normal Attack'
   ManaCost: 0
   Power: 20
+  AttackNumber: 1
+  target: 1
+  skillType: 0
   TargetType: 0
   UnitPosition: 1
   Animation: {fileID: 7400000, guid: 0dff7a535f7807a478cbb5ea5b15be18, type: 2}
