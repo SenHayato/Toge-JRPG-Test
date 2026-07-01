@@ -12,9 +12,6 @@ public class PlayerState
     }
 
     public virtual void Enter() { }
-    public virtual void Update()
-    {
-        playerActive.Dead();
-    }
+    public virtual void Update() { }
     public virtual void Exit() { }
 }

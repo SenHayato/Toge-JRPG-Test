@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BossActive : MonoBehaviour, IDamageable
+public class BossActive : EnemyActive
 {
     [Header("Boss State")]
     public BossInState inState;
@@ -13,23 +13,7 @@ public class BossActive : MonoBehaviour, IDamageable
     public BossIdleState idleState;
     public BossWalkState walkState;
 
-    [Header("Boss Status")]
-    [SerializeField] EntitySO modelData;
-    public string modelName;
-    public int MaxHealth;
-    public int Health;
-    [SerializeField] int Attack;
-    [SerializeField] int Defend;
-    [SerializeField] int Mana;
-    [SerializeField] int Aggility;
-
-    [Header("Boss Compoenent")]
-    public Animator bossAnimator;
-    public SpriteRenderer spriteRenderer;
-
-    public event Action<int, int> OnHealthChanged;
-
-    private void Awake()
+    public override void Awake()
     {
         stateMachine = new BossStateMachine();
 
@@ -47,7 +31,7 @@ public class BossActive : MonoBehaviour, IDamageable
         Mana = modelData.Mana;
     }
 
-    private void Start()
+    public override void Start()
     {
         Health = MaxHealth;
         Health = Mathf.Max(0, MaxHealth);
@@ -55,13 +39,30 @@ public class BossActive : MonoBehaviour, IDamageable
         stateMachine.Initialize(idleState);
     }
 
-    private void Update()
+    public override void Update()
     {
         stateMachine.currentState.Update();
     }
 
     #region Method
-    public void Dead()
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        stateMachine.ChangeState(hurtState);
+    }
+
+    public override void Hurt()
+    {
+        Invoke(nameof(ChangeToIdle), 0.4f);
+    }
+
+    void ChangeToIdle()
+    {
+        stateMachine.ChangeState(idleState);
+    }
+
+    public override void Dead()
     {
         if (Health <= 0)
         {
@@ -71,35 +72,6 @@ public class BossActive : MonoBehaviour, IDamageable
         {
             stateMachine.ChangeState(idleState);
         }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-        stateMachine.ChangeState(hurtState);
-
-        OnHealthChanged?.Invoke(Health, MaxHealth);
-    }
-
-    public void Heal(int healValue)
-    {
-        Health += healValue;
-        OnHealthChanged?.Invoke(Health, MaxHealth);
-    }
-
-    public void FillMana(int manaValue)
-    {
-        Mana += manaValue;
-    }
-
-    public void Hurt()
-    {
-        Invoke(nameof(ChangeToIdle), 0.4f);
-    }
-
-    void ChangeToIdle()
-    {
-        stateMachine.ChangeState(idleState);
     }
     #endregion
 }

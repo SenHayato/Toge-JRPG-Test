@@ -141,7 +141,7 @@ public class PlayerActive : MonoBehaviour, IDamageable
     {
         Health -= damage;
         stateMachine.ChangeState(hurtState);
-
+        Dead();
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
 
