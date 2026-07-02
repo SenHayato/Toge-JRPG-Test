@@ -46,10 +46,10 @@ public class ChooseAction : Singleton<ChooseAction>
         selectedUnit = BattleManager.Instance.selectedUnit;
     }
 
-    void SelectSkill(PlayerActive playerUnit, SkillsSO skill)
+    public void SelectSkill(CharacterUnit unit, SkillsSO skill)
     {
         BattleManager.Instance.AssignData(skill);
-        BattleManager.Instance.AssignData(playerUnit);
+        BattleManager.Instance.AssignData(unit);
         AssignData();
 
         Debug.Log("Skill yang dipilih " + selectedSkill.SkillName);
@@ -108,12 +108,18 @@ public class ChooseAction : Singleton<ChooseAction>
         switch (skillMultipleType)
         {
             case SkillTargetType.MultipleEnemy:
-                EnemyActive[] enemy = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-                BattleManager.Instance.AssignMultipleTarget(enemy);
+                List<EnemyActive> enemies = new List<EnemyActive>(FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
+                foreach(EnemyActive enemy in enemies)
+                {
+                    BattleManager.Instance.AssignMultipleTarget(enemy);
+                }
                 break;
             case SkillTargetType.MultipleAlly:
-                PlayerActive[] player = FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-                BattleManager.Instance.AssignMultipleTarget(player);
+                List<PlayerActive> players = new List<PlayerActive>(FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
+                foreach(PlayerActive player in players)
+                {
+                    BattleManager.Instance.AssignMultipleTarget(player);
+                }
                 break;
         }
     }

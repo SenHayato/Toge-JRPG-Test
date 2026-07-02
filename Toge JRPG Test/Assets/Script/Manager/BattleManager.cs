@@ -133,10 +133,7 @@ public class BattleManager : Singleton<BattleManager>
             case SkillTarget.Ally:
                 foreach (PlayerActive player in targetAlly)
                 {
-                    if (targetAlly == null)
-                    {
-                        Debug.Log("Pemain kosong");
-                    }
+                    Debug.Log("Kena target " + player.modelName);
                     target.Add(player);
                 }
                 break;
@@ -182,7 +179,7 @@ public class BattleManager : Singleton<BattleManager>
                     unit.FillMana(selectedSkill.Power);
                     break;
                 case SkillType.Guard:
-                    unit.isGuard = true;
+                    unit.Guard();
                     break;
             }
         }
@@ -203,27 +200,19 @@ public class BattleManager : Singleton<BattleManager>
         selectedSkill = skill;
     }
 
-    public void AssignData(PlayerActive unit)
+    public void AssignData(CharacterUnit unit)
     {
         selectedUnit = unit;
     }
 
-    public void AssignMultipleTarget(EnemyActive[] units)
+    public void AssignMultipleTarget(EnemyActive unit)
     {
-        units = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        foreach(EnemyActive unit in units)
-        {
-            targetEnemy.Add(unit);
-        }
+        targetEnemy.Add(unit);
     }
 
-    public void AssignMultipleTarget(PlayerActive[] units)
+    public void AssignMultipleTarget(PlayerActive unit)
     {
-        units = FindObjectsByType<PlayerActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        foreach (PlayerActive unit in units)
-        {
-            targetAlly.Add(unit);
-        }
+        targetAlly.Add(unit);
     }
 
     public void AssignSingleTarget(PlayerActive unit)
