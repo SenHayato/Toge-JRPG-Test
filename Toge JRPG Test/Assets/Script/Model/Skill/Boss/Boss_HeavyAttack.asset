@@ -16,6 +16,7 @@ MonoBehaviour:
   ManaCost: 0
   Power: 40
   AttackNumber: 2
+  executor: 1
   target: 0
   skillType: 0
   TargetType: 5

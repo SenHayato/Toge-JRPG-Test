@@ -12,9 +12,9 @@ public class ActionState : IState
 
     public void Enter()
     {
-        ChooseAction.Instance.ButtonDestroy();
-        HudManager.Instance.OnSkillAction();
         battleManager.battleProgress = BattleInProgress.ActionState;
+        ChooseAction.Instance.ButtonDestroy();
+        //HudManager.Instance.OnSkillAction();
 
         Debug.Log("Masuk ActionState");
 
@@ -33,6 +33,7 @@ public class ActionState : IState
     public void Exit()
     {
         battleManager.ClearTargetData();
+        HudManager.Instance.OnExitAction();
         //battleManager.MoveToPosition(battleManager.target[0].transform);
         //battleManager.stateMachine.ChangeState(battleManager.checkBattle);
         Debug.Log("Keluar ActionState");

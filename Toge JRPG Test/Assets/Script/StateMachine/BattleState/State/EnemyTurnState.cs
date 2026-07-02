@@ -25,7 +25,7 @@ public class EnemyTurnState : IState
     public void Update() { }
     public void Exit()
     {
-        battleManager.enemies.Clear();
+        battleManager.enemiesTurn.Clear();
         Debug.Log("Keluar");
     }
 }

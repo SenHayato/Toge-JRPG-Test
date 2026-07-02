@@ -2777,6 +2777,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   PlayerActive: {fileID: 0}
   enemyInBattle: 0
+  QteManagerHud: {fileID: 824533181}
   flowCutscene: {fileID: 639690701}
   cutSceneBlock: Boss_Win_Outro
   targetAlly: []
@@ -9472,6 +9473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 824533182}
+  - component: {fileID: 824533183}
   m_Layer: 5
   m_Name: QTE
   m_TagString: Untagged
@@ -9501,6 +9503,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &824533183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824533181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a1ed88b02f82b43868fed0930124b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHud: {fileID: 1950640591}
+  TimerHud: {fileID: 880584150}
+  textPrompt: {fileID: 1543679413}
+  duration: 1.2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,7 +10194,7 @@ GameObject:
   - component: {fileID: 880584153}
   - component: {fileID: 880584152}
   m_Layer: 5
-  m_Name: ButtonQTE-BackPerfect
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10191,7 +10209,7 @@ RectTransform:
   m_GameObject: {fileID: 880584150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.56, y: 2.56, z: 2.56}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 824533182}
@@ -18574,9 +18592,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  confirmAction:
+    m_Name: Confirm
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1fecfd48-135e-467f-b0c5-7442918e2173
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playerActive: {fileID: 0}
   gameManager: {fileID: 1772322149}
   dialogInput: {fileID: 207517571}
+  qteManager: {fileID: 824533183}
 --- !u!114 &1772322149
 MonoBehaviour:
   m_ObjectHideFlags: 0

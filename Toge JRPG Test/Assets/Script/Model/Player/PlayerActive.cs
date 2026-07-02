@@ -81,7 +81,7 @@ public class PlayerActive : CharacterUnit
     #region PlayerLogic
     public override void Movement()
     {
-        Vector2 movePosition = moveValue * moveSpeed * Time.deltaTime;
+        Vector2 movePosition = moveSpeed * Time.deltaTime * moveValue;
         Vector3 moveDirection = new(movePosition.x, 0f, movePosition.y);
         characterController.Move(moveDirection);
     }
@@ -100,7 +100,7 @@ public class PlayerActive : CharacterUnit
     {
         verticalVelocity += gravity * Time.deltaTime;
 
-        characterController.Move(Vector3.down * verticalVelocity * Time.deltaTime);
+        characterController.Move(Time.deltaTime * verticalVelocity * Vector3.down);
     }
 
     public override void ChangeToAttackState(int attackNum)

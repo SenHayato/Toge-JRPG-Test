@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 public class InputActive : Singleton<InputActive>
 {
     [SerializeField] PlayerInput playerInput;
-    public InputAction moveAction, interactAction, pauseAction, runAction;
+    public InputAction moveAction, interactAction, pauseAction, runAction, confirmAction;
 
     [Header("Reference")]
     [SerializeField] PlayerActive playerActive;
     [SerializeField] GameManager gameManager;
     [SerializeField] DialogInput dialogInput;
+    [SerializeField] QTEManager qteManager;
 
     public override void Awake()
     {
@@ -19,6 +20,7 @@ public class InputActive : Singleton<InputActive>
         interactAction = playerInput.actions.FindAction("Interaction");
         pauseAction = playerInput.actions.FindAction("Pause");
         runAction = playerInput.actions.FindAction("Run");
+        confirmAction = playerInput.actions.FindAction("Confirm");
     }
 
     private void Start()
@@ -90,10 +92,22 @@ public class InputActive : Singleton<InputActive>
         }
     }
 
+    public void QteConfirm()
+    {
+        if (confirmAction.triggered)
+        {
+            qteManager.OnConfirm();
+        }
+    }
+
     private void Update()
     {
         MoveHandler();
         Interaction();
         PauseButton();
+        if (qteManager.IsRunning)
+        {
+            QteConfirm();
+        }
     }
 }

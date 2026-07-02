@@ -44,17 +44,19 @@ public class HudManager : Singleton<HudManager>
         HideHud(ExplorationHud);
     }
 
-    public void OnSkillAction()
+    public void OnExitAction()
     {
         ChooseEnemyUnit.SetActive(false);
         ChooseAction.SetActive(false);
         ChoosePlayerUnit.SetActive(false);
-        QteHud.SetActive(true);
+        QteHud.SetActive(false);
     }
 
     public void OnPlayerTurn()
     {
         ChoosePlayerUnit.SetActive(true);
+        ChooseEnemyUnit.SetActive(false);
+        ChooseAction.SetActive(false);
     }
     #endregion
 

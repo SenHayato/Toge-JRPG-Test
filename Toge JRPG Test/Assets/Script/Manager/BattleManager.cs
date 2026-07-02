@@ -25,6 +25,7 @@ public class BattleManager : Singleton<BattleManager>
     public CharacterUnit selectedUnit;
     public PlayerActive PlayerActive;
     public int enemyInBattle;
+    public GameObject QteManagerHud;
 
     [Header("Flowcahrt")]
     [SerializeField] Flowchart flowCutscene;
@@ -126,7 +127,7 @@ public class BattleManager : Singleton<BattleManager>
 
     [Header("Target to Skill")]
     public List<CharacterUnit> target = new List<CharacterUnit>();
-    public void SkillExecute()
+    public void TargetAssign()
     {
         switch (selectedSkill.target)
         {
@@ -151,10 +152,24 @@ public class BattleManager : Singleton<BattleManager>
     {
         // tunggu animasi
         //battleManager.MoveToPosition(battleManager.target[0].transform);
-        SkillExecute();
+        TargetAssign();
+        //yield return new WaitForSeconds(0.5f);
+
+        if (skill.QteType != QTEType.NoNeed)
+        {
+            QteManagerHud.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+
+            QTEManager.Instance.StartQTE();
+
+            yield return new WaitUntil(() => !QTEManager.Instance.IsRunning);
+
+            Debug.Log("Qte hasil " + QTEManager.Instance.Result);
+            ApplySkillEffect(selectedSkill, QTEManager.Instance.Result);
+            QteManagerHud.SetActive(false);
+        }
+
         yield return new WaitForSeconds(skill.Animation.length);
-        SkillStart();
-        yield return new WaitForSeconds(2f);
         // cek hasil battle
         target.Clear();
         stateMachine.ChangeState(checkBattle);
@@ -169,26 +184,69 @@ public class BattleManager : Singleton<BattleManager>
     //    }
     //}
 
-    public void SkillStart() //panggil di action state setelah animasi
+    public void SkillStart(int valueAdd) //panggil di action state setelah animasi
     {
         foreach (CharacterUnit unit in target)
         {
             switch (selectedSkill.skillType)
             {
                 case SkillType.Attack:
-                    unit.TakeDamage(selectedSkill.Power);
+                    unit.TakeDamage(selectedSkill.Power * valueAdd);
                     break;
                 case SkillType.Heal:
-                    unit.Heal(selectedSkill.Power);
+                    unit.Heal(selectedSkill.Power * valueAdd);
                     break;
                 case SkillType.Mana:
-                    unit.FillMana(selectedSkill.Power);
+                    unit.FillMana(selectedSkill.Power * valueAdd);
                     break;
                 case SkillType.Guard:
                     unit.Guard();
                     break;
             }
         }
+    }
+
+    int multiplier;
+    void ApplySkillEffect(SkillsSO skill, QTEResult result)
+    {
+        if (skill.QteType != QTEType.NoNeed)
+        {
+            if (skill.executor == SkillExecutor.Ally)
+            {
+                switch (result)
+                {
+                    case QTEResult.Perfect:
+                        multiplier = 3;
+                        break;
+
+                    case QTEResult.Good:
+                        multiplier = 2;
+                        break;
+
+                    case QTEResult.Failed:
+                        multiplier = 1;
+                        break;
+                }
+            }
+            else
+            {
+                switch (result)
+                {
+                    case QTEResult.Perfect:
+                        multiplier = 0;
+                        break;
+
+                    case QTEResult.Good:
+                        multiplier = 1;
+                        break;
+
+                    case QTEResult.Failed:
+                        multiplier = 1;
+                        break;
+                }
+            }
+        }
+        SkillStart(multiplier);
     }
 
     //void UnitMove()
@@ -270,12 +328,12 @@ public class BattleManager : Singleton<BattleManager>
         }
     }
 
-    public List<EnemyActive> enemies;
+    public List<EnemyActive> enemiesTurn;
     public void GetEnemyOnTurn()
     {
-        enemies = new List<EnemyActive>(FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
-        int randomEnemy = Random.Range(0, enemies.Count);
-        selectedUnit = enemies[randomEnemy];
+        enemiesTurn = new List<EnemyActive>(FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
+        int randomEnemy = Random.Range(0, enemiesTurn.Count);
+        selectedUnit = enemiesTurn[randomEnemy];
 
         int randomSkill = Random.Range(0, selectedUnit.skillManager.skills.Count);
         selectedSkill = selectedUnit.skillManager.skills[randomSkill];

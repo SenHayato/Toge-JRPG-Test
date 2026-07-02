@@ -18,6 +18,11 @@ public enum SkillTarget
     Ally, Enemy
 }
 
+public enum SkillExecutor
+{
+    Ally, Enemy
+}
+
 public enum SkillPosition
 {
     Still, MoveToTarget
@@ -41,4 +46,9 @@ public enum CharactherInState
 public enum BattleInProgress
 {
     BattleStart, PlayerTurn, EnemyTurn, ActionState, Victory, Defeat, BattleEnd, CheckBattle
+}
+
+public enum QTEResult
+{
+    None, Failed, Good, Perfect
 }

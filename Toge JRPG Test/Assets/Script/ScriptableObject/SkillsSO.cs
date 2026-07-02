@@ -7,6 +7,7 @@ public class SkillsSO : ScriptableObject
     public int ManaCost;
     public int Power;
     public int AttackNumber;
+    public SkillExecutor executor;
     public SkillTarget target;
     public SkillType skillType; 
     public SkillTargetType TargetType;
