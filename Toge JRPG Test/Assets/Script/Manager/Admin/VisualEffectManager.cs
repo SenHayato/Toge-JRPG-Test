@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class VisualEffectManager : Singleton<VisualEffectManager>
@@ -29,8 +30,10 @@ public class VisualEffectManager : Singleton<VisualEffectManager>
         Instantiate(prefab, position, Quaternion.identity);
     }
 
-    public void CamereShake()
+    public void Shake()
     {
+        DOTween.Kill(mainCamera);
 
+        mainCamera.DOShakePosition(0.3f, 0.2f);
     }
 }

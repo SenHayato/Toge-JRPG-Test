@@ -132,6 +132,7 @@ public class PlayerActive : CharacterUnit
 
     public override void TakeDamage(int damage)
     {
+        VisualEffectManager.Instance.Shake();
         if (!gameManager.testing)
         {
             if (isGuard)
