@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,30 +9,34 @@ public class QTEManager : Singleton<QTEManager>
     public GameObject TimerHud;
     public TextMeshProUGUI textPrompt;
 
+    private float timer;
+    [SerializeField] float duration;
     public bool IsRunning { get; private set; }
     public QTEResult Result { get; private set; }
 
-    [SerializeField] float duration;
-    private float timer;
-    private Vector3 normalScale = Vector3.one;
+    [SerializeField] Vector3 scaleSize = new(2.5f, 2.5f, 2.5f);
+    [SerializeField] Vector3 normalScale = Vector3.one;
+
+    private bool finished;
 
     private void OnEnable()
     {
-        TimerHud.transform.localScale = new(2.5f, 2.5f, 2.5f);
+        TimerHud.transform.localScale = scaleSize;
     }
 
     public void StartQTE()
     {
         timer = 0;
-        UiTimer();
-        Result = QTEResult.None;
 
+        Result = QTEResult.None;
+        UiTimer();
         IsRunning = true;
+        finished = false;
     }
 
     private void Update()
     {
-        if (!IsRunning)
+        if (!IsRunning || finished)
             return;
 
         timer += Time.deltaTime;
@@ -44,25 +49,53 @@ public class QTEManager : Singleton<QTEManager>
 
     public void UiTimer()
     {
-        TimerHud.transform.DOScale(normalScale, duration - 0.5f).SetEase(Ease.Linear);
+        StartCoroutine(TimerRoutine());
+    }
+
+    IEnumerator TimerRoutine()
+    {
+        while (IsRunning)
+        {
+            float progress = timer / duration;
+            TimerHud.transform.localScale = Vector3.Lerp(scaleSize, normalScale, progress);
+            yield return null;
+        }
+
+        TimerHud.transform.localScale = Vector3.zero;
     }
 
     public void OnConfirm()
     {
-        if (!IsRunning)
+        if (!IsRunning || finished)
             return;
 
-        FinishQTE(QTEResult.Perfect);
+        float progress = timer / duration;
+
+        if (progress < 0.3f)
+        {
+            FinishQTE(QTEResult.Perfect);
+        }
+        else if (progress < 0.7f)
+        {
+            FinishQTE(QTEResult.Good);
+        }
+        else
+        {
+            FinishQTE(QTEResult.Failed);
+        }
     }
 
     private void FinishQTE(QTEResult result)
     {
+        if (finished) return;
+
+        finished = true;
         Result = result;
         IsRunning = false;
     }
 
     private void OnDisable()
     {
-        DOTween.Kill(TimerHud.transform);
+        StopCoroutine(TimerRoutine());
     }
 }

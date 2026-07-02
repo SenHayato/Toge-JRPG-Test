@@ -2784,7 +2784,7 @@ MonoBehaviour:
   targetEnemy: []
   target: []
   wasTurn: 0
-  enemies: []
+  enemiesTurn: []
 --- !u!114 &301905811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5746,10 +5746,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 639690762}
-  selectedCommands:
-  - {fileID: 639690764}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -8136,7 +8134,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &639690796
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9518,7 +9516,9 @@ MonoBehaviour:
   ButtonHud: {fileID: 1950640591}
   TimerHud: {fileID: 880584150}
   textPrompt: {fileID: 1543679413}
-  duration: 1.2
+  duration: 1.3
+  scaleSize: {x: 2.5, y: 2.5, z: 2.5}
+  normalScale: {x: 1, y: 1, z: 1}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
