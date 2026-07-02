@@ -165,7 +165,7 @@ public class BattleManager : Singleton<BattleManager>
             }
             yield return new WaitForSeconds(0.5f);
 
-            QTEManager.Instance.StartQTE();
+            QTEManager.Instance.StartQTE(skill.QteType);
 
             yield return new WaitUntil(() => !QTEManager.Instance.IsRunning);
 

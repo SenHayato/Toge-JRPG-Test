@@ -16,9 +16,10 @@ MonoBehaviour:
   ManaCost: 0
   Power: 100
   AttackNumber: 3
+  executor: 0
   target: 1
   skillType: 0
   TargetType: 1
   UnitPosition: 1
   Animation: {fileID: 7400000, guid: d7641d020f099554ca3175ebdf69bb4d, type: 2}
-  QteType: 1
+  QteType: 0

@@ -11,6 +11,8 @@ public class QTEManager : Singleton<QTEManager>
 
     [SerializeField] float timer;
     [SerializeField] float duration;
+    [SerializeField] int mashCount;
+    [SerializeField] int targetMash;
     public bool IsRunning { get; private set; }
     public QTEResult Result { get; private set; }
 
@@ -24,10 +26,12 @@ public class QTEManager : Singleton<QTEManager>
         TimerHud.transform.localScale = scaleSize;
     }
 
-    public void StartQTE()
+    [SerializeField] QTEType currentQte;
+
+    public void StartQTE(QTEType type)
     {
         timer = 0;
-
+        currentQte = type;
         Result = QTEResult.None;
         UiTimer();
         IsRunning = true;
@@ -43,29 +47,41 @@ public class QTEManager : Singleton<QTEManager>
 
         if (timer >= duration)
         {
-            FinishQTE(QTEResult.Failed);
+            EvaluateResult();
         }
     }
 
     public void UiTimer()
     {
-        //StartCoroutine(TimerRoutine());
         TimerHud.transform.DOScale(normalScale, duration - 0.5f).SetEase(Ease.Linear);
     }
 
-    //IEnumerator TimerRoutine()
-    //{
-    //    while (IsRunning)
-    //    {
-    //        float progress = timer / duration;
-    //        TimerHud.transform.localScale = Vector3.Lerp(scaleSize, normalScale, progress);
-    //        yield return null;
-    //    }
-
-    //    TimerHud.transform.localScale = Vector3.zero;
-    //}
-
     public void OnConfirm()
+    {
+        if (!IsRunning)
+            return;
+
+        if (currentQte == QTEType.Mash)
+        {
+            mashCount++;
+        }
+        else if (currentQte == QTEType.Time)
+        {
+            EvaluateTimeBased();
+        }
+    }
+
+    public void MashQte()
+    {
+        mashCount++;
+
+        if (mashCount >= targetMash)
+        {
+            FinishQTE(QTEResult.Perfect);
+        }
+    }
+
+    public void EvaluateTimeBased()
     {
         if (!IsRunning || finished)
             return;
@@ -77,6 +93,29 @@ public class QTEManager : Singleton<QTEManager>
         else if (timer > 0 && timer < 0.79f)
         {
             FinishQTE(QTEResult.Good);
+        }
+        else
+        {
+            FinishQTE(QTEResult.Failed);
+        }
+    }
+
+    private void EvaluateResult()
+    {
+        if (currentQte == QTEType.Mash)
+        {
+            if (mashCount >= targetMash)
+            {
+                FinishQTE(QTEResult.Perfect);
+            }
+            else if (mashCount >= targetMash * 0.6f)
+            {
+                FinishQTE(QTEResult.Good);
+            }
+            else
+            {
+                FinishQTE(QTEResult.Failed);
+            }
         }
         else
         {
