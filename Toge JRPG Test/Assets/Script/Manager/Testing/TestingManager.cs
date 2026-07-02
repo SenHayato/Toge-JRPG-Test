@@ -63,7 +63,8 @@ public class TestingManager : MonoBehaviour
         {
             foreach (EnemyActive enemy in enemyActives)
             {
-                enemy.Health = 1;
+                enemy.Health = 0;
+                enemy.TakeDamage(1000);
             }
         }
     }

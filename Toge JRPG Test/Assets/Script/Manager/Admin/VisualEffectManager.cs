@@ -1,10 +1,14 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class VisualEffectManager : Singleton<VisualEffectManager>
 {
     public VisualEffectSO visualLibrary;
     [SerializeField] Camera mainCamera;
+    public Transform parentSpawnText;
+    public GameObject textMesh;
+    TextMeshProUGUI textMeshProUGUI;
 
     private void Start()
     {

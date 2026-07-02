@@ -12,7 +12,8 @@ public class MoveState : IState
     public void Enter()
     {
         unit.inState = CharactherInState.Move;
-        unit.PlayWalkSound();
+        unit.isMoving = true;
+        //unit.PlayWalkSound();
         unit.charAnimator.SetBool("IsMove", true);
         unit.charAnimator.SetBool("IsIdle", false);
     }
@@ -31,6 +32,7 @@ public class MoveState : IState
 
     public void Exit()
     {
+        unit.isMoving = false;
         unit.charAnimator.SetBool("IsMove", false);
         unit.charAnimator.SetBool("IsRun", false);
     }

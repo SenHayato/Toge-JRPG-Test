@@ -24,6 +24,7 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
     public int Aggility;
     public bool isRunning = false;
     public bool isGuard = false;
+    public bool isMoving;
 
     [Header("Compoenent")]
     public Animator charAnimator;

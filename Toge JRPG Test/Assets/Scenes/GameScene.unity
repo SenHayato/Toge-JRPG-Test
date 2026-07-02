@@ -375,6 +375,7 @@ MonoBehaviour:
   Aggility: 0
   isRunning: 0
   isGuard: 0
+  isMoving: 0
   charAnimator: {fileID: 103398067}
   spriteRenderer: {fileID: 103398065}
   skillManager: {fileID: 11400000, guid: d795b25d827ae094785693d5f5abc348, type: 2}
@@ -833,6 +834,7 @@ GameObject:
   - component: {fileID: 103398066}
   - component: {fileID: 103398065}
   - component: {fileID: 103398067}
+  - component: {fileID: 103398068}
   m_Layer: 3
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -932,6 +934,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &103398068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103398064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb53f0967b815c4cb1a7d3151a3701b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &110483351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1402,7 @@ MonoBehaviour:
   Aggility: 0
   isRunning: 0
   isGuard: 0
+  isMoving: 0
   charAnimator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   skillManager: {fileID: 0}
@@ -3999,6 +4014,7 @@ MonoBehaviour:
   Aggility: 0
   isRunning: 0
   isGuard: 0
+  isMoving: 0
   charAnimator: {fileID: 110483354}
   spriteRenderer: {fileID: 110483352}
   skillManager: {fileID: 11400000, guid: 89adb4eb7f4a32544b18a8006767ab74, type: 2}
@@ -12948,7 +12964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1228067857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13881,7 +13897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 639690701}
+  selectedFlowchart: {fileID: 1450083779}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1
@@ -22685,6 +22701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualLibrary: {fileID: 11400000, guid: a51e6b98428a9ae42b01733f9bc1c489, type: 2}
   mainCamera: {fileID: 0}
+  parentSpawnText: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!1 &2102828822
 GameObject:
   m_ObjectHideFlags: 0

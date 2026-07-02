@@ -32,13 +32,13 @@ public class PlayerActive : CharacterUnit
         base.OnEnable();
         Health = MaxHealth;
         Health = Mathf.Max(0, MaxHealth);
-        StartCoroutine(PlayWalk());
     }
 
     public override void Start()
     {
         base.Start();
         stateMachine.ChangeState(idleState);
+        StartCoroutine(PlayWalk());
 
         gameManager = FindFirstObjectByType<GameManager>();
         inputActive = FindFirstObjectByType<InputActive>();
@@ -166,10 +166,11 @@ public class PlayerActive : CharacterUnit
 
     IEnumerator PlayWalk()
     {
-        while (moveValue != Vector2.zero)
+        while (isMoving)
         {
             AudioManager.Instance.PlaySound(SoundType.Walk, false);
-            yield return new WaitForSeconds(0.1f);
+
+            yield return new WaitForSeconds(0.35f); // interval langkah
         }
     }
 
