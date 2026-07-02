@@ -133,6 +133,10 @@ public class BattleManager : Singleton<BattleManager>
             case SkillTarget.Ally:
                 foreach (PlayerActive player in targetAlly)
                 {
+                    if (targetAlly == null)
+                    {
+                        Debug.Log("Pemain kosong");
+                    }
                     target.Add(player);
                 }
                 break;
@@ -147,7 +151,9 @@ public class BattleManager : Singleton<BattleManager>
         SkillExecute();
         yield return new WaitForSeconds(skill.Animation.length);
         SkillStart();
+        yield return new WaitForSeconds(2f);
         // cek hasil battle
+        target.Clear();
         stateMachine.ChangeState(checkBattle);
     }
 
@@ -273,6 +279,11 @@ public class BattleManager : Singleton<BattleManager>
     public void GetEnemyOnTurn()
     {
         enemies = new List<EnemyActive>(FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
+        int randomEnemy = Random.Range(0, enemies.Count);
+        selectedUnit = enemies[randomEnemy];
+
+        int randomSkill = Random.Range(0, selectedUnit.skillManager.skills.Count);
+        selectedSkill = selectedUnit.skillManager.skills[randomSkill];
     }
     #endregion
 }

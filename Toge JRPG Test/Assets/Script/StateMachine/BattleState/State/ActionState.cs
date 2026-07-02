@@ -18,6 +18,7 @@ public class ActionState : IState
         Debug.Log("Masuk ActionState");
 
         SkillsSO skill = battleManager.selectedSkill;
+        Debug.Log("Selected skill " + skill.name);
 
         // ubah state
         battleManager.selectedUnit.ChangeToAttackState(skill.AttackNumber);
@@ -25,22 +26,6 @@ public class ActionState : IState
         // Jalankan coroutine execution
         battleManager.StartCoroutine(battleManager.ExecuteSkill(skill));
     }
-
-    //public IEnumerator ExecuteAction(SkillsSO skill)
-    //{
-    //    // tunggu animasi
-    //    //battleManager.MoveToPosition(battleManager.target[0].transform);
-    //    yield return new WaitForSeconds(skill.Animation.length);
-
-    //    // eksekusi skill
-    //    battleManager.SkillExecutor(skill);
-
-    //    // cek hasil battle
-    //    battleManager.CheckBattleResult();
-
-    //    // lanjut turn
-    //    battleManager.NextTurn();
-    //}
 
     public void Update() { }
 

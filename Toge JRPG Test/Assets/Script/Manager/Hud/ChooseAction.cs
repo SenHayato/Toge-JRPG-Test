@@ -68,6 +68,10 @@ public class ChooseAction : Singleton<ChooseAction>
                 ExecuteSelf(selectedUnit); // langsung eksekusi
                 break;
 
+            case SkillTargetType.Guard:
+                ExecuteSelf(selectedUnit); // langsung eksekusi
+                break;
+
             case SkillTargetType.MultipleEnemy:
                 MultipleTargetSkill(SkillTargetType.MultipleEnemy); // nanti di ActionState
                 BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);

@@ -15,15 +15,17 @@ public class EnemyTurnState : IState
     {
         battleManager.battleProgress = BattleInProgress.EnemyTurn;
         battleManager.wasTurn = BattleInProgress.EnemyTurn;
-
+        //battleManager.targetAlly 
         //checkEnemy lagi
         battleManager.GetEnemyOnTurn();
+        BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);
         Debug.Log("Masuk");
     }
 
     public void Update() { }
     public void Exit()
     {
+        battleManager.enemies.Clear();
         Debug.Log("Keluar");
     }
 }
