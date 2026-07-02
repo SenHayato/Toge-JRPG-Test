@@ -3,7 +3,12 @@ using UnityEngine;
 public class VisualEffectManager : Singleton<VisualEffectManager>
 {
     public VisualEffectSO visualLibrary;
+    [SerializeField] Camera mainCamera;
 
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
     GameObject GetEffect(VisualType type)
     {
         VisualEffect effect = visualLibrary.effects.Find(e => e.VisualType == type);
@@ -22,5 +27,10 @@ public class VisualEffectManager : Singleton<VisualEffectManager>
         }
 
         Instantiate(prefab, position, Quaternion.identity);
+    }
+
+    public void CamereShake()
+    {
+
     }
 }
