@@ -288,7 +288,7 @@
                 {
                     "name": "",
                     "id": "32299496-63b5-49f1-bdc1-48c0d0033167",
-                    "path": "<Keyboard>/numpad3",
+                    "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -299,7 +299,7 @@
                 {
                     "name": "",
                     "id": "b0b53e60-173f-4a5e-bb0f-2d3b8b20aff0",
-                    "path": "<Keyboard>/numpad4",
+                    "path": "<Keyboard>/numpad3",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
