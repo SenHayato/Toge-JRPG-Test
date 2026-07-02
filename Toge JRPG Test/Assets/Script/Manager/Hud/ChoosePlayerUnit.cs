@@ -83,6 +83,7 @@ public class ChoosePlayerUnit : Singleton<ChoosePlayerUnit>
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
         isAllyTarget = false;
         backButton.SetActive(false);
+        ChooseAction.Instance.ButtonDestroy();
     }
 
     public void ChooseUnitButton()

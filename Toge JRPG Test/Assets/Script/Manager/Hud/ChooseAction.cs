@@ -14,7 +14,7 @@ public class ChooseAction : Singleton<ChooseAction>
 
     //}
 
-    List<GameObject> buttonList = new List<GameObject>();
+    [SerializeField] List<GameObject> buttonList = new List<GameObject>();
 
     public void SpawnSkillButton(PlayerActive unit)
     {
@@ -132,11 +132,14 @@ public class ChooseAction : Singleton<ChooseAction>
 
     public void ButtonDestroy()
     {
-        foreach (GameObject btn in buttonList)
+        if (buttonList != null)
         {
-            Destroy(btn);
+            foreach (GameObject btn in buttonList)
+            {
+                Destroy(btn);
+            }
+            buttonList.Clear();
         }
-        buttonList.Clear();
     }
 
     public void BackToUnit()
