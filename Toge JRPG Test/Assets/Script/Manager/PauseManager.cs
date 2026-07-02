@@ -8,6 +8,12 @@ public class PauseManager : Singleton<PauseManager>
     [SerializeField] GameObject pauseMenu;
     public bool isPaused;
     [SerializeField] string MainMenuScene;
+    [SerializeField] GameObject finish;
+
+    private void Start()
+    {
+        finish.SetActive(false);
+    }
 
     public void PauseEnable()
     {
@@ -21,6 +27,11 @@ public class PauseManager : Singleton<PauseManager>
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void GameFinished()
+    {
+        finish.SetActive(true);
     }
 
     //Pause Button

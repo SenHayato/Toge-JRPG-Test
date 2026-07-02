@@ -1,7 +1,9 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : Singleton<BattleManager>
 {
@@ -23,6 +25,10 @@ public class BattleManager : Singleton<BattleManager>
     public CharacterUnit selectedUnit;
     public PlayerActive PlayerActive;
     public int enemyInBattle;
+
+    [Header("Flowcahrt")]
+    [SerializeField] Flowchart flowCutscene;
+    [SerializeField] string cutSceneBlock;
 
     [Header("Target Monitor")]
     public List<PlayerActive> targetAlly = new List<PlayerActive>();
@@ -275,6 +281,21 @@ public class BattleManager : Singleton<BattleManager>
         selectedSkill = selectedUnit.skillManager.skills[randomSkill];
 
         ChooseAction.Instance.SelectSkill(selectedUnit, selectedSkill);
+    }
+
+    public void Defeat()
+    {
+        BackToMenu();
+    }
+
+    public void Victory()
+    {
+        flowCutscene.ExecuteBlock(cutSceneBlock);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadSceneAsync("MenuScene");
     }
     #endregion
 }

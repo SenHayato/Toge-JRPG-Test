@@ -12,6 +12,7 @@ public class DefeatState : IState
     public void Enter()
     {
         battleManager.battleProgress = BattleInProgress.Defeat;
+        battleManager.Defeat();
         //lempar ke main menu
         Debug.Log("Masuk");
     }
