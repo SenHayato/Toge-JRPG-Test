@@ -12,6 +12,7 @@ public class EnemyTurnState : IState
     public void Enter()
     {
         battleManager.battleProgress = BattleInProgress.EnemyTurn;
+        battleManager.wasTurn = BattleInProgress.EnemyTurn;
         Debug.Log("Masuk");
     }
 

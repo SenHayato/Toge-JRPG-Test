@@ -17,7 +17,7 @@ MonoBehaviour:
   Power: 100
   AttackNumber: 0
   target: 1
-  skillType: 0
+  skillType: 1
   TargetType: 0
   UnitPosition: 0
   Animation: {fileID: 7400000, guid: 631ca4025678edb4e91991406cb885d8, type: 2}

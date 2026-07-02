@@ -22,10 +22,10 @@ public class ActionState : IState
         battleManager.selectedUnit.ChangeToAttackState(skill.AttackNumber);
 
         // Jalankan coroutine execution
-        //battleManager.StartCoroutine(ExecuteAction(skill));
+        battleManager.StartCoroutine(battleManager.ExecuteSkill(skill));
     }
 
-    //private IEnumerator ExecuteAction(SkillsSO skill)
+    //public IEnumerator ExecuteAction(SkillsSO skill)
     //{
     //    // tunggu animasi
     //    //battleManager.MoveToPosition(battleManager.target[0].transform);
@@ -47,7 +47,7 @@ public class ActionState : IState
     {
         battleManager.ClearTargetData();
         //battleManager.MoveToPosition(battleManager.target[0].transform);
-        battleManager.stateMachine.ChangeState(battleManager.checkBattle);
+        //battleManager.stateMachine.ChangeState(battleManager.checkBattle);
         Debug.Log("Keluar ActionState");
     }
 }

@@ -12,6 +12,7 @@ public class VictoryState : IState
     public void Enter()
     {
         battleManager.battleProgress = BattleInProgress.Victory;
+        //jalankan cutscene akhir
         Debug.Log("Masuk");
     }
 

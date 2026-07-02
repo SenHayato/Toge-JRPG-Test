@@ -56,7 +56,8 @@ public abstract class EnemyActive : CharacterUnit
         {
             Health -= damage;
         }
-            base.TakeDamage(damage);
+        Dead();
+        base.TakeDamage(damage);
         //Ubah state di script turunan masing-masing
     }
 
@@ -80,5 +81,13 @@ public abstract class EnemyActive : CharacterUnit
         stateMachine.ChangeState(idleState);
     }
 
-    public override void Dead() { }
+    public override void Dead()
+    {
+        base.Dead();
+        if (Health <= 0)
+        {
+            stateMachine.ChangeState(deadState);
+            BattleManager.Instance.EnemyCountDown();
+        }
+    }
 }

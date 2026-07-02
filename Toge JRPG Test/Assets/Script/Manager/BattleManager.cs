@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class BattleManager : Singleton<BattleManager>
     public SkillsSO selectedSkill;
     public CharacterUnit selectedUnit;
     public PlayerActive PlayerActive;
-    public EnemyActive[] enemyActives;
+    public int enemyInBattle;
 
     [Header("Target Monitor")]
     public List<PlayerActive> targetAlly = new List<PlayerActive>();
@@ -64,9 +65,21 @@ public class BattleManager : Singleton<BattleManager>
     #region Method
     public void SetUpBattle()
     {
-        enemyActives = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        enemyInBattle = FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length;
         BattleSpawnerManager.Instance.AssignComponent();
         BattleSpawnerManager.Instance.SpawnUnit();
+    }
+
+    //panggil jika enemy spawn baru di tengah battle
+    public void EnemyCountUp()
+    {
+        enemyInBattle++;
+    }
+
+    //panggil ketika HP musuh 0
+    public void EnemyCountDown()
+    {
+        enemyInBattle--;
     }
 
     public void BattleStartToPlayerTurn()
@@ -124,6 +137,18 @@ public class BattleManager : Singleton<BattleManager>
                 }
                 break;
         }
+    }
+
+    //panggil di ActionState
+    public IEnumerator ExecuteSkill(SkillsSO skill)
+    {
+        // tunggu animasi
+        //battleManager.MoveToPosition(battleManager.target[0].transform);
+        SkillExecute();
+        yield return new WaitForSeconds(skill.Animation.length);
+        SkillStart();
+        // cek hasil battle
+        stateMachine.ChangeState(checkBattle);
     }
 
     //public void MoveToPosition(Transform target)
@@ -215,17 +240,30 @@ public class BattleManager : Singleton<BattleManager>
         }
     }
 
+    public BattleInProgress wasTurn;
+
     public void CheckBattle()
     {
-        //if (PlayerActive.Health <= 0)
-        //{
-        //    PlayerActive.stateMachine.ChangeState(PlayerActive.deadState);
-        //    stateMachine.ChangeState(defeatState);
-        //}
-        //else
-        //{
-        //    stateMachine.ChangeState(defeatState);
-        //}
+        if (PlayerActive.Health <= 0)
+        {
+            PlayerActive.stateMachine.ChangeState(PlayerActive.deadState);
+            stateMachine.ChangeState(defeatState);
+        }
+        else if (enemyInBattle <= 0)
+        {
+            stateMachine.ChangeState(victoryState);
+        }
+        else
+        {
+            if (wasTurn == BattleInProgress.PlayerTurn)
+            {
+                stateMachine.ChangeState(enemyTurn);
+            }
+            else if (wasTurn == BattleInProgress.EnemyTurn)
+            {
+                stateMachine.ChangeState(playerTurn);
+            }
+        }
     }
     #endregion
 }

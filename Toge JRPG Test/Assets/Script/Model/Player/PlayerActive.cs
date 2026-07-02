@@ -141,7 +141,17 @@ public class PlayerActive : CharacterUnit
                 Health -= damage;
             }
         }
+        Dead();
         base.TakeDamage(damage);
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        if (Health <= 0)
+        {
+            stateMachine.ChangeState(deadState);
+        }
     }
     #endregion
 

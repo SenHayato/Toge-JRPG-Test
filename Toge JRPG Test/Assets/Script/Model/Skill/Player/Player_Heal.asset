@@ -15,6 +15,10 @@ MonoBehaviour:
   SkillName: Heal
   ManaCost: 0
   Power: 50
+  AttackNumber: 0
+  target: 0
+  skillType: 1
   TargetType: 3
+  UnitPosition: 0
   Animation: {fileID: 7400000, guid: 7d8f14c6bf34d8548afa37007a9bc447, type: 2}
   QteType: 1
