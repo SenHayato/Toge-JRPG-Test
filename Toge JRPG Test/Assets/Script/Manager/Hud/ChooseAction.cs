@@ -124,17 +124,12 @@ public class ChooseAction : Singleton<ChooseAction>
         }
     }
 
-    void ButtonDestroy()
+    public void ButtonDestroy()
     {
         foreach (GameObject btn in buttonList)
         {
             Destroy(btn);
         }
-    }
-
-    private void OnDisable()
-    {
-        ButtonDestroy();
         buttonList.Clear();
     }
 
@@ -144,5 +139,6 @@ public class ChooseAction : Singleton<ChooseAction>
         //    HudManager.Instance.ActionChoice(false);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChooseAction, false);
+        ButtonDestroy();
     }
 }

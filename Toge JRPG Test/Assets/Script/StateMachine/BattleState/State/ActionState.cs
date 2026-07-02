@@ -12,6 +12,7 @@ public class ActionState : IState
 
     public void Enter()
     {
+        ChooseAction.Instance.ButtonDestroy();
         HudManager.Instance.OnSkillAction();
         battleManager.battleProgress = BattleInProgress.ActionState;
 

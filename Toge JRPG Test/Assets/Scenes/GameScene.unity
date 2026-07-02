@@ -2737,6 +2737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301905809}
   - component: {fileID: 301905810}
+  - component: {fileID: 301905811}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -2774,8 +2775,29 @@ MonoBehaviour:
   battleProgress: 0
   selectedSkill: {fileID: 0}
   selectedUnit: {fileID: 0}
+  PlayerActive: {fileID: 0}
+  enemyInBattle: 0
   targetAlly: []
   targetEnemy: []
+  target: []
+  wasTurn: 0
+  enemies: []
+--- !u!114 &301905811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301905808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822e387a927fad74f8dbcb2c2248f902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefabs: {fileID: 8514079124740359672, guid: d3d7d11a6c9e5da428b1a513b8615de0, type: 3}
+  buttonSpawner: {fileID: 366904272}
+  selectedSkill: {fileID: 0}
+  selectedUnit: {fileID: 0}
 --- !u!1 &305300029
 GameObject:
   m_ObjectHideFlags: 0
@@ -9535,7 +9557,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 836882934}
-  - component: {fileID: 836882935}
   m_Layer: 5
   m_Name: ChooseAction
   m_TagString: Untagged
@@ -9565,22 +9586,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &836882935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836882933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 822e387a927fad74f8dbcb2c2248f902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefabs: {fileID: 8514079124740359672, guid: d3d7d11a6c9e5da428b1a513b8615de0, type: 3}
-  buttonSpawner: {fileID: 366904272}
-  selectedSkill: {fileID: 0}
-  selectedUnit: {fileID: 0}
 --- !u!1 &853075057
 GameObject:
   m_ObjectHideFlags: 0
@@ -10452,7 +10457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 836882935}
+      - m_Target: {fileID: 301905811}
         m_TargetAssemblyTypeName: ChooseAction, Assembly-CSharp
         m_MethodName: BackToUnit
         m_Mode: 1
@@ -13543,7 +13548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1450083779}
+  selectedFlowchart: {fileID: 639690701}
 --- !u!4 &1358700567
 Transform:
   m_ObjectHideFlags: 1

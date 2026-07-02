@@ -273,6 +273,8 @@ public class BattleManager : Singleton<BattleManager>
 
         int randomSkill = Random.Range(0, selectedUnit.skillManager.skills.Count);
         selectedSkill = selectedUnit.skillManager.skills[randomSkill];
+
+        ChooseAction.Instance.SelectSkill(selectedUnit, selectedSkill);
     }
     #endregion
 }
