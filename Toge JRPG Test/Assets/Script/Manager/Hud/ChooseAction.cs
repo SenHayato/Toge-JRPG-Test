@@ -57,11 +57,17 @@ public class ChooseAction : Singleton<ChooseAction>
         switch (selectedSkill.TargetType)
         {
             case SkillTargetType.SingleEnemy:
-                ShowSingleTargetHud();
+                if (skill.executor == SkillExecutor.Ally)
+                {
+                    ShowSingleTargetHud();
+                }
                 break;
 
             case SkillTargetType.SingleAlly:
-                ShowAllySingleTarget();
+                if (skill.executor == SkillExecutor.Ally)
+                {
+                    ShowAllySingleTarget();
+                }
                 break;
 
             case SkillTargetType.Self:
