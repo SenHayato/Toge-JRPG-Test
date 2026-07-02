@@ -9,7 +9,7 @@ public class QTEManager : Singleton<QTEManager>
     public GameObject TimerHud;
     public TextMeshProUGUI textPrompt;
 
-    private float timer;
+    [SerializeField] float timer;
     [SerializeField] float duration;
     public bool IsRunning { get; private set; }
     public QTEResult Result { get; private set; }
@@ -49,33 +49,32 @@ public class QTEManager : Singleton<QTEManager>
 
     public void UiTimer()
     {
-        StartCoroutine(TimerRoutine());
+        //StartCoroutine(TimerRoutine());
+        TimerHud.transform.DOScale(normalScale, duration - 0.5f).SetEase(Ease.Linear);
     }
 
-    IEnumerator TimerRoutine()
-    {
-        while (IsRunning)
-        {
-            float progress = timer / duration;
-            TimerHud.transform.localScale = Vector3.Lerp(scaleSize, normalScale, progress);
-            yield return null;
-        }
+    //IEnumerator TimerRoutine()
+    //{
+    //    while (IsRunning)
+    //    {
+    //        float progress = timer / duration;
+    //        TimerHud.transform.localScale = Vector3.Lerp(scaleSize, normalScale, progress);
+    //        yield return null;
+    //    }
 
-        TimerHud.transform.localScale = Vector3.zero;
-    }
+    //    TimerHud.transform.localScale = Vector3.zero;
+    //}
 
     public void OnConfirm()
     {
         if (!IsRunning || finished)
             return;
 
-        float progress = timer / duration;
-
-        if (progress < 0.3f)
+        if (timer > 0.8f)
         {
             FinishQTE(QTEResult.Perfect);
         }
-        else if (progress < 0.7f)
+        else if (timer > 0 && timer < 0.79f)
         {
             FinishQTE(QTEResult.Good);
         }
@@ -94,8 +93,13 @@ public class QTEManager : Singleton<QTEManager>
         IsRunning = false;
     }
 
+    public void SetQTEText(string textValue)
+    {
+        textPrompt.text = textValue;
+    }
+
     private void OnDisable()
     {
-        StopCoroutine(TimerRoutine());
+        DOTween.Kill(TimerHud.transform);
     }
 }

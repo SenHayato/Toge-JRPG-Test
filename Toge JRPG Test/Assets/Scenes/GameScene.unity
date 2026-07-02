@@ -9516,6 +9516,7 @@ MonoBehaviour:
   ButtonHud: {fileID: 1950640591}
   TimerHud: {fileID: 880584150}
   textPrompt: {fileID: 1543679413}
+  timer: 0
   duration: 1.3
   scaleSize: {x: 2.5, y: 2.5, z: 2.5}
   normalScale: {x: 1, y: 1, z: 1}

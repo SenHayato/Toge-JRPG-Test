@@ -150,14 +150,19 @@ public class BattleManager : Singleton<BattleManager>
     //panggil di ActionState
     public IEnumerator ExecuteSkill(SkillsSO skill)
     {
-        // tunggu animasi
-        //battleManager.MoveToPosition(battleManager.target[0].transform);
         TargetAssign();
-        //yield return new WaitForSeconds(0.5f);
 
         if (skill.QteType != QTEType.NoNeed)
         {
             QteManagerHud.SetActive(true);
+            if (skill.QteType == QTEType.Mash)
+            {
+                QTEManager.Instance.SetQTEText("Spam Button");
+            }
+            else
+            {
+                QTEManager.Instance.SetQTEText(" ");
+            }
             yield return new WaitForSeconds(0.5f);
 
             QTEManager.Instance.StartQTE();
@@ -168,9 +173,12 @@ public class BattleManager : Singleton<BattleManager>
             ApplySkillEffect(selectedSkill, QTEManager.Instance.Result);
             QteManagerHud.SetActive(false);
         }
+        else
+        {
+            ApplySkillEffect(selectedSkill, QTEResult.None);
+        }
 
-        yield return new WaitForSeconds(skill.Animation.length);
-        // cek hasil battle
+            yield return new WaitForSeconds(skill.Animation.length);
         target.Clear();
         stateMachine.ChangeState(checkBattle);
     }
@@ -206,46 +214,34 @@ public class BattleManager : Singleton<BattleManager>
         }
     }
 
-    int multiplier;
     void ApplySkillEffect(SkillsSO skill, QTEResult result)
     {
+        int multiplier = 1;
+
         if (skill.QteType != QTEType.NoNeed)
         {
             if (skill.executor == SkillExecutor.Ally)
             {
-                switch (result)
+                multiplier = result switch
                 {
-                    case QTEResult.Perfect:
-                        multiplier = 3;
-                        break;
-
-                    case QTEResult.Good:
-                        multiplier = 2;
-                        break;
-
-                    case QTEResult.Failed:
-                        multiplier = 1;
-                        break;
-                }
+                    QTEResult.Perfect => 3,
+                    QTEResult.Good => 2,
+                    QTEResult.Failed => 1,
+                    _ => 1
+                };
             }
             else
             {
-                switch (result)
+                multiplier = result switch
                 {
-                    case QTEResult.Perfect:
-                        multiplier = 0;
-                        break;
-
-                    case QTEResult.Good:
-                        multiplier = 1;
-                        break;
-
-                    case QTEResult.Failed:
-                        multiplier = 1;
-                        break;
-                }
+                    QTEResult.Perfect => 0,
+                    QTEResult.Good => 1,
+                    QTEResult.Failed => 2,
+                    _ => 1
+                };
             }
         }
+
         SkillStart(multiplier);
     }
 
