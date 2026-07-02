@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerActive : CharacterUnit
@@ -152,6 +153,22 @@ public class PlayerActive : CharacterUnit
         if (Health <= 0)
         {
             stateMachine.ChangeState(deadState);
+        }
+    }
+
+    public override void PlayWalkSound()
+    {
+        base.PlayWalkSound();
+        //AudioManager.Instance.PlaySound(SoundType.Walk, false);
+        StartCoroutine(PlayWalk());
+    }
+
+    IEnumerator PlayWalk()
+    {
+        while (moveValue != Vector2.zero)
+        {
+            AudioManager.Instance.PlaySound(SoundType.Walk, false);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     #endregion

@@ -15,20 +15,13 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Intro Flowchart")]
     [SerializeField] Flowchart introFlow;
-
-    //all Flowcharts
     [SerializeField] Flowchart[] flowcharts;
-
-    //[Header("Battle Manager")]
-    //[SerializeField] BattleManager battleManager;
-
-    //[Header("HUD Manager")]
-    //[SerializeField] HudManager hudManager;
 
     private void Start()
     {
-        //mainCamera = Camera.main.transform;
+        Application.targetFrameRate = 60;
         ResetFungusFlow();
+        AudioManager.Instance.PlaySound(SoundType.Wind, true);
         playerActive = FindFirstObjectByType<PlayerActive>();
         playerPosition = playerActive.transform;
         PauseManager.Instance.PauseDisable();
@@ -58,6 +51,8 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Exploration)
         {
             gameState = GameState.Exploration;
+            AudioManager.Instance.PlaySound(SoundType.Wind, true);
+            AudioManager.Instance.StopMusic(MusicType.Game);
             HudManager.Instance.ExplorationHudSetUp();
         }
     }
@@ -76,6 +71,8 @@ public class GameManager : Singleton<GameManager>
         if (gameState != GameState.Battle)
         {
             gameState = GameState.Battle;
+            AudioManager.Instance.PlaySound(SoundType.Wind, false);
+            AudioManager.Instance.PlayMusic(MusicType.Game);
             HudManager.Instance.BattleHudSetUp();
             BattleManager.Instance.StartBattle();
         }

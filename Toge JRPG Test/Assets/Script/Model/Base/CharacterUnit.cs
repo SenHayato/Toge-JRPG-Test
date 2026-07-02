@@ -53,6 +53,16 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
     public virtual void TakeDamage(int damage)
     {
         Debug.Log(modelName + " Kena attack");
+        if (isGuard)
+        {
+            AudioManager.Instance.PlaySound(SoundType.Hit, false);
+            VisualEffectManager.Instance.PlayEffect(VisualType.Guard, this.transform.position);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(SoundType.Guard, false);
+            VisualEffectManager.Instance.PlayEffect(VisualType.Hit, this.transform.position);
+        }
         Dead();
         OnHealthChanged?.Invoke(Health, MaxHealth);
         //Ubah state di script turunan masing-masing
@@ -60,6 +70,8 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
 
     public virtual void Heal(int healValue)
     {
+        AudioManager.Instance.PlaySound(SoundType.Heal, false);
+        VisualEffectManager.Instance.PlayEffect(VisualType.Heal, this.transform.position);
         Health += healValue;
         OnHealthChanged?.Invoke(Health, MaxHealth);
     }
@@ -81,4 +93,11 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
     public virtual void Dead() { }
 
     public virtual void Hurt() { }
+
+    public virtual void PlayWalkSound() { }
+
+    public void PlayAttackSound()
+    {
+        AudioManager.Instance.PlaySound(SoundType.Attack, false);
+    }
 }

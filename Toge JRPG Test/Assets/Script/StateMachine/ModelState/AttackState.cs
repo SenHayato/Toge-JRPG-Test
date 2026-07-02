@@ -12,6 +12,7 @@ public class AttackState : IState
     public void Enter()
     {
         unit.inState = CharactherInState.Attack;
+        unit.PlayAttackSound();
         unit.charAnimator.SetInteger("AttackNum", attackNum);
         unit.charAnimator.SetBool("IsAttack", true);
         unit.charAnimator.SetBool("IsIdle", false);

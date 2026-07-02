@@ -52,3 +52,18 @@ public enum QTEResult
 {
     None, Failed, Good, Perfect
 }
+
+public enum SoundType
+{
+    Guard, Heal, Hit, Qte, Walk, Wind, Attack
+}
+
+public enum MusicType
+{
+    Game, Menu
+}
+
+public enum VisualType
+{
+    Hit, Heal, Guard
+}
