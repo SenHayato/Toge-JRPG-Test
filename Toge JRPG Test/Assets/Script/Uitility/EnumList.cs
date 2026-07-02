@@ -25,7 +25,7 @@ public enum SkillPosition
 
 public enum QTEType
 {
-    Mash, Time
+    Mash, Time, NoNeed
 }
 
 public enum GameState

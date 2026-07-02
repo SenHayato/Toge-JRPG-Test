@@ -21,4 +21,4 @@ MonoBehaviour:
   TargetType: 3
   UnitPosition: 0
   Animation: {fileID: 7400000, guid: 7d8f14c6bf34d8548afa37007a9bc447, type: 2}
-  QteType: 1
+  QteType: 2
