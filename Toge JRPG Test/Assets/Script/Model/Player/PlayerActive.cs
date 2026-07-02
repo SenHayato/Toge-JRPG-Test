@@ -32,6 +32,7 @@ public class PlayerActive : CharacterUnit
         base.OnEnable();
         Health = MaxHealth;
         Health = Mathf.Max(0, MaxHealth);
+        StartCoroutine(PlayWalk());
     }
 
     public override void Start()
@@ -161,7 +162,6 @@ public class PlayerActive : CharacterUnit
     {
         base.PlayWalkSound();
         //AudioManager.Instance.PlaySound(SoundType.Walk, false);
-        StartCoroutine(PlayWalk());
     }
 
     IEnumerator PlayWalk()
@@ -171,6 +171,12 @@ public class PlayerActive : CharacterUnit
             AudioManager.Instance.PlaySound(SoundType.Walk, false);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        StopCoroutine(PlayWalk());
     }
     #endregion
 
