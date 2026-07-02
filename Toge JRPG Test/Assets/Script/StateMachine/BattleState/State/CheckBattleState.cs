@@ -20,6 +20,7 @@ public class CheckBattleState : IState
 
     public void Exit()
     {
+        battleManager.selectedUnit.ChangeToIdle();
         Debug.Log("Keluar");
     }
 }

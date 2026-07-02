@@ -70,10 +70,12 @@ public class ChooseAction : Singleton<ChooseAction>
 
             case SkillTargetType.MultipleEnemy:
                 MultipleTargetSkill(SkillTargetType.MultipleEnemy); // nanti di ActionState
+                BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);
                 break;
 
             case SkillTargetType.MultipleAlly:
                 MultipleTargetSkill(SkillTargetType.MultipleAlly); // nanti di ActionState
+                BattleManager.Instance.stateMachine.ChangeState(BattleManager.Instance.actionState);
                 break;
         }
         //Battle state ubah ke action dan jalankan skill

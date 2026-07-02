@@ -75,6 +75,8 @@ public abstract class CharacterUnit : MonoBehaviour, IDamageable
 
     public virtual void ChangeToAttackState(int attackNum) { }
 
+    public virtual void ChangeToIdle() { }
+
     public virtual void Dead() { }
 
     public virtual void Hurt() { }

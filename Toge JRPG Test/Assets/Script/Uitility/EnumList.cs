@@ -10,7 +10,7 @@ public enum SkillTargetType
 
 public enum SkillType
 {
-    Attack, Heal, Mana
+    Attack, Heal, Mana, Guard
 }
 
 public enum SkillTarget

@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTurnState : IState
 {
     private BattleManager battleManager;
+    public List<EnemyActive> enemyActives;
 
     public EnemyTurnState(BattleManager battleManager)
     {
@@ -13,6 +15,9 @@ public class EnemyTurnState : IState
     {
         battleManager.battleProgress = BattleInProgress.EnemyTurn;
         battleManager.wasTurn = BattleInProgress.EnemyTurn;
+
+        //checkEnemy lagi
+        battleManager.GetEnemyOnTurn();
         Debug.Log("Masuk");
     }
 

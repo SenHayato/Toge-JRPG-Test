@@ -13,7 +13,7 @@ public class PlayerTurnState : IState
     {
         battleManager.battleProgress = BattleInProgress.PlayerTurn;
         battleManager.wasTurn = BattleInProgress.PlayerTurn;
-        //HudManager.Instance.PlayerUnitChoose(true);
+        HudManager.Instance.OnPlayerTurn();
         HudManager.Instance.ToggleHUD(HudManager.Instance.ChoosePlayerUnit, true);
         Debug.Log("Player Turn");
     }

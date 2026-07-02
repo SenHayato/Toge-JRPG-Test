@@ -51,6 +51,11 @@ public class HudManager : Singleton<HudManager>
         ChoosePlayerUnit.SetActive(false);
         QteHud.SetActive(true);
     }
+
+    public void OnPlayerTurn()
+    {
+        ChoosePlayerUnit.SetActive(true);
+    }
     #endregion
 
     #region Battle HUD Method

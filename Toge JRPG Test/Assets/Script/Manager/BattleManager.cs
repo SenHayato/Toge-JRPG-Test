@@ -175,6 +175,9 @@ public class BattleManager : Singleton<BattleManager>
                 case SkillType.Mana:
                     unit.FillMana(selectedSkill.Power);
                     break;
+                case SkillType.Guard:
+                    unit.isGuard = true;
+                    break;
             }
         }
     }
@@ -264,6 +267,12 @@ public class BattleManager : Singleton<BattleManager>
                 stateMachine.ChangeState(playerTurn);
             }
         }
+    }
+
+    public List<EnemyActive> enemies;
+    public void GetEnemyOnTurn()
+    {
+        enemies = new List<EnemyActive>(FindObjectsByType<EnemyActive>(FindObjectsInactive.Exclude, FindObjectsSortMode.None));
     }
     #endregion
 }

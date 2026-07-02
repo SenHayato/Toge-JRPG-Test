@@ -123,8 +123,9 @@ public class PlayerActive : CharacterUnit
         Invoke(nameof(ChangeToIdle), 0.4f);
     }
 
-    public void ChangeToIdle()
+    public override void ChangeToIdle()
     {
+        base.ChangeToIdle();
         stateMachine.ChangeState(idleState);
     }
 

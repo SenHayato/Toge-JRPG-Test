@@ -12,6 +12,7 @@ public class ActionState : IState
 
     public void Enter()
     {
+        HudManager.Instance.OnSkillAction();
         battleManager.battleProgress = BattleInProgress.ActionState;
 
         Debug.Log("Masuk ActionState");
